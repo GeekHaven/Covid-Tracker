@@ -7,6 +7,29 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
+      body: Container(
+        height: 300,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: kPrimaryColor.withOpacity(0.03),
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(50),
+            bottomRight: Radius.circular(50),
+          ),
+        ),
+        child: GridView(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          children: List.generate(4, (index) {
+            return Card(
+              elevation: 10,
+              child: Text(
+                'Item $index',
+              
+              ),
+            );
+          }),
+        ),
+      ),
     );
   }
 
