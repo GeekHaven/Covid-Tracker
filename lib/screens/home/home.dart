@@ -5,6 +5,8 @@ import 'package:covidtracker/stats/world.dart';
 import 'package:flutter/material.dart';
 import './home_widgets/awarness.dart';
 import './home_widgets/infoCardset.dart';
+import './home_widgets/countryWorld.dart';
+import './home_widgets/bottom.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -49,9 +51,11 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 10,
             ),
             Awarenesscard(),
+            CountryWorld(),
           ],
         ),
       ),
+       bottomNavigationBar: BottomBar(),
     );
   }
 

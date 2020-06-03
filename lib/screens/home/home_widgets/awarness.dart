@@ -5,7 +5,7 @@ class Awarenesscard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(15),
       height: 170,
       child: Card(
         elevation: 5,
