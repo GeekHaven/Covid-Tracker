@@ -39,14 +39,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: Column(
-        children: <Widget>[
-          Infoset(), //infocard set
-          SizedBox(
-            height: 10,
-          ),
-          Awarenesscard(),
-        ],
+      body: Container(
+        color: kPrimaryColor.withOpacity(0.03),
+        child: Column(
+          
+          children: <Widget>[
+            Infoset(), //infocard set
+            SizedBox(
+              height: 10,
+            ),
+            Awarenesscard(),
+          ],
+        ),
       ),
     );
   }

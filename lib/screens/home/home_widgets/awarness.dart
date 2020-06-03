@@ -8,6 +8,7 @@ class Awarenesscard extends StatelessWidget {
       padding: EdgeInsets.all(10),
       height: 170,
       child: Card(
+        elevation: 5,
         child: Row(
           children: <Widget>[
             Container(
@@ -46,7 +47,7 @@ class Awarenesscard extends StatelessWidget {
                 
                   textColor: Colors.purple[300],
                   padding: EdgeInsets.only(top: 10,left: 90),
-                  splashColor: Colors.purple[100],
+                 
                   onPressed: () {
                     /*...*/
                   },
