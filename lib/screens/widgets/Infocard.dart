@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class Infocard extends StatelessWidget {
  final String title;
- final int effectedNum;
+ final String effectedNum;
  final Color iconcolor;
  
   const Infocard({
@@ -39,6 +39,9 @@ class Infocard extends StatelessWidget {
                 )
               ],
             ),
+            SizedBox(
+                  height: 10,
+                ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
