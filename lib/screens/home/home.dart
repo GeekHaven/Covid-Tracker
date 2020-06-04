@@ -19,13 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<Wcases> worlddata;
 
   Future<Wcases> getWorldStats() async {
-    var response = await http.get(
-      Uri.encodeFull('https://corona.lmao.ninja/v2/all'),
-    );
+    var response = await http.get('https://corona.lmao.ninja/v2/all');
+    
 
     if (response.statusCode == 200) {
-      final convertWorlddata = jsonDecode(response.body);
-      return Wcases.fromJson(convertWorlddata);
+      
+      return Wcases.fromJson(json.decode(response.body));
     } else {
       throw Exception('try again');
     }
@@ -33,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    this.getWorldStats();
+    worlddata=getWorldStats();
     super.initState();
   }
 
@@ -46,7 +45,20 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           
           children: <Widget>[
-            Infoset(), //infocard set
+            FutureBuilder<Wcases>(
+            future: worlddata,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Infoset(snapshot.data);
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+
+              // By default, show a loading spinner.
+              return CircularProgressIndicator();
+            },
+          ),
+            //Infoset(), //infocard set
             SizedBox(
               height: 10,
             ),

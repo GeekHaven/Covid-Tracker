@@ -1,11 +1,14 @@
 import 'dart:convert';
 
 import 'package:covidtracker/constants.dart';
+import 'package:covidtracker/stats/world.dart';
 import 'package:flutter/material.dart';
 
 import './Infocard.dart';
 
 class Infoset extends StatelessWidget {
+   final Wcases worlddata;
+  Infoset(this.worlddata);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,10 +36,10 @@ class Infoset extends StatelessWidget {
                 //   },
                 // ),
                
-                Infocard(title:'Total Cases',effectedNum:'5256' ,iconcolor: Colors.orange[100],),
-                Infocard(title:'Total Cases',effectedNum: '1073',iconcolor: Colors.orange[100],),
-                Infocard(title:'Total Cases',effectedNum: '555',iconcolor: Colors.orange[100],),
-                Infocard(title:'Total Cases',effectedNum: '546',iconcolor: Colors.orange[100],),
+                Infocard(title:'Total Cases',effectedNum: worlddata.cases.toString(),iconcolor: Colors.orange[100],),
+                Infocard(title:'Active Cases',effectedNum: worlddata.active.toString(),iconcolor: Colors.orange[100],),
+                Infocard(title:'Total Deaths',effectedNum: worlddata.deaths.toString(),iconcolor: Colors.orange[100],),
+                Infocard(title:'Total Recovered',effectedNum: worlddata.recovered.toString(),iconcolor: Colors.orange[100],),
                 
               ],
             ),

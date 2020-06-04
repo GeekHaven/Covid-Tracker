@@ -6,7 +6,7 @@ var deaths;
 var active;
  
  Wcases({this.active,this.cases,this.deaths,this.recovered});
-factory Wcases.fromJson(final json){
+factory Wcases.fromJson(Map<String, dynamic> json){
 return Wcases(
   cases:json['cases'],
   active: json['active'],

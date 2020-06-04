@@ -10,11 +10,11 @@ class CountryWorld extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Card(
-            elevation: 5,
+            elevation: 0,
             child: Image.asset('assets/images/india.jpg'),
           ),
           Card(
-            elevation: 5,
+            elevation: 0,
             child: Image.asset('assets/images/world.jpg'),
           ),
         ],

@@ -5,10 +5,11 @@ class Awarenesscard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(15),
+     // padding: EdgeInsets.all(15),
+      width: double.infinity,
       height: 170,
       child: Card(
-        elevation: 5,
+        elevation: 0,
         child: Row(
           children: <Widget>[
             Container(
