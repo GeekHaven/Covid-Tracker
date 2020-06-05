@@ -16,6 +16,7 @@ class BottomBar extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Icon(Icons.flag),
             title: Text('World'),
+            
           ),
         ],
         

@@ -4,6 +4,7 @@ import 'package:covidtracker/constants.dart';
 class Awarenesscard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+ 
     return Container(
      // padding: EdgeInsets.all(15),
       width: double.infinity,
