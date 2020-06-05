@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './constants.dart';
 import './screens/home/home.dart';
+import './know_about/startpage.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,7 +22,9 @@ class MyApp extends StatelessWidget {
  
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-     
+     routes: {
+       StartPage.routeName: (ctx) => StartPage(),
+     },
      home: new MenuDashboardPage(),
     );
   }

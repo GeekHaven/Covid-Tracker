@@ -1,3 +1,4 @@
+//import 'package:covidtracker/stats/indiastats.dart';
 import 'package:flutter/material.dart';
 import '../world_screen/Allcountries.dart';
 class CountryWorld extends StatelessWidget {
@@ -10,10 +11,13 @@ class CountryWorld extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // decoration: BoxDecoration(
+      //   borderRadius: BorderRadius.circular(30),
+      // ),
       padding: EdgeInsets.all(10),
       height: screenWidth*0.4,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           InkWell(
             onTap: () {
