@@ -20,13 +20,16 @@ class Infocard extends StatelessWidget {
             Row(
               children: <Widget>[
                 Container(
+                  
                   margin: EdgeInsets.all(5),
                   alignment: Alignment.center,
                   height: 30,
                   width: 30,
                   decoration: BoxDecoration(
                       color: iconcolor.withOpacity(0.3),
-                      shape: BoxShape.circle),
+                      shape: BoxShape.circle,
+                      //borderRadius: BorderRadius.circular(5)
+                      ),
                   child: FittedBox(child: Icon(Icons.people)),
                 ),
                 SizedBox(

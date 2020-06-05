@@ -1,4 +1,4 @@
-import 'dart:convert';
+//import 'dart:convert';
 
 import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
@@ -23,21 +23,10 @@ class Infoset extends StatelessWidget {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, childAspectRatio: 300 / 220),
               children: <Widget>[
-                // FutureBuilder(
-                //   future: getWorldStats(),
-                //   builder:(BuildContext context,Snapshot){
-                //     if(Snapshot.hasData)
-                //     {
-                //       return 
-                //     }
-                //   },
-                // ),
-               
                 Infocard(title:'Total Cases',effectedNum:'5256' ,iconcolor: Colors.orange[100],),
                 Infocard(title:'Total Cases',effectedNum: '1073',iconcolor: Colors.orange[100],),
                 Infocard(title:'Total Cases',effectedNum: '555',iconcolor: Colors.orange[100],),
                 Infocard(title:'Total Cases',effectedNum: '546',iconcolor: Colors.orange[100],),
-                
               ],
             ),
           );

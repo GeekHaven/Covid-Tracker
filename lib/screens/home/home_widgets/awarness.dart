@@ -1,11 +1,15 @@
+import 'package:covidtracker/know_about/startpage.dart';
 import 'package:flutter/material.dart';
-import 'package:covidtracker/constants.dart';
+//import 'package:covidtracker/constants.dart';
 
 class Awarenesscard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(15),
+      // decoration: BoxDecoration(
+      //   borderRadius: BorderRadius.circular(100),
+      // ),
       height: 170,
       child: Card(
         elevation: 5,
@@ -44,21 +48,21 @@ class Awarenesscard extends StatelessWidget {
                   ),
                 ),
                 FlatButton(
-                
                   textColor: Colors.purple[300],
-                  padding: EdgeInsets.only(top: 10,left: 90),
-                 
+                  padding: EdgeInsets.only(top: 10, left: 90),
                   onPressed: () {
+                    Navigator.of(context).pushNamed(StartPage.routeName);
                     /*...*/
                   },
                   child: Center(
-                    child: Row( // Replace with a Row for horizontal icon + text
-                    children: <Widget>[
-                      Text("Learn More"),
-                      Icon(Icons.arrow_forward),
-                      
-                    ],
-                ),
+                    child: Row(
+                      // Replace with a Row for horizontal icon + text
+                      children: <Widget>[
+                        Text("Learn More", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                        SizedBox(width: 5),
+                        Icon(Icons.arrow_forward),
+                      ],
+                    ),
                   ),
                 )
               ],

@@ -7,7 +7,6 @@ import './home_widgets/awarness.dart';
 import './home_widgets/infoCardset.dart';
 import './home_widgets/countryWorld.dart';
 import './home_widgets/bottom.dart';
-
 import 'package:http/http.dart' as http;
 
 class HomeScreen extends StatefulWidget {
@@ -44,18 +43,15 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         color: kPrimaryColor.withOpacity(0.03),
         child: Column(
-          
           children: <Widget>[
             Infoset(), //infocard set
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10,),
             Awarenesscard(),
             CountryWorld(),
           ],
         ),
       ),
-       bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: BottomBar(),
     );
   }
 
