@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import './Infocard.dart';
 
 class Infoset extends StatelessWidget {
+   final Wcases worlddata;
+  Infoset(this.worlddata);
   @override
   Widget build(BuildContext context) {
     return Container(
