@@ -3,16 +3,23 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtracker/constants.dart';
 import './country.dart';
-import 'package:http/http.dart' as http;
 
-class SubPage extends StatefulWidget {
+
+
+
+class Allcountries extends StatefulWidget {
+  final myDailyCountrydata;
+  Allcountries(this.myDailyCountrydata);
+
   @override
-  _SubPageState createState() => _SubPageState();
+  _AllcountriesState createState() => _AllcountriesState();
 }
 
-class _SubPageState extends State<SubPage> {
-  List countries_wise = [];
+class _AllcountriesState extends State<Allcountries> {
+ List countries_wise = [];
+
   List filteredCountries = [];
+
   bool isSearching = false;
 
   getCountryStats() async {
@@ -116,3 +123,7 @@ class _SubPageState extends State<SubPage> {
         ));
   }
 }
+
+
+
+

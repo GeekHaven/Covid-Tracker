@@ -13,7 +13,10 @@ import 'package:http/http.dart' as http;
 
 class MenuDashboardPage extends StatefulWidget {
   final data;
-  MenuDashboardPage(this.data);
+  final districtData;
+  final dailyData;
+
+  MenuDashboardPage(this.data,this.districtData,this.dailyData);
   @override
   _MenuDashboardPageState createState() => _MenuDashboardPageState();
 }
@@ -21,6 +24,8 @@ class MenuDashboardPage extends StatefulWidget {
 class _MenuDashboardPageState extends State<MenuDashboardPage>
     with SingleTickerProviderStateMixin {
   var myData;
+  var myDistrictData;
+  var myDailyData;
   int count = 0;
   String totalConfirmed = "";
   String totalActive = "";
@@ -29,9 +34,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   String deltaConfirmed = "";
   String deltaDeath = "";
   String deltaRecovered = "";
-  void updateUI(data) async {
+  void updateUI(data,districtData,dailyData) async {
     setState(() {
       myData = data;
+      myDistrictData = districtData;
+      myDailyData = dailyData;
       totalConfirmed = data['statewise'][0]['confirmed'];
       totalActive = data['statewise'][0]['active'];
       totalRecovered = data['statewise'][0]['recovered'];
@@ -53,7 +60,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   @override
   void initState() {
     super.initState();
-    updateUI(widget.data);
+    updateUI(widget.data,widget.districtData,widget.dailyData);
     _controller = AnimationController(vsync: this, duration: duration);
     _scaleAnimation = Tween<double>(begin: 1, end: 0.8).animate(_controller);
     _menuscaleAnimation =
@@ -260,7 +267,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                   ),
                   Expanded(
                     flex: 3,
-                    child: CountryWorld(screenWidth),
+                    child: CountryWorld(myDistrictData),
                   ),
                   //  Expanded(child: null),
                 ],

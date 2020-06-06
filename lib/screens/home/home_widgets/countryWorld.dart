@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 import '../world_screen/Allcountries.dart';
 class CountryWorld extends StatelessWidget {
-   final double screenWidth;
-   CountryWorld(this.screenWidth);
+  var myDailydata;
+  CountryWorld(this.myDailydata);
 
   Future navigateToSubPage(context) async {
-  Navigator.push(context, MaterialPageRoute(builder: (context) => SubPage()));
+  Navigator.push(context, MaterialPageRoute(builder: (context) => Allcountries( myDailydata)));
 }
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CountryWorld extends StatelessWidget {
       //   borderRadius: BorderRadius.circular(30),
       // ),
       padding: EdgeInsets.all(10),
-      height: screenWidth*0.4,
+      height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -32,7 +32,7 @@ class CountryWorld extends StatelessWidget {
             onTap: () {
                
                Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                 return SubPage();
+                 return Allcountries(myDailydata);
                }));
                
                //navigateToSubPage(context);
