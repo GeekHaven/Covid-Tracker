@@ -1,19 +1,18 @@
 import 'dart:convert';
 
 import 'package:covidtracker/constants.dart';
-import 'package:covidtracker/stats/world.dart';
 import 'package:flutter/material.dart';
 
 import './Infocard.dart';
 
 class Infoset extends StatelessWidget {
-  final  worlddata;
-  Infoset(this.worlddata);
+  final  data;
+  Infoset(this.data);
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      height: 300,
+     // padding: EdgeInsets.all(10),
+     // height: 300,
       width: double.infinity,
       decoration: BoxDecoration(
         color: kPrimaryColor.withOpacity(0.03),
@@ -24,39 +23,27 @@ class Infoset extends StatelessWidget {
       ),
       child: GridView(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 300 / 220),
+            crossAxisCount: 2, childAspectRatio: 300/200),
         children: <Widget>[
-          // FutureBuilder(
-          //   future: getWorldStats(),
-          //   builder:(BuildContext context,Snapshot){
-          //     if(Snapshot.hasData)
-          //     {
-          //       return
-          //     }
-          //   },
-          // ),
-
-          
-            
              Infocard(
               title: 'Total Cases',
-              effectedNum: worlddata['confirmed'],
+              effectedNum: data['confirmed'],
               iconcolor: Colors.orange[100],
             ),
           
           Infocard(
             title: 'Active Cases',
-            effectedNum: worlddata['active'],
+            effectedNum: data['active'],
             iconcolor: Colors.orange[100],
           ),
           Infocard(
             title: 'Deaths',
-            effectedNum: worlddata['deaths'],
+            effectedNum: data['deaths'],
             iconcolor: Colors.orange[100],
           ),
           Infocard(
             title: 'Recovered',
-            effectedNum: worlddata['recovered'],
+            effectedNum: data['recovered'],
             iconcolor: Colors.orange[100],
           ),
         ],

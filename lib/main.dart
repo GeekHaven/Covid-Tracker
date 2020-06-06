@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
      routes: {
        StartPage.routeName: (ctx) => StartPage(),
      },
+     
      home: new LoadingScreen(),
     );
   }

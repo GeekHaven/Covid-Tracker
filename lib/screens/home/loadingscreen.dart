@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../home/home.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -29,6 +30,19 @@ class _LoadingScreenState extends State<LoadingScreen> {
       return;
     }
     data = await apidata.getData();
+   if(data == int ){
+      Fluttertoast.showToast(
+          msg: "There was an error connecting to the server",
+          toastLength: Toast.LENGTH_LONG,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Color(0xFFEB1555),
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+      return;
+    }
+
    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
       return MenuDashboardPage(data);
     }));
@@ -47,25 +61,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                "COVID19",
-                style: TextStyle(
-                  fontFamily: 'Lato',
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white
-                )
-              ),
-              Text(
-                "INDIA",
-                style: TextStyle(
-                  fontFamily: 'Lato',
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFEB1555),
-                ),
-              ),
-              SizedBox(height:MediaQuery.of(context).size.height*0.1),
+              FittedBox(
+                child: Image.asset('assets/images/s6.png'),
+              )
             ],
           )
         )
