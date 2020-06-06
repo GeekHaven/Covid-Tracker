@@ -8,8 +8,8 @@ import './country.dart';
 
 
 class Allcountries extends StatefulWidget {
-  final myDailyCountrydata;
-  Allcountries(this.myDailyCountrydata);
+  final myCountrydata;
+  Allcountries(this.myCountrydata);
 
   @override
   _AllcountriesState createState() => _AllcountriesState();
@@ -22,18 +22,16 @@ class _AllcountriesState extends State<Allcountries> {
 
   bool isSearching = false;
 
-  getCountryStats() async {
-    var response = await Dio().get('https://corona.lmao.ninja/v2/countries');
-    return response.data;
-  }
+  // getCountryStats() async {
+  //   var response = await Dio().get('https://corona.lmao.ninja/v2/countries');
+  //   return response.data;
+  // }
 
   @override
   void initState() {
-    getCountryStats().then((data) {
-      setState(() {
-        countries_wise = filteredCountries = data;
+    setState(() {
+        countries_wise = filteredCountries = widget.myCountrydata;
       });
-    });
     super.initState();
   }
 

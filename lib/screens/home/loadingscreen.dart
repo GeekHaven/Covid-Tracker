@@ -15,8 +15,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   Apidata apidata=Apidata();
   var  data;
-    var districtData;
+  var districtData;
   var dailydata;
+  var countrydata;
    void setData()async{
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
@@ -32,8 +33,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
       return;
     }
     data = await apidata.getData();
-        districtData = await apidata.getDistrictData();
+    districtData = await apidata.getDistrictData();
     dailydata=await apidata.getDailyData();
+    countrydata=await apidata.getCountryData();
    if(data == int|| districtData == int ){
       Fluttertoast.showToast(
           msg: "There was an error connecting to the server",
@@ -48,7 +50,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     }
 
    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-      return MenuDashboardPage(data,dailydata,districtData);
+      return MenuDashboardPage(data,dailydata,districtData,countrydata);
     }));
   }
    void initState(){

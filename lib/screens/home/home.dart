@@ -15,8 +15,9 @@ class MenuDashboardPage extends StatefulWidget {
   final data;
   final districtData;
   final dailyData;
+  final countrydata;
 
-  MenuDashboardPage(this.data,this.districtData,this.dailyData);
+  MenuDashboardPage(this.data,this.districtData,this.dailyData,this.countrydata);
   @override
   _MenuDashboardPageState createState() => _MenuDashboardPageState();
 }
@@ -26,6 +27,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   var myData;
   var myDistrictData;
   var myDailyData;
+  var myCountryData;
   int count = 0;
   String totalConfirmed = "";
   String totalActive = "";
@@ -34,11 +36,12 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   String deltaConfirmed = "";
   String deltaDeath = "";
   String deltaRecovered = "";
-  void updateUI(data,districtData,dailyData) async {
+  void updateUI(data,districtData,dailyData,countrydata) async {
     setState(() {
       myData = data;
       myDistrictData = districtData;
       myDailyData = dailyData;
+      myCountryData=countrydata;
       totalConfirmed = data['statewise'][0]['confirmed'];
       totalActive = data['statewise'][0]['active'];
       totalRecovered = data['statewise'][0]['recovered'];
@@ -60,7 +63,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   @override
   void initState() {
     super.initState();
-    updateUI(widget.data,widget.districtData,widget.dailyData);
+    updateUI(widget.data,widget.districtData,widget.dailyData,widget.countrydata);
     _controller = AnimationController(vsync: this, duration: duration);
     _scaleAnimation = Tween<double>(begin: 1, end: 0.8).animate(_controller);
     _menuscaleAnimation =
@@ -267,7 +270,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                   ),
                   Expanded(
                     flex: 3,
-                    child: CountryWorld(myDistrictData),
+                    child: CountryWorld(myData,myDistrictData,myDailyData,myCountryData),
                   ),
                   //  Expanded(child: null),
                 ],
