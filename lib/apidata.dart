@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 
 class Apidata{
-  final String url = "https://api.covid19india.org/data.json";
+  final String url =  "https://api.covid19india.org/data.json";
   final String url2 = "https://api.covid19india.org/v2/state_district_wise.json";
   final String url3 = "https://api.covid19india.org/states_daily.json";
-  final String url4="https://corona.lmao.ninja/v2/countries";
+  final String url4=  "https://corona.lmao.ninja/v2/countries";
   String data;
   Future getData() async{
     http.Response response = await http.get(url);

@@ -1,116 +1,162 @@
-//import 'dart:convert';
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:covidtracker/constants.dart';
-import './country.dart';
-//import 'package:http/http.dart' as http;
+// child: Row(
+//               children: <Widget>[
+//                 Expanded(
+//                     child: Column(
+//                   children: <Widget>[
+//                     Expanded(
+//                       child: Container(
+//                         width: MediaQuery.of(context).size.width * 0.5,
+//                         child: Center(
+//                           child: Row(
+//                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                             children: <Widget>[
+//                               FittedBox(
+//                                 child: Container(
+//                                   width: 20,
+//                                   child: Image.asset("assets/images/red.png"),
+//                                 ),
+//                               ),
+//                               Column(
+//                                 mainAxisAlignment:
+//                                     MainAxisAlignment.spaceAround,
+//                                 children: <Widget>[
+//                                   FittedBox(
+//                                     child: AutoSizeText(
+//                                       "Confirmed",
+//                                       style: TextStyle(
+//                                         fontFamily: 'Lato',
+//                                         fontSize: 15,
+//                                         fontWeight: FontWeight.bold,
+//                                         color: Color(0xFFFE0739),
+//                                       ),
+//                                     ),
+//                                   ),
+//                                   SizedBox(
+//                                       height:
+//                                           MediaQuery.of(context).size.height *
+//                                               0.01),
+//                                   FittedBox(
+//                                     child: AutoSizeText(
+//                                       "22222",
+//                                       style: TextStyle(
+//                                           fontFamily: 'Lato',
+//                                           fontSize: 25,
+//                                           fontWeight: FontWeight.bold,
+//                                           color: Color(0xFFFE0739)),
+//                                     ),
+//                                   ),
+//                                   AutoSizeText(
+//                                     "[+22]",
+//                                     style: TextStyle(
+//                                         fontFamily: 'Lato',
+//                                         fontSize: 12,
+//                                         fontWeight: FontWeight.bold,
+//                                         color:
+//                                             Color(0xFFFE0739).withOpacity(0.7)),
+//                                   ),
+//                                 ],
+//                               )
+//           s                  ],
+//                           ),
+//                         ),
+//                       ),
+//                     )
+//                   ],
+//                 ))
+//               ],
+//             ),
 
-class SubPage extends StatefulWidget {
-  @override
-  _SubPageState createState() => _SubPageState();
-}
+//child: Container(
+                          //   //colour: Color(0xFF1D1E33),
+                          //   width: MediaQuery.of(context).size.width * 0.5,
+                          //   margin: EdgeInsets.fromLTRB(5, 10, 10, 5),
+                          //   child: Center(
+                          //     child: Column(
+                          //       mainAxisAlignment: MainAxisAlignment.center,
+                          //       children:<Widget>[
+                          //         FittedBox(
+                          //           child: AutoSizeText(
+                          //             "Active",
+                          //             style: TextStyle(
+                          //               fontFamily: 'Lato',
+                          //               fontSize: 15,
+                          //               fontWeight: FontWeight.bold,
+                          //               color: Color(0xFF007AFE)
+                          //             ), 
+                          //           ),
+                          //         ),
+                          //         SizedBox(height:MediaQuery.of(context).size.height*0.01),
+                          //         AutoSizeText(
+                          //           "[+85]",
+                          //           style: TextStyle(
+                          //             fontFamily: 'Lato',
+                          //             fontSize: 12,
+                          //             fontWeight: FontWeight.bold,
+                          //             color: Color(0xFF007AFE)
+                          //           ), 
+                          //         ),
+                          //         FittedBox(
+                          //           child: AutoSizeText(
+                          //             "5555",
+                          //             style:TextStyle(
+                          //               fontFamily: 'Lato',
+                          //               fontSize: 35,
+                          //               fontWeight: FontWeight.bold,
+                          //               color: Color(0xFF007AFE)
+                          //             ), 
+                          //           ),
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // ),
 
-class _SubPageState extends State<SubPage> {
-  List countries_wise = [];
-  List filteredCountries = [];
-  bool isSearching = false;
 
-  getCountryStats() async {
-    var response = await Dio().get('https://corona.lmao.ninja/v2/countries');
-    return response.data;
-  }
 
-  @override
-  void initState() {
-    getCountryStats().then((data) {
-      setState(() {
-        countries_wise = filteredCountries = data;
-      });
-    });
-    super.initState();
-  }
 
-  void _filteredList(val) {
-    setState(() {
-      filteredCountries = countries_wise
-          .where((element) =>
-              element['country'].toLowerCase().contains(val.toLowerCase()))
-          .toList();
-    });
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: !isSearching
-              ? Text('All Countries')
-              : TextField(
-                  onChanged: (val) {
-                    _filteredList(val);
-                  },
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.search, color: Colors.white),
-                      hintText: "Search Country ",
-                      hintStyle: TextStyle(color: Colors.white)),
-                ),
-          backgroundColor: kPrimaryColor[300],
-          elevation: 0,
-          actions: <Widget>[
-            isSearching
-                ? IconButton(
-                    icon: Icon(Icons.cancel),
-                    onPressed: () {
-                      setState(() {
-                        this.isSearching = false;
-                        filteredCountries = countries_wise;
-                      });
-                    })
-                : IconButton(
-                    icon: Icon(Icons.search),
-                    onPressed: () {
-                      setState(() {
-                        this.isSearching = true;
-                      });
-                    })
-          ],
-        ),
-        body: Container(
-          padding: EdgeInsets.all(10),
-          child: filteredCountries.length > 0
-              ? ListView.builder(
-                  itemCount: filteredCountries.length,
-                  itemBuilder: (BuildContext context, index) {
-                  
-               
-                 
-                    return GestureDetector(
-                      
-                      onTap: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return Country(filteredCountries[index]['country']);
-                        }));
-                      },
-                      child: Card(
-                         color: index%2==1 ?Colors.white: Colors.grey[100],
-                        child: ListTile(
-                          leading:  SizedBox(
-                            width: 30,
-                            child:Image.network(filteredCountries[index]['countryInfo']['flag']),) ,   
-                          title: Text(filteredCountries[index]['country'],
-                              style: TextStyle(fontSize: 18)),  
-                        ),
-                      ),
-                    );
-                  })
-              : CircularProgressIndicator(),
-          // ListView(
-          //   children: <Widget>[
-          //
-          //   ],
-          // )),
-        ));
-  }
-}
+
+//  child: Container(
+//                           //  colour: Color(0xFF1D1E33),
+//                             width: MediaQuery.of(context).size.width * 0.5,
+//                             margin: EdgeInsets.fromLTRB(10, 10, 5, 5),
+//                             child: Center(
+//                               child: Column(
+//                                 mainAxisAlignment: MainAxisAlignment.center,
+//                                 children:<Widget>[
+//                                   FittedBox(
+//                                     child: AutoSizeText(
+//                                       "Recovered",
+//                                       style:TextStyle(
+//                                         fontFamily: 'Lato',
+//                                         fontSize: 15,
+//                                         fontWeight: FontWeight.bold,
+//                                         color: Color(0xFF27A644)
+//                                       ), 
+//                                     ),
+//                                   ),
+//                                   SizedBox(height:MediaQuery.of(context).size.height*0.01),
+//                                   AutoSizeText(
+//                                     "[+74]",
+//                                     style: TextStyle(
+//                                       fontFamily: 'Lato',
+//                                       fontSize: 12,
+//                                       fontWeight: FontWeight.bold,
+//                                       color: Color(0xFF27A644).withOpacity(0.7)
+//                                     ), 
+//                                   ),
+//                                   FittedBox(
+//                                     child: AutoSizeText(
+//                                      "555555",
+//                                       style:TextStyle(
+//                                         fontFamily: 'Lato',
+//                                         fontSize: 35,
+//                                         fontWeight: FontWeight.bold,
+//                                         color: Color(0xFF27A644)
+//                                       ), 
+//                                     ),
+//                                   ),
+//                                 ],
+//                               ),
+//                             ),
+//                           ),

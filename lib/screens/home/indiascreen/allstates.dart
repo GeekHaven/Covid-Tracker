@@ -9,7 +9,7 @@ class Allstates extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-     child:  CombinedScreen(datalist:myData['statewise'],text:'state'),
+     child:  CombinedScreen(myData,myDistrictData,myDailydata,myData['statewise'],'state'),
     );
   }
 }

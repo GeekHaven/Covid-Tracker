@@ -257,7 +257,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     color: Colors.amber,
                   ),),
                   Expanded(
-                    flex: 6,
+                    flex: 4,
                     
                     child: Infoset(myData['statewise'][0]),
                   ),
@@ -269,7 +269,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     child: Awarenesscard(),
                   ),
                   Expanded(
-                    flex: 3,
+                    flex: 2,
                     child: CountryWorld(myData,myDistrictData,myDailyData,myCountryData),
                   ),
                   //  Expanded(child: null),

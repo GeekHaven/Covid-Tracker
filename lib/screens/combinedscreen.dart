@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:covidtracker/screens/home/indiascreen/statescreen.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtracker/constants.dart';
@@ -8,10 +9,12 @@ import '../screens/home/world_screen/country.dart';
 
 
 class CombinedScreen extends StatefulWidget {
- 
+ var myData;
+  var myDistrictData;
+  var myDailydata;
   var datalist;
  var  text;
-  CombinedScreen({final datalist,final text});
+  CombinedScreen(this.myData,this.myDistrictData,this.myDailydata,this.datalist,this.text);
 
   @override
   _CombinedScreenState createState() => _CombinedScreenState();
@@ -25,11 +28,16 @@ class _CombinedScreenState extends State<CombinedScreen> {
   List filteredList = [];
 
   bool isSearching = false;
-
+ var myData;
+  var myDistrictData;
+  var myDailydata;
 
   @override
   void initState() {
     setState(() {
+      myData=widget.myData;
+      myDailydata=widget.myDailydata;
+      myDistrictData=widget.myDistrictData;
         placeholder=widget.text;
         list_wise = filteredList = widget.datalist;
       });
@@ -96,7 +104,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                       onTap: () {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
-                          return Country(filteredList[index][placeholder]);
+                          return Statescreen(myData: myData,myDailydata: myDailydata,myDistrictData: myDailydata,index: index,statename: filteredList[index][placeholder]);
                         }));
                       },
                       child: Card(
