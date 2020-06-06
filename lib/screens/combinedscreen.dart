@@ -9,9 +9,9 @@ import '../screens/home/world_screen/country.dart';
 
 class CombinedScreen extends StatefulWidget {
  
-  final data;
-  final text;
-  CombinedScreen(this.data,this.text);
+  var datalist;
+ var  text;
+  CombinedScreen({final datalist,final text});
 
   @override
   _CombinedScreenState createState() => _CombinedScreenState();
@@ -31,7 +31,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
   void initState() {
     setState(() {
         placeholder=widget.text;
-        list_wise = filteredList = widget.data;
+        list_wise = filteredList = widget.datalist;
       });
     super.initState();
   }

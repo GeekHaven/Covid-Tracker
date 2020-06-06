@@ -14,7 +14,7 @@ class Allcountries extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: CombinedScreen(myCountrydata,'country'),
+      child: CombinedScreen(datalist:myCountrydata,text:'country'),
     );
   }
 }
