@@ -43,7 +43,7 @@ class CountryWorld extends StatelessWidget {
           InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return Allcountries(myDailydata);
+                return Allcountries(myCountryData);
               }));
 
               //navigateToSubPage(context);

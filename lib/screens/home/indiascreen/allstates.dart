@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:covidtracker/screens/combinedscreen.dart';
 
 class Allstates extends StatelessWidget {
   var myData;
@@ -8,7 +9,7 @@ class Allstates extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+     child:  CombinedScreen(myData['statewise'],'state'),
     );
   }
 }
