@@ -1,9 +1,9 @@
-import 'dart:convert';
+//import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtracker/constants.dart';
 import './country.dart';
-import 'package:http/http.dart' as http;
+//import 'package:http/http.dart' as http;
 
 class SubPage extends StatefulWidget {
   @override
@@ -52,7 +52,7 @@ class _SubPageState extends State<SubPage> {
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                       icon: Icon(Icons.search, color: Colors.white),
-                      hintText: "search country here",
+                      hintText: "Search Country ",
                       hintStyle: TextStyle(color: Colors.white)),
                 ),
           backgroundColor: kPrimaryColor[300],
@@ -94,15 +94,13 @@ class _SubPageState extends State<SubPage> {
                         }));
                       },
                       child: Card(
-                         
                          color: index%2==1 ?Colors.white: Colors.grey[100],
                         child: ListTile(
                           leading:  SizedBox(
                             width: 30,
                             child:Image.network(filteredCountries[index]['countryInfo']['flag']),) ,   
                           title: Text(filteredCountries[index]['country'],
-                              style: TextStyle(fontSize: 18)),
-                              
+                              style: TextStyle(fontSize: 18)),  
                         ),
                       ),
                     );

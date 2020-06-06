@@ -1,6 +1,6 @@
-import 'package:covidtracker/constants.dart';
+//import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:auto_size_text/auto_size_text.dart';
+//import 'package:auto_size_text/auto_size_text.dart';
 
 class Infocard extends StatelessWidget {
   final String title;
@@ -16,6 +16,5 @@ class Infocard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
   }
 }
