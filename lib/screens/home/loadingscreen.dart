@@ -1,10 +1,11 @@
 import 'package:covidtracker/apidata.dart';
 import 'package:flutter/material.dart';
-//import 'network.dart';
+// import 'network.dart';
+import 'package:covidtracker/stats/statistics.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../home/home.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -14,11 +15,12 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
 
   Apidata apidata=Apidata();
-  var  data;
+ var data;
   var districtData;
-  var dailydata;
-  var countrydata;
+  var dailyData;
+var countryData;
    void setData()async{
+    
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
       Fluttertoast.showToast(
@@ -31,12 +33,17 @@ class _LoadingScreenState extends State<LoadingScreen> {
           fontSize: 16.0
       );
       return;
-    }
-    data = await apidata.getData();
+
+    } 
+data = await apidata.getData();
     districtData = await apidata.getDistrictData();
-    dailydata=await apidata.getDailyData();
-    countrydata=await apidata.getCountryData();
-   if(data == int|| districtData == int ){
+    dailyData = await apidata.getDailyData();
+   countryData=await apidata.getCountryData();
+   // statistics=Statistics(data:data,  districtData:districtData,dailydata: dailydata,countrydata: countrydata);
+   
+  
+   
+   if(data == int||districtData == int ){
       Fluttertoast.showToast(
           msg: "There was an error connecting to the server",
           toastLength: Toast.LENGTH_LONG,
@@ -46,18 +53,22 @@ class _LoadingScreenState extends State<LoadingScreen> {
           textColor: Colors.white,
           fontSize: 16.0
       );
+
+     
       return;
     }
 
    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-      return MenuDashboardPage(data,dailydata,districtData,countrydata);
+      return MenuDashboardPage(data: data, districtData: districtData, dailyData: dailyData);
     }));
-  }
+  }var i;
    void initState(){
+     i=0;
     super.initState();
     setData();
   }
-
+  
+  
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -67,9 +78,19 @@ class _LoadingScreenState extends State<LoadingScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FittedBox(
-                child: Image.asset('assets/images/s6.png'),
-              )
+              // RaisedButton(onPressed: ()
+              // {
+              //   if(statistics.data==null)
+              //   return CircularProgressIndicator();
+
+              //    print(statistics.districtData);
+              //   setState(() {
+              //     i++;
+              //   });
+               
+              // }) 
+            //  Text("")
+              // statistics.data['cases_time_series'][0]['date']==Null?Text("awww"):Text(statistics.data['cases_time_series'][0]['date']),
             ],
           )
         )

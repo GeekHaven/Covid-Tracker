@@ -1,19 +1,18 @@
 //import 'package:covidtracker/stats/indiastats.dart';
+import 'package:covidtracker/stats/statistics.dart';
 import 'package:flutter/material.dart';
 import '../world_screen/Allcountries.dart';
 import '../indiascreen/allstates.dart';
 
 class CountryWorld extends StatelessWidget {
-  var myData;
-  var myDistrictData;
-  var myDailydata;
-  var myCountryData;
+ final Statistics statistics;
+ 
 
-  CountryWorld(this.myData,this.myDistrictData,this.myDailydata,this.myCountryData);
+  CountryWorld(this.statistics);
 
   Future navigateToSubPage(context) async {
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => Allcountries(myDailydata)));
+        MaterialPageRoute(builder: (context) => Allcountries(statistics)));
   }
 
   @override
@@ -30,7 +29,7 @@ class CountryWorld extends StatelessWidget {
           InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return Allstates(myData,myDistrictData,myDailydata);
+                return Allstates(statistics);
               }));
 
               //navigateToSubPage(context);
@@ -43,7 +42,7 @@ class CountryWorld extends StatelessWidget {
           InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return Allcountries(myCountryData);
+                return Allcountries(statistics);
               }));
 
               //navigateToSubPage(context);

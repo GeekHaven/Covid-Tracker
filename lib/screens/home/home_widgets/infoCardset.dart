@@ -1,13 +1,14 @@
 import 'dart:convert';
 
 import 'package:covidtracker/constants.dart';
+import 'package:covidtracker/stats/statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import './Infocard.dart';
 
 class Infoset extends StatelessWidget {
-  final data;
-  Infoset(this.data);
+  final statistics;
+  Infoset(this.statistics);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,26 +32,26 @@ class Infoset extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Expanded(
-                      child: Infocard(),
+                      child: Infocard(statistics),
                     ),
-                    Expanded(
-                      child: Infocard(),
-                    ),
+                    // Expanded(
+                    //   child: Infocard(statistics),
+                    // ),
                   ],
                 ),
               ),
-              Expanded(
-                child: Column(
-                  children: <Widget>[
-                    Expanded(
-                      child: Infocard(),
-                    ),
-                    Expanded(
-                      child: Infocard(),
-                    ),
-                  ],
-                ),
-              ),
+              // Expanded(
+              //   child: Column(
+              //     children: <Widget>[
+              //       Expanded(
+              //         child: Infocard(statistics),
+              //       ),
+              //       Expanded(
+              //         child: Infocard(statistics),
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           )),
         ),

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:covidtracker/screens/home/indiascreen/statescreen.dart';
+import 'package:covidtracker/stats/statistics.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtracker/constants.dart';
@@ -9,35 +10,29 @@ import '../screens/home/world_screen/country.dart';
 
 
 class CombinedScreen extends StatefulWidget {
- var myData;
-  var myDistrictData;
-  var myDailydata;
-  var datalist;
- var  text;
-  CombinedScreen(this.myData,this.myDistrictData,this.myDailydata,this.datalist,this.text);
+ final Statistics statistics;
+ final datalist;
+ final   text;
+  CombinedScreen(this.statistics,this.datalist,this.text);
 
   @override
   _CombinedScreenState createState() => _CombinedScreenState();
 }
 
 class _CombinedScreenState extends State<CombinedScreen> {
-
+ Statistics statistics;
   var placeholder;
  List list_wise = [];
 
   List filteredList = [];
 
   bool isSearching = false;
- var myData;
-  var myDistrictData;
-  var myDailydata;
+ 
 
   @override
   void initState() {
     setState(() {
-      myData=widget.myData;
-      myDailydata=widget.myDailydata;
-      myDistrictData=widget.myDistrictData;
+      statistics=widget.statistics;
         placeholder=widget.text;
         list_wise = filteredList = widget.datalist;
       });
@@ -104,7 +99,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                       onTap: () {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
-                          return Statescreen(myData: myData,myDailydata: myDailydata,myDistrictData: myDailydata,index: index,statename: filteredList[index][placeholder]);
+                          return Statescreen(statistics: statistics,index: index,stateName: filteredList[index][placeholder]);
                         }));
                       },
                       child: Card(

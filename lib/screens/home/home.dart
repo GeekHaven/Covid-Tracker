@@ -2,53 +2,34 @@ import 'dart:convert';
 
 import 'package:covidtracker/constants.dart';
 //import 'package:covidtracker/menuscreens/developerScreen.dart';
-import 'package:covidtracker/stats/world.dart';
+import 'package:covidtracker/stats/statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import './home_widgets/awarness.dart';
 import './home_widgets/infoCardset.dart';
 import './home_widgets/countryWorld.dart';
 import './home_widgets/bottom.dart';
-import 'package:http/http.dart' as http;
+
 
 class MenuDashboardPage extends StatefulWidget {
-  final data;
-  final districtData;
-  final dailyData;
-  final countrydata;
+final Statistics statistics;
 
-  MenuDashboardPage(this.data,this.districtData,this.dailyData,this.countrydata);
+
+  MenuDashboardPage(this.statistics);
   @override
   _MenuDashboardPageState createState() => _MenuDashboardPageState();
 }
 
 class _MenuDashboardPageState extends State<MenuDashboardPage>
     with SingleTickerProviderStateMixin {
-  var myData;
-  var myDistrictData;
-  var myDailyData;
-  var myCountryData;
+  Statistics statistics;
   int count = 0;
-  String totalConfirmed = "";
-  String totalActive = "";
-  String totalDeath = "";
-  String totalRecovered = "";
-  String deltaConfirmed = "";
-  String deltaDeath = "";
-  String deltaRecovered = "";
-  void updateUI(data,districtData,dailyData,countrydata) async {
+
+  void updateUI(statistics) async {
     setState(() {
-      myData = data;
-      myDistrictData = districtData;
-      myDailyData = dailyData;
-      myCountryData=countrydata;
-      totalConfirmed = data['statewise'][0]['confirmed'];
-      totalActive = data['statewise'][0]['active'];
-      totalRecovered = data['statewise'][0]['recovered'];
-      totalDeath = data['statewise'][0]['deaths'];
-      deltaConfirmed = data['statewise'][0]['deltaconfirmed'];
-      deltaDeath = data['statewise'][0]['deltadeaths'];
-      deltaRecovered = data['statewise'][0]['deltarecovered'];
+     statistics=statistics;
+     print(statistics);
+      
     });
   }
 
@@ -63,7 +44,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   @override
   void initState() {
     super.initState();
-    updateUI(widget.data,widget.districtData,widget.dailyData,widget.countrydata);
+    updateUI(widget.statistics);
     _controller = AnimationController(vsync: this, duration: duration);
     _scaleAnimation = Tween<double>(begin: 1, end: 0.8).animate(_controller);
     _menuscaleAnimation =
@@ -259,7 +240,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                   Expanded(
                     flex: 4,
                     
-                    child: Infoset(myData['statewise'][0]),
+                    child: Infoset(statistics),
                   ),
                   SizedBox(
                     height: 10,
@@ -270,7 +251,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                   ),
                   Expanded(
                     flex: 2,
-                    child: CountryWorld(myData,myDistrictData,myDailyData,myCountryData),
+                    child: CountryWorld(statistics),
                   ),
                   //  Expanded(child: null),
                 ],
