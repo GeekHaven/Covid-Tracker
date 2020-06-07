@@ -9,7 +9,7 @@ class CountryWorld extends StatelessWidget {
   var myDailydata;
   var myCountryData;
 
-  CountryWorld(this.myData,this.myDistrictData,this.myDailydata,this.myCountryData);
+  CountryWorld({this.myData,this.myDistrictData,this.myDailydata,this.myCountryData});
 
   Future navigateToSubPage(context) async {
     Navigator.push(context,
@@ -30,7 +30,7 @@ class CountryWorld extends StatelessWidget {
           InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return Allstates(myData,myDistrictData,myDailydata);
+                return Allstates(myData: myData,myDistrictData: myDistrictData,myDailydata: myDailydata);
               }));
 
               //navigateToSubPage(context);

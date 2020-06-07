@@ -1,8 +1,8 @@
-import 'dart:convert';
+//import 'dart:convert';
 
 import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:auto_size_text/auto_size_text.dart';
+//import 'package:auto_size_text/auto_size_text.dart';
 import './Infocard.dart';
 
 class Infoset extends StatelessWidget {

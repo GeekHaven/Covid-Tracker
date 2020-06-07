@@ -1,15 +1,15 @@
-import 'dart:convert';
+//import 'dart:convert';
 
 import 'package:covidtracker/constants.dart';
 //import 'package:covidtracker/menuscreens/developerScreen.dart';
-import 'package:covidtracker/stats/world.dart';
+//import 'package:covidtracker/stats/world.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import './home_widgets/awarness.dart';
 import './home_widgets/infoCardset.dart';
 import './home_widgets/countryWorld.dart';
-import './home_widgets/bottom.dart';
-import 'package:http/http.dart' as http;
+//import './home_widgets/bottom.dart';
+//import 'package:http/http.dart' as http;
 
 class MenuDashboardPage extends StatefulWidget {
   final data;
@@ -17,7 +17,7 @@ class MenuDashboardPage extends StatefulWidget {
   final dailyData;
   final countrydata;
 
-  MenuDashboardPage(this.data,this.districtData,this.dailyData,this.countrydata);
+  MenuDashboardPage({this.data,this.districtData,this.dailyData,this.countrydata});
   @override
   _MenuDashboardPageState createState() => _MenuDashboardPageState();
 }
@@ -270,7 +270,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                   ),
                   Expanded(
                     flex: 2,
-                    child: CountryWorld(myData,myDistrictData,myDailyData,myCountryData),
+                    child: CountryWorld(myData: myData, myDistrictData:myDistrictData, myDailydata:myDailyData, myCountryData: myCountryData),
                   ),
                   //  Expanded(child: null),
                 ],
