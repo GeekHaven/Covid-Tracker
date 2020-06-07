@@ -402,21 +402,7 @@ class _StateScreenState extends State<StateScreen> {
                     ListView(
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
-                      children: [
-                        Center(child: Text('fgh'),),
-                        Center(child: Text('fgh'),),
-                        Center(child: Text('fgh'),),
-                        Center(child: Text('fgh'),),
-                        Center(child: Text('fgh'),),
-                        Center(child: Text('fgh'),),
-                        Center(child: Text('fgh'),),
-                        Center(child: Text('fgh'),),
-                        Center(child: Text('fgh'),),
-                        Center(child: Text('fgh'),),
-                        Center(child: Text('fgh'),),
-                        Center(child: Text('fgh'),),
-                        Center(child: Text('fgh'),),
-                      ],
+                      
                     )
                   ],
                 )
