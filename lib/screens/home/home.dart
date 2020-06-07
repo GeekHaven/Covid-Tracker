@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:covidtracker/constants.dart';
-import 'package:covidtracker/stats/world.dart';
+//import 'package:covidtracker/menuscreens/developerScreen.dart';
+import 'package:covidtracker/stats/statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import './home_widgets/awarness.dart';
@@ -9,15 +10,29 @@ import './home_widgets/infoCardset.dart';
 import './home_widgets/countryWorld.dart';
 import './home_widgets/bottom.dart';
 
-import 'package:http/http.dart' as http;
 
 class MenuDashboardPage extends StatefulWidget {
+final Statistics statistics;
+
+
+  MenuDashboardPage(this.statistics);
   @override
   _MenuDashboardPageState createState() => _MenuDashboardPageState();
 }
 
 class _MenuDashboardPageState extends State<MenuDashboardPage>
     with SingleTickerProviderStateMixin {
+  Statistics statistics;
+  int count = 0;
+
+  void updateUI(statistics) async {
+    setState(() {
+     statistics=statistics;
+     print(statistics);
+      
+    });
+  }
+
   bool isCollapsed = true;
   double screenWidth, screenHeight;
   final Duration duration = const Duration(milliseconds: 300);
@@ -29,6 +44,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   @override
   void initState() {
     super.initState();
+    updateUI(widget.statistics);
     _controller = AnimationController(vsync: this, duration: duration);
     _scaleAnimation = Tween<double>(begin: 1, end: 0.8).animate(_controller);
     _menuscaleAnimation =
@@ -55,8 +71,6 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
     ]));
   }
 
-  /*------------------------------------------------------------------menu widget-----------------------------------------------------------------*/
-
   Widget menu(context) {
     return SlideTransition(
       position: _slideAnimation,
@@ -68,48 +82,107 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                 alignment: Alignment.centerLeft,
                 child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text("Dashboard",
-                          style: TextStyle(color: Colors.purple, fontSize: 22)),
-                      SizedBox(height: 12),
-                      Text("World Stats",
-                          style: TextStyle(color: Colors.purple, fontSize: 22)),
-                      SizedBox(height: 12),
-                      Text("India Stats",
-                          style: TextStyle(color: Colors.purple, fontSize: 22)),
-                      SizedBox(height: 12),
-                      Text("Developers",
-                          style: TextStyle(color: Colors.purple, fontSize: 22)),
-                      SizedBox(height: 12),
+                      FlatButton(
+                          color: Colors.white,
+                          disabledColor: Colors.white,
+                          textColor: Colors.purple,
+                          highlightColor: Colors.grey,
+                          padding: EdgeInsets.all(7),
+                          child: Text("Home",
+                              style: TextStyle(
+                                  color: Colors.purple,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold)),
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return Container(
+                                      color: Colors.white,
+                                      padding: EdgeInsets.all(10),
+                                      child: Text("Hello World"));
+                                },
+                              ),
+                            );
+                          }),
+                      FlatButton(
+                          color: Colors.white,
+                          disabledColor: Colors.white,
+                          textColor: Colors.purple,
+                          highlightColor: Colors.grey,
+                          padding: EdgeInsets.all(7),
+                          child: Text("About",
+                              style: TextStyle(
+                                  color: Colors.purple,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold)),
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return Container(
+                                      color: Colors.white,
+                                      padding: EdgeInsets.all(10),
+                                      child: Text("Hello World"));
+                                },
+                              ),
+                            );
+                          }),
+                      FlatButton(
+                          color: Colors.white,
+                          disabledColor: Colors.white,
+                          textColor: Colors.purple,
+                          highlightColor: Colors.grey,
+                          padding: EdgeInsets.all(7),
+                          child: Text("FAQ",
+                              style: TextStyle(
+                                  color: Colors.purple,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold)),
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return Container(
+                                      color: Colors.white,
+                                      padding: EdgeInsets.all(10),
+                                      child: Text("Hello World"));
+                                },
+                              ),
+                            );
+                          }),
+                      FlatButton(
+                          color: Colors.white,
+                          disabledColor: Colors.white,
+                          textColor: Colors.purple,
+                          highlightColor: Colors.grey,
+                          padding: EdgeInsets.all(7),
+                          child: Text("Developers",
+                              style: TextStyle(
+                                  color: Colors.purple,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold)),
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return Container(
+                                      color: Colors.white,
+                                      padding: EdgeInsets.all(10),
+                                      child: Text("Hello World"));
+                                },
+                              ),
+                            );
+                          }),
                     ]))),
       ),
     );
   }
 
-/*------------------------------------------------------------------menu widget-----------------------------------------------------------------*/
-
-/*------------------------------------------------------------------Dashboard widget-----------------------------------------------------------------*/
   Widget dashboard(context) {
-    Future<Wcases> worlddata;
-
-    Future<Wcases> getWorldStats() async {
-      var response = await http.get('https://corona.lmao.ninja/v2/all');
-
-      if (response.statusCode == 200) {
-        return Wcases.fromJson(json.decode(response.body));
-      } else {
-        throw Exception('try again');
-      }
-    }
-
-    @override
-    void initState() {
-      worlddata = getWorldStats();
-      super.initState();
-    }
-
     return AnimatedPositioned(
       duration: duration,
       top: 0,
@@ -118,63 +191,75 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
       right: isCollapsed ? 0 : -0.2 * screenWidth,
       child: ScaleTransition(
         scale: _scaleAnimation,
-        child: Container(
-          child: Material(
-              animationDuration: duration,
-              elevation: 8,
-              borderRadius: BorderRadius.all(Radius.circular(40)),
-              color: kPrimaryColor.withOpacity(0.03),
-              child: Container(
-                  padding: const EdgeInsets.only(left: 16, right: 16, top: 30),
-                  child: Column(children: <Widget>[
-                    Row(
+        child: Material(
+            animationDuration: duration,
+            //elevation:8,// this  is making the app shady
+            //  borderRadius: BorderRadius.all(Radius.circular(40)),
+            color: kPrimaryColor.withOpacity(0.03),
+            child: Container(
+              margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    flex: 1,
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         InkWell(
                             child: Icon(Icons.menu, color: Colors.purple),
                             onTap: () {
-                              setState(() {
-                                if (isCollapsed)
-                                  _controller.forward();
-                                else
-                                  _controller.reverse();
-                                isCollapsed = !isCollapsed;
-                              });
+                              //   setState(() {
+                              //     if(isCollapsed)
+                              //       _controller.forward();
+                              //     else
+                              //        _controller.reverse();
+                              //     isCollapsed= !isCollapsed;
+                              //   });
                             }),
-                        Icon(Icons.settings, color: Colors.purple)
+                        InkWell(
+                            child: Icon(Icons.favorite, color: Colors.purple),
+                            onTap: () {
+                              //   setState(() {
+                              //     if(isCollapsed)
+                              //       _controller.forward();
+                              //     else
+                              //        _controller.reverse();
+                              //     isCollapsed= !isCollapsed;
+                              //   });
+                            }),
                       ],
                     ),
-                    Column(
-                      children: <Widget>[
-                        FutureBuilder<Wcases>(
-                          future: worlddata,
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return Infoset(snapshot.data);
-                            } else if (snapshot.hasError) {
-                              return Text("${snapshot.error}");
-                            }
-
-                            // By default, show a loading spinner.
-                            return Text("jjjjjjj");
-                          },
-                        ),
-                        //Infoset(), //infocard set
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Awarenesscard(),
-                        CountryWorld(screenWidth),
-                      ],
-                    ),
-                  ]))
-              // bottomNavigationBar: BottomBar(),
+                  ),
+                  Expanded(
+                    flex: 1,
+                     child:    Container(
+                   
+                    height: 10,
+                    color: Colors.amber,
+                  ),),
+                  Expanded(
+                    flex: 4,
+                    
+                    child: Infoset(statistics),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Awarenesscard(),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: CountryWorld(statistics),
+                  ),
+                  //  Expanded(child: null),
+                ],
               ),
-        ),
+            )
+            // bottomNavigationBar: BottomBar(),
+            ),
       ),
     );
   }
-
-/*------------------------------------------------------------------Dashboard widget-----------------------------------------------------------------*/
-
 }

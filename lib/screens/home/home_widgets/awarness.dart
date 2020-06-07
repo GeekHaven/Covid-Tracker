@@ -17,7 +17,7 @@ class Awarenesscard extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Container(
-              child: Image.asset('assets/images/man.png'),
+              child: Image.asset('assets/images/s6.png'),
             ),
             Column(
               children: <Widget>[

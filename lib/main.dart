@@ -1,3 +1,4 @@
+import 'package:covidtracker/screens/home/loadingscreen.dart';
 import 'package:flutter/material.dart';
 import './constants.dart';
 import './screens/home/home.dart';
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
      routes: {
        StartPage.routeName: (ctx) => StartPage(),
      },
-     home: new MenuDashboardPage(),
+     
+     home: new LoadingScreen(),
     );
   }
 }

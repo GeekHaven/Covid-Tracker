@@ -1,19 +1,19 @@
-//import 'dart:convert';
+import 'dart:convert';
 
 import 'package:covidtracker/constants.dart';
-import 'package:covidtracker/stats/world.dart';
+import 'package:covidtracker/stats/statistics.dart';
 import 'package:flutter/material.dart';
-
+import 'package:auto_size_text/auto_size_text.dart';
 import './Infocard.dart';
 
 class Infoset extends StatelessWidget {
-  final Wcases worlddata;
-  Infoset(this.worlddata);
+  final statistics;
+  Infoset(this.statistics);
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      height: 300,
+      // padding: EdgeInsets.all(10),
+      // height: 300,
       width: double.infinity,
       decoration: BoxDecoration(
         color: kPrimaryColor.withOpacity(0.03),
@@ -22,45 +22,68 @@ class Infoset extends StatelessWidget {
         //   bottomRight: Radius.circular(50),
         // ),
       ),
-      child: GridView(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 300 / 220),
-        children: <Widget>[
-          // FutureBuilder(
-          //   future: getWorldStats(),
-          //   builder:(BuildContext context,Snapshot){
-          //     if(Snapshot.hasData)
-          //     {
-          //       return
-          //     }
-          //   },
-          // ),
 
-          
-            
-             Infocard(
-              title: 'Total Cases',
-              effectedNum: worlddata.cases.toString(),
-              iconcolor: Colors.orange[100],
-            ),
-          
-          Infocard(
-            title: 'Active Cases',
-            effectedNum: worlddata.active.toString(),
-            iconcolor: Colors.orange[100],
-          ),
-          Infocard(
-            title: 'Deaths',
-            effectedNum: worlddata.deaths.toString(),
-            iconcolor: Colors.orange[100],
-          ),
-          Infocard(
-            title: 'Recovered',
-            effectedNum: worlddata.recovered.toString(),
-            iconcolor: Colors.orange[100],
-          ),
-        ],
+      child: Container(
+        child: Card(
+          child: Expanded(
+              child: Row(
+            children: <Widget>[
+              Expanded(
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: Infocard(statistics),
+                    ),
+                    // Expanded(
+                    //   child: Infocard(statistics),
+                    // ),
+                  ],
+                ),
+              ),
+              // Expanded(
+              //   child: Column(
+              //     children: <Widget>[
+              //       Expanded(
+              //         child: Infocard(statistics),
+              //       ),
+              //       Expanded(
+              //         child: Infocard(statistics),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+            ],
+          )),
+        ),
       ),
+
+      // child: GridView(
+      //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      //       crossAxisCount: 2, childAspectRatio: 300/200),
+      //   children: <Widget>[
+      //        Infocard(
+      //         title: 'Total Cases',
+      //         effectedNum: data['confirmed'],
+      //         iconcolor: Colors.orange[100],
+      //       ),
+
+      //     Infocard(
+      //       title: 'Active Cases',
+      //       effectedNum: data['active'],
+      //       iconcolor: Colors.orange[100],
+      //     ),
+      //     Infocard(
+      //       title: 'Deaths',
+      //       effectedNum: data['deaths'],
+      //       iconcolor: Colors.orange[100],
+      //     ),
+      //     Infocard(
+      //       title: 'Recovered',
+      //       effectedNum: data['recovered'],
+      //       iconcolor: Colors.orange[100],
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
