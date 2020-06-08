@@ -3,7 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import '../indiascreen/resuable_card.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import '../indiascreen/chart.dart';
-
+import '../indiascreen/showdistrictdata.dart';
 class StateScreen extends StatefulWidget {
   var data;
   var districtData;
@@ -175,7 +175,15 @@ class _StateScreenState extends State<StateScreen> {
                 ],
               ),
             ),
-            onPress: () {},
+            onPress: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ShowDistrictData(districtData: filteredData, index:index);
+                  },
+                ),
+              );
+            },
           ),
         );
       });
