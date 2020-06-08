@@ -83,7 +83,7 @@ class Infocard extends StatelessWidget {
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.003),
                   AutoSizeText(
-                    "[+55]",
+                    increase,
                     style: TextStyle(
                         fontFamily: 'Lato',
                         fontSize: 12,
