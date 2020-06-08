@@ -437,7 +437,7 @@ class _StateScreenState extends State<StateScreen> {
             Chart(mySpots: spots, chartColor: colors),
             SizedBox(height: 5),
             Text(
-              "Graph for Last 31 days",
+              "*Last 31 days",
               textAlign: TextAlign.right,
               style: TextStyle(
                 fontFamily: 'Lato',

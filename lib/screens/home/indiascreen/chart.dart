@@ -49,7 +49,7 @@ LineChartData mainData(mySpots,List<Color> myColors) {
     titlesData: FlTitlesData(
       show: true,
       bottomTitles: SideTitles(
-        showTitles: true,
+        showTitles: false,
         reservedSize: 22,
         textStyle: const TextStyle(color: Colors.purple, fontWeight: FontWeight.bold, fontSize: 16),
         getTitles: (value) {

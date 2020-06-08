@@ -9,15 +9,16 @@ import './home_widgets/awarness.dart';
 import './home_widgets/infoCardset.dart';
 import './home_widgets/countryWorld.dart';
 import './home_widgets/bottom.dart';
+
 //import 'package:http/http.dart' as http;
-import 'package:custom_switch/custom_switch.dart';
 class MenuDashboardPage extends StatefulWidget {
   final data;
   final districtData;
   final dailyData;
   final countrydata;
 
-  MenuDashboardPage({this.data,this.districtData,this.dailyData,this.countrydata});
+  MenuDashboardPage(
+      {this.data, this.districtData, this.dailyData, this.countrydata});
   @override
   _MenuDashboardPageState createState() => _MenuDashboardPageState();
 }
@@ -28,15 +29,15 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   var myDistrictData;
   var myDailyData;
   var myCountryData;
-  bool status=false;
+  bool status = false;
   int count = 0;
- 
-  void updateUI(data,districtData,dailyData,countrydata) async {
+
+  void updateUI(data, districtData, dailyData, countrydata) async {
     setState(() {
       myData = data;
       myDistrictData = districtData;
       myDailyData = dailyData;
-      myCountryData=countrydata;
+      myCountryData = countrydata;
     });
   }
 
@@ -51,7 +52,8 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   @override
   void initState() {
     super.initState();
-    updateUI(widget.data,widget.districtData,widget.dailyData,widget.countrydata);
+    updateUI(
+        widget.data, widget.districtData, widget.dailyData, widget.countrydata);
     _controller = AnimationController(vsync: this, duration: duration);
     _scaleAnimation = Tween<double>(begin: 1, end: 0.8).animate(_controller);
     _menuscaleAnimation =
@@ -72,11 +74,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
     screenWidth = size.width;
     screenHeight = size.height;
     return Scaffold(
-        body: Stack(children: <Widget>[
-      menu(context),
-      dashboard(context),
-    ]),
-    bottomNavigationBar: BottomBar(),
+      body: Stack(children: <Widget>[
+        menu(context),
+        dashboard(context),
+      ]),
+      bottomNavigationBar: BottomBar(),
     );
   }
 
@@ -192,7 +194,6 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   }
 
   Widget dashboard(context) {
-    
     return AnimatedPositioned(
       duration: duration,
       top: 0,
@@ -202,85 +203,86 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
       child: ScaleTransition(
         scale: _scaleAnimation,
         child: Material(
-            animationDuration: duration,
-            //elevation:8,// this  is making the app shady
-            //  borderRadius: BorderRadius.all(Radius.circular(40)),
-            color: kPrimaryColor.withOpacity(0.03),
-            child: Container(
-              margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    flex: 2,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          animationDuration: duration,
+          //elevation:8,// this  is making the app shady
+          //  borderRadius: BorderRadius.all(Radius.circular(40)),
+          color: kPrimaryColor.withOpacity(0.03),
+          child: Container(
+            margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      InkWell(
+                          child: Icon(Icons.menu, color: Colors.purple),
+                          onTap: () {
+                            //   setState(() {
+                            //     if(isCollapsed)
+                            //       _controller.forward();
+                            //     else
+                            //        _controller.reverse();
+                            //     isCollapsed= !isCollapsed;
+                            //   });
+                          }),
+                      InkWell(
+                          child: Icon(Icons.favorite, color: Colors.purple),
+                          onTap: () {
+                            //   setState(() {
+                            //     if(isCollapsed)
+                            //       _controller.forward();
+                            //     else
+                            //        _controller.reverse();
+                            //     isCollapsed= !isCollapsed;
+                            //   });
+                          }),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    child: Column(
                       children: <Widget>[
-                        InkWell(
-                            child: Icon(Icons.menu, color: Colors.purple),
-                            onTap: () {
-                              //   setState(() {
-                              //     if(isCollapsed)
-                              //       _controller.forward();
-                              //     else
-                              //        _controller.reverse();
-                              //     isCollapsed= !isCollapsed;
-                              //   });
-                            }),
-                        InkWell(
-                            child: Icon(Icons.favorite, color: Colors.purple),
-                            onTap: () {
-                              //   setState(() {
-                              //     if(isCollapsed)
-                             //       _controller.forward();
-                              //     else
-                              //        _controller.reverse();
-                              //     isCollapsed= !isCollapsed;
-                              //   });
-                            }),
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text("INDIA"),
+                            ],
+                          ),
+                        ),
+                        Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Text("Last Updated 22/2/2020")),
                       ],
                     ),
                   ),
+                ),
                 Expanded(
-                    flex: 1,
-                     child: Container(
-                       child: Column(children: <Widget>[
-                         Container(
-                           child: Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                             children: <Widget>[
-                               Text("INDIA"),
-                                
-                             ],
-                           ),
-                         ),
-                          Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Text("Last Updated 22/2/2020")),
-                       ],),
-                     ),
-                  ),
-                  Expanded(
-                    
-                    flex: 5,
-                    
-                    
-                      child: Center(child: Infoset(myData)),
-                  ),
-                 
-                  Expanded(
-                    flex: 4,
-                    child: Awarenesscard(),
-                  ),
-                  Expanded(
-                    flex: 4,
-                    child: CountryWorld(myData: myData, myDistrictData:myDistrictData, myDailydata:myDailyData, myCountryData: myCountryData),
-                  ),
-                  //  Expanded(child: null),
-                ],
-              ),
+                  flex: 5,
+                  child: Center(child: Infoset(myData)),
+                ),
+
+                Expanded(
+                  flex: 4,
+                  child: Awarenesscard(),
+                ),
+                Expanded(
+                  flex: 4,
+                  child: CountryWorld(
+                      myData: myData,
+                      myDistrictData: myDistrictData,
+                      myDailydata: myDailyData,
+                      myCountryData: myCountryData),
+                ),
+                //  Expanded(child: null),
+              ],
             ),
-             
-            ),
+          ),
+        ),
       ),
     );
   }
