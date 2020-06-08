@@ -52,7 +52,8 @@ class _StateScreenState extends State<StateScreen> {
     asofDate = myData['statewise'][myIndex]['lastupdatedtime'];
     counter(myDistrictData);
     filteredDataCounter();
-    chartData("Confirmed", Color(0xFFFE0739));
+    buildDistrictList();
+    chartData("Confirmed", Color(0xFF007AFE).withOpacity(0.7));
   }
 
   void counter(myDistrictData) {
@@ -79,20 +80,20 @@ class _StateScreenState extends State<StateScreen> {
       colors.add(color);
       int i = 0;
       for (items in myDailyData['states_daily']) {
-            print(i);
-            if (myDailyData['states_daily'][i]['status'] == detail) {
-              double first = i.toDouble();
-              double second;
-              if (myDailyData['states_daily'][i][myStateCode] == '') {
-                second = 0;
-              } else {
-                second = double.parse(myDailyData['states_daily'][i][myStateCode]);
-              }
-              spots.add(FlSpot(first, second));
-            }
-            i++;
-         }
-      print(i);
+        //print(i);
+        if (myDailyData['states_daily'][i]['status'] == detail) {
+          double first = i.toDouble();
+          double second;
+          if (myDailyData['states_daily'][i][myStateCode] == '') {
+            second = 0;
+          } else {
+            second = double.parse(myDailyData['states_daily'][i][myStateCode]);
+          }
+          spots.add(FlSpot(first, second));
+        }
+        i++;
+      }
+      //print(i);
 
       while (spots.length > 31) {
         spots.removeAt(0);
@@ -106,32 +107,34 @@ class _StateScreenState extends State<StateScreen> {
       colors = [];
       colors.add(color);
       int i = 0;
-      int  j = 0;
-      for(items in myDailyData['states_daily']){
-      if(myDailyData['states_daily'][i]['status'] == 'Confirmed' && myDailyData['states_daily'][i+1]['status'] == 'Recovered' && myDailyData['states_daily'][i+2]['status'] == 'Deceased' ){
+      int j = 0;
+      for (items in myDailyData['states_daily']) {
+        if (myDailyData['states_daily'][i]['status'] == 'Confirmed' &&
+            myDailyData['states_daily'][i + 1]['status'] == 'Recovered' &&
+            myDailyData['states_daily'][i + 2]['status'] == 'Deceased') {
+          double confirmed;
+          double recovered =
+              double.parse(myDailyData['states_daily'][i + 1][myStateCode]);
+          double deaths =
+              double.parse(myDailyData['states_daily'][i + 2][myStateCode]);
 
-        double confirmed;
-        double recovered = double.parse(myDailyData['states_daily'][i+1][myStateCode]);
-        double deaths = double.parse(myDailyData['states_daily'][i+2][myStateCode]);
-
-        if(myDailyData['states_daily'][i][myStateCode] == ''){
-          confirmed = 0;
+          if (myDailyData['states_daily'][i][myStateCode] == '') {
+            confirmed = 0;
+          } else {
+            confirmed =
+                double.parse(myDailyData['states_daily'][i][myStateCode]);
+          }
+          double first = j.toDouble();
+          double second = confirmed - recovered - deaths;
+          spots.add(FlSpot(first, second));
         }
-        else{
-          confirmed = double.parse(myDailyData['states_daily'][i][myStateCode]);
-        }
-        double first = j.toDouble();
-        double second = confirmed - recovered - deaths;
-        spots.add(
-          FlSpot(first,second)
-        );
-      }
-      i++;
-      j++;
+        i++;
+        j++;
       }
       while (spots.length > 31) {
         spots.removeAt(0);
       }
+      //print(spots[0]);
     });
   }
 
@@ -139,6 +142,42 @@ class _StateScreenState extends State<StateScreen> {
     for (items in filteredData) {
       setState(() {
         filterCounter++;
+      });
+    }
+  }
+
+  void buildDistrictList() {
+    for (var index = 0; index < filterCounter; index++) {
+      setState(() {
+        districtsList.add(
+          ReusableCard(
+            width: 195,
+            margin: EdgeInsets.only(top: 20),
+            alignment: Alignment.center,
+            colour: index % 2 == 1 ? Colors.white : Colors.grey[100],
+            cardChild: Center(
+              child: Column(
+                children: <Widget>[
+                  SizedBox(height: 10),
+                  FittedBox(
+                    child: Text(
+                      filteredData[index]['district'].toString(),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Lato',
+                        fontSize: 18,
+                        //fontWeight: FontWeight.bold,
+                        letterSpacing: .5,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                ],
+              ),
+            ),
+            onPress: () {},
+          ),
+        );
       });
     }
   }
@@ -161,7 +200,7 @@ class _StateScreenState extends State<StateScreen> {
                 Expanded(
                   flex: 1,
                   child: ReusableCard(
-                    colour: Colors.white,
+                    colour: Color(0xFF007AFE).withOpacity(0.7),
                     margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
                     height: MediaQuery.of(context).size.height * 0.16,
                     padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
@@ -170,52 +209,51 @@ class _StateScreenState extends State<StateScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           FittedBox(
-                            child: AutoSizeText(
-                              "Confirmed",
-                              style: TextStyle(
+                            child: AutoSizeText("Confirmed",
+                                style: TextStyle(
                                   fontFamily: 'Lato',
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFFFE0739).withOpacity(0.7)),
-                            ),
+                                  color: Colors.white,
+                                )),
                           ),
                           SizedBox(
                               height:
                                   MediaQuery.of(context).size.height * 0.01),
                           FittedBox(
                             child: Text(
-                              "[+${myData['statewise'][myIndex]['deltaconfirmed'].toString()}]",
-                              style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFFFE0739).withOpacity(0.7)),
-                            ),
+                                "[+${myData['statewise'][myIndex]['deltaconfirmed'].toString()}]",
+                                style: TextStyle(
+                                    fontFamily: 'Lato',
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white)),
                           ),
                           SizedBox(height: 3),
                           FittedBox(
                             child: AutoSizeText(
-                              myData['statewise'][myIndex]['confirmed']
-                                  .toString(),
-                              style: TextStyle(
+                                myData['statewise'][myIndex]['confirmed']
+                                    .toString(),
+                                style: TextStyle(
                                   fontFamily: 'Lato',
                                   fontSize: 25,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFFFE0739)),
-                            ),
+                                  color: Colors.white,
+                                )),
                           ),
                         ],
                       ),
                     ),
                     onPress: () {
-                      chartData("Confirmed", Color(0xFFFE0739));
+                      chartData(
+                          "Confirmed", Color(0xFF007AFE).withOpacity(0.7));
                     },
                   ),
                 ),
                 Expanded(
                   flex: 1,
                   child: ReusableCard(
-                    colour: Colors.white,
+                    colour: Colors.yellow,
                     height: MediaQuery.of(context).size.height * 0.16,
                     margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
                     padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
@@ -224,27 +262,24 @@ class _StateScreenState extends State<StateScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           FittedBox(
-                            child: AutoSizeText(
-                              "Active",
-                              style: TextStyle(
+                            child: AutoSizeText("Active",
+                                style: TextStyle(
                                   fontFamily: 'Lato',
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFF007AFE).withOpacity(0.7)),
-                            ),
+                                  color: Colors.white,
+                                )),
                           ),
                           SizedBox(
                               height:
                                   MediaQuery.of(context).size.height * 0.01),
                           FittedBox(
-                            child: Text(
-                              " ",
-                              style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF007AFE).withOpacity(0.7)),
-                            ),
+                            child: Text(" ",
+                                style: TextStyle(
+                                    fontFamily: 'Lato',
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white)),
                           ),
                           SizedBox(height: 3),
                           FittedBox(
@@ -254,14 +289,14 @@ class _StateScreenState extends State<StateScreen> {
                                   fontFamily: 'Lato',
                                   fontSize: 25,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFF007AFE)),
+                                  color: Colors.white),
                             ),
                           ),
                         ],
                       ),
                     ),
                     onPress: () {
-                      activeChartData(Color(0xFF007AFE));
+                      activeChartData(Colors.yellow);
                     },
                   ),
                 ),
@@ -277,7 +312,7 @@ class _StateScreenState extends State<StateScreen> {
                   flex: 1,
                   child: ReusableCard(
                     height: MediaQuery.of(context).size.height * 0.16,
-                    colour: Colors.white,
+                    colour: Color(0xFF27A644).withOpacity(0.7),
                     margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
                     padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
                     cardChild: Center(
@@ -291,7 +326,7 @@ class _StateScreenState extends State<StateScreen> {
                                   fontFamily: 'Lato',
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFF27A644).withOpacity(0.7)),
+                                  color: Colors.white),
                             ),
                           ),
                           SizedBox(
@@ -304,20 +339,19 @@ class _StateScreenState extends State<StateScreen> {
                                   fontFamily: 'Lato',
                                   fontSize: 10,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFF27A644).withOpacity(0.7)),
+                                  color: Colors.white),
                             ),
                           ),
                           SizedBox(height: 3),
                           FittedBox(
                             child: AutoSizeText(
-                              myData['statewise'][myIndex]['recovered']
-                                  .toString(),
-                              style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF27A644)),
-                            ),
+                                myData['statewise'][myIndex]['recovered']
+                                    .toString(),
+                                style: TextStyle(
+                                    fontFamily: 'Lato',
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white)),
                           ),
                         ],
                       ),
@@ -331,7 +365,7 @@ class _StateScreenState extends State<StateScreen> {
                   flex: 1,
                   child: ReusableCard(
                       height: MediaQuery.of(context).size.height * 0.16,
-                      colour: Colors.white,
+                      colour: Colors.red,
                       margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
                       padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
                       cardChild: Center(
@@ -345,7 +379,7 @@ class _StateScreenState extends State<StateScreen> {
                                     fontFamily: 'Lato',
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.yellow),
+                                    color: Colors.white),
                               ),
                             ),
                             SizedBox(
@@ -358,7 +392,7 @@ class _StateScreenState extends State<StateScreen> {
                                     fontFamily: 'Lato',
                                     fontSize: 10,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.yellow),
+                                    color: Colors.white),
                               ),
                             ),
                             SizedBox(height: 3),
@@ -370,20 +404,40 @@ class _StateScreenState extends State<StateScreen> {
                                       fontFamily: 'Lato',
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.yellow)),
+                                      color: Colors.white)),
                             ),
                           ],
                         ),
                       ),
                       onPress: () {
-                        chartData("Deceased", Colors.yellow);
+                        chartData("Deceased", Colors.red);
                       }),
                 ),
               ],
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+            Text(
+              "Last updated on $asofDate ",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: 'Lato',
+                color: Colors.purple,
+                fontSize: 15,
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.015),
             Chart(mySpots: spots, chartColor: colors),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+            SizedBox(height: 5),
+            Text(
+              "Graph for Last 31 days",
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                fontFamily: 'Lato',
+                color: Colors.purple,
+                fontSize: 15,
+              ),
+            ),
+            SizedBox(height: 10),
             ExpansionTile(
               title: Text(
                 'Districts',
@@ -402,7 +456,7 @@ class _StateScreenState extends State<StateScreen> {
                     ListView(
                       shrinkWrap: true,
                       physics: ScrollPhysics(),
-                      
+                      children: districtsList,
                     )
                   ],
                 )

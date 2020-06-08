@@ -104,8 +104,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                         //print(filteredList[index][placeholder]);
                         String stateName =
                             myData['statewise'][index]['state'].toString();
-                        int indexx = index;
-                        print(indexx);
+                        //int indexx = index;
                         int i = 0;
                         while (i < myData['statewise'].length - 1) {
                           if (myDistrictData[i]['state'] == stateName) {
@@ -116,7 +115,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                                 districtData: myDistrictData,
                                 dailyData: myDailydata,
                                 stateName: stateName,
-                                index: indexx,
+                                index: index,
                               );
                             }));
                           }
