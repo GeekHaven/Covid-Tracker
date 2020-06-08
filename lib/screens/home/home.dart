@@ -8,9 +8,9 @@ import 'package:flutter/rendering.dart';
 import './home_widgets/awarness.dart';
 import './home_widgets/infoCardset.dart';
 import './home_widgets/countryWorld.dart';
-//import './home_widgets/bottom.dart';
+import './home_widgets/bottom.dart';
 //import 'package:http/http.dart' as http;
-
+import 'package:custom_switch/custom_switch.dart';
 class MenuDashboardPage extends StatefulWidget {
   final data;
   final districtData;
@@ -28,27 +28,15 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   var myDistrictData;
   var myDailyData;
   var myCountryData;
+  bool status=false;
   int count = 0;
-  String totalConfirmed = "";
-  String totalActive = "";
-  String totalDeath = "";
-  String totalRecovered = "";
-  String deltaConfirmed = "";
-  String deltaDeath = "";
-  String deltaRecovered = "";
+ 
   void updateUI(data,districtData,dailyData,countrydata) async {
     setState(() {
       myData = data;
       myDistrictData = districtData;
       myDailyData = dailyData;
       myCountryData=countrydata;
-      totalConfirmed = data['statewise'][0]['confirmed'];
-      totalActive = data['statewise'][0]['active'];
-      totalRecovered = data['statewise'][0]['recovered'];
-      totalDeath = data['statewise'][0]['deaths'];
-      deltaConfirmed = data['statewise'][0]['deltaconfirmed'];
-      deltaDeath = data['statewise'][0]['deltadeaths'];
-      deltaRecovered = data['statewise'][0]['deltarecovered'];
     });
   }
 
@@ -87,7 +75,9 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
         body: Stack(children: <Widget>[
       menu(context),
       dashboard(context),
-    ]));
+    ]),
+    bottomNavigationBar: BottomBar(),
+    );
   }
 
   Widget menu(context) {
@@ -202,6 +192,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   }
 
   Widget dashboard(context) {
+    
     return AnimatedPositioned(
       duration: duration,
       top: 0,
@@ -220,7 +211,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
               child: Column(
                 children: <Widget>[
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -240,7 +231,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                             onTap: () {
                               //   setState(() {
                               //     if(isCollapsed)
-                              //       _controller.forward();
+                             //       _controller.forward();
                               //     else
                               //        _controller.reverse();
                               //     isCollapsed= !isCollapsed;
@@ -249,34 +240,46 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                       ],
                     ),
                   ),
-                  Expanded(
+                Expanded(
                     flex: 1,
-                     child:    Container(
-                   
-                    height: 10,
-                    color: Colors.amber,
-                  ),),
+                     child: Container(
+                       child: Column(children: <Widget>[
+                         Container(
+                           child: Row(
+                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                             children: <Widget>[
+                               Text("INDIA"),
+                                
+                             ],
+                           ),
+                         ),
+                          Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Text("Last Updated 22/2/2020")),
+                       ],),
+                     ),
+                  ),
+                  Expanded(
+                    
+                    flex: 5,
+                    
+                    
+                      child: Center(child: Infoset(myData)),
+                  ),
+                 
                   Expanded(
                     flex: 4,
-                    
-                    child: Infoset(myData['statewise'][0]),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Expanded(
-                    flex: 3,
                     child: Awarenesscard(),
                   ),
                   Expanded(
-                    flex: 2,
+                    flex: 4,
                     child: CountryWorld(myData: myData, myDistrictData:myDistrictData, myDailydata:myDailyData, myCountryData: myCountryData),
                   ),
                   //  Expanded(child: null),
                 ],
               ),
-            )
-            // bottomNavigationBar: BottomBar(),
+            ),
+             
             ),
       ),
     );

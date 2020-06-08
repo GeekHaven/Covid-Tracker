@@ -1,59 +1,127 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
-//import 'package:auto_size_text/auto_size_text.dart';
+
 
 class Infocard extends StatelessWidget {
   final String title;
   final String effectedNum;
-  final Color iconcolor;
+  final Color color;
+  final increase;
+  final String iconcolor;
 
   const Infocard({
     Key key,
     this.title,
     this.effectedNum,
     this.iconcolor,
+    this.increase,
+    this.color
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.5,
-     margin: EdgeInsets.fromLTRB(10, 10, 5, 5),
-        decoration: BoxDecoration(
-        color: kPrimaryColor.withOpacity(0.3),
-        borderRadius: BorderRadius.all(Radius.circular(0)
-        
+      // margin: EdgeInsets.fromLTRB(10, 10, 5, 5),
+      // decoration: BoxDecoration(
+      //   color: kPrimaryColor.withOpacity(0.3),
+      //   borderRadius: BorderRadius.all(Radius.circular(0)),
+      // ),
+
+      child:
+
+//     alignment: Alignment.topCenter,
+
+          Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 10, top: 5),
+              child: Column(
+                children: <Widget>[
+                  Image.asset(
+                    'assets/images/$iconcolor.png',
+                    fit: BoxFit.contain,
+                    cacheHeight: 30,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              width: 15,
+            ),
+            FittedBox(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  FittedBox(
+                    child: AutoSizeText(
+                      title,
+                      style: TextStyle(
+                          fontFamily: 'Lato',
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color: color),
+                    ),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.007),
+                  FittedBox(
+                    child: AutoSizeText(
+                      effectedNum,
+                      style: TextStyle(
+                          fontFamily: 'Lato',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.003),
+                  AutoSizeText(
+                    "[+55]",
+                    style: TextStyle(
+                        fontFamily: 'Lato',
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black.withOpacity(0.7)),
+                  ),
+                ],
+              ),
+              //     child: Column(
+              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //   crossAxisAlignment: CrossAxisAlignment.start,
+              //   children: <Widget>[
+              //     AutoSizeText(
+
+              //         "Total Confirmed Cases",
+              //         style: TextStyle(color: Colors.red, fontSize: 12),
+
+              //     ),
+              //     SizedBox(
+              //       height: 5,
+              //     ),
+              //     Text(
+              //       "5745756",
+              //       style: TextStyle(color: Colors.red, fontSize: 18),
+              //     ),
+              //     SizedBox(
+              //       height: 5,
+              //     ),
+              //     Text(
+              //       "[+55]",
+              //       style: TextStyle(color: Colors.red, fontSize: 8),
+              //     ),
+              //   ],
+              // )
+            )
+          ],
         ),
       ),
-      
-child: Row(
-  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: <Widget>[
-    Container (
-      margin: EdgeInsets.fromLTRB(2, 20, 2,0),
-            child: Image.asset(
-    'assets/images/red.png',
-   // height: MediaQuery.of(context).size.width * 0.5,
-    width: MediaQuery.of(context).size.width * 0.05,
-    fit: BoxFit.fitWidth,
- ),
-     ),
- FittedBox(
-   child :Column(
-     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-     crossAxisAlignment: CrossAxisAlignment.start,
-   children: <Widget>[
-     
-     Text("comfirned cases"),
-     Text("555555"),
-     Text("[+]"),
-   ],
- ),
- ),
- 
-  ],
-),
 
       // child: Center(
       //   child: Column(
