@@ -49,21 +49,33 @@ LineChartData mainData(mySpots,List<Color> myColors) {
     titlesData: FlTitlesData(
       show: true,
       bottomTitles: SideTitles(
-        // showTitles: true,
-        // reservedSize: 22,
-        // textStyle: const TextStyle(color: Colors.purple, fontWeight: FontWeight.bold, fontSize: 16),
-        // getTitles: (value) {
-        //   switch (value.toInt()) {
-        //     case 2:
-        //       return 'MAR';
-        //     case 5:
-        //       return 'JUN';
-        //     case 8:
-        //       return 'SEP';
-        //   }
-        //   return '';
-        // },
-        // margin: 8,
+        showTitles: false,
+        reservedSize: 22,
+        textStyle: const TextStyle(color: Colors.purple, fontWeight: FontWeight.bold, fontSize: 16),
+        getTitles: (value) {
+          switch (value.toInt()) {
+            case 2:
+              return 'MAR';
+            case 5:
+              return 'JUN';
+            case 8:
+              return 'SEP';
+          }
+          //print(spots.length);
+          // for(var i=1; i<=spots.length; i++){
+          //   if(i%7==0){
+          //     print(DateTime.now().subtract(Duration(days: i)).toString());
+          //     return DateTime.now().subtract(Duration(days: i)).toString();
+              
+          //   }
+          //   else{
+          //     return '';
+          //   }
+          //}
+          return '';
+        },
+        margin: 8,
+        
       ),
       leftTitles: SideTitles(
         showTitles: false,

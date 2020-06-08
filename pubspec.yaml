@@ -41,12 +41,12 @@ dependencies:
   intro_slider: ^2.3.1
   auto_size_text: ^2.1.0
   custom_switch: ^0.0.1
+  pie_chart: ^3.1.1
 
 dev_dependencies:
   flutter_test:
      sdk: flutter
   simple_animations: ^1.3.12
-  charts_flutter: ^0.9.0
   #dio: ^3.0.9
 
 # For information on the generic Dart part of this file, see the
