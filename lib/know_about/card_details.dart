@@ -27,6 +27,7 @@ class CardDetails extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Image.asset(
                 imageSource,
+                //fit: BoxFit.fill
               ),
             ),
             decoration: BoxDecoration(
