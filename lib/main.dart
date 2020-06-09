@@ -1,11 +1,15 @@
 import 'package:covidtracker/screens/home/loadingscreen.dart';
 import 'package:flutter/material.dart';
 import './constants.dart';
-import './screens/home/home.dart';
+import 'package:flutter/services.dart';
 import './know_about/startpage.dart';
 
 void main() {
-  runApp(MyApp());
+    WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+    .then((_) {
+      runApp(new MyApp());
+    });
 }
 
 class MyApp extends StatelessWidget {

@@ -4,6 +4,7 @@ import '../indiascreen/resuable_card.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import '../indiascreen/chart.dart';
 import '../indiascreen/showdistrictdata.dart';
+import '../home_widgets/infoCardset.dart';
 class StateScreen extends StatefulWidget {
   var data;
   var districtData;
@@ -198,231 +199,232 @@ class _StateScreenState extends State<StateScreen> {
         elevation: 0,
       ),
       body: SafeArea(
-        child: Container(
+        child:Container(
           margin: EdgeInsets.fromLTRB(10, 25, 10, 25),
           child: ListView(children: <Widget>[
+             Center(child: Infoset(countryData: myData['statewise'][myIndex],code: 2,chartData:chartData)),
             //SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: ReusableCard(
-                    colour: Color(0xFF007AFE).withOpacity(0.7),
-                    margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
-                    height: MediaQuery.of(context).size.height * 0.16,
-                    padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
-                    cardChild: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          FittedBox(
-                            child: AutoSizeText("Confirmed",
-                                style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                )),
-                          ),
-                          SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.01),
-                          FittedBox(
-                            child: Text(
-                                "[+${myData['statewise'][myIndex]['deltaconfirmed'].toString()}]",
-                                style: TextStyle(
-                                    fontFamily: 'Lato',
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white)),
-                          ),
-                          SizedBox(height: 3),
-                          FittedBox(
-                            child: AutoSizeText(
-                                myData['statewise'][myIndex]['confirmed']
-                                    .toString(),
-                                style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                )),
-                          ),
-                        ],
-                      ),
-                    ),
-                    onPress: () {
-                      chartData(
-                          "Confirmed", Color(0xFF007AFE).withOpacity(0.7));
-                    },
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: ReusableCard(
-                    colour: Colors.yellow,
-                    height: MediaQuery.of(context).size.height * 0.16,
-                    margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
-                    padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
-                    cardChild: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          FittedBox(
-                            child: AutoSizeText("Active",
-                                style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                )),
-                          ),
-                          SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.01),
-                          FittedBox(
-                            child: Text(" ",
-                                style: TextStyle(
-                                    fontFamily: 'Lato',
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white)),
-                          ),
-                          SizedBox(height: 3),
-                          FittedBox(
-                            child: AutoSizeText(
-                              myData['statewise'][myIndex]['active'].toString(),
-                              style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    onPress: () {
-                      activeChartData(Colors.yellow);
-                    },
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.000005,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: ReusableCard(
-                    height: MediaQuery.of(context).size.height * 0.16,
-                    colour: Color(0xFF27A644).withOpacity(0.7),
-                    margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
-                    padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
-                    cardChild: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          FittedBox(
-                            child: AutoSizeText(
-                              "Recovered",
-                              style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                          ),
-                          SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.01),
-                          FittedBox(
-                            child: Text(
-                              "[+${myData['statewise'][myIndex]['deltarecovered'].toString()}]",
-                              style: TextStyle(
-                                  fontFamily: 'Lato',
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                          ),
-                          SizedBox(height: 3),
-                          FittedBox(
-                            child: AutoSizeText(
-                                myData['statewise'][myIndex]['recovered']
-                                    .toString(),
-                                style: TextStyle(
-                                    fontFamily: 'Lato',
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white)),
-                          ),
-                        ],
-                      ),
-                    ),
-                    onPress: () {
-                      chartData("Recovered", Color(0xFF27A644));
-                    },
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: ReusableCard(
-                      height: MediaQuery.of(context).size.height * 0.16,
-                      colour: Colors.red,
-                      margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
-                      padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
-                      cardChild: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            FittedBox(
-                              child: AutoSizeText(
-                                "Deaths",
-                                style: TextStyle(
-                                    fontFamily: 'Lato',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                            ),
-                            SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.01),
-                            FittedBox(
-                              child: Text(
-                                "[+${myData['statewise'][myIndex]['deltadeaths'].toString()}]",
-                                style: TextStyle(
-                                    fontFamily: 'Lato',
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                            ),
-                            SizedBox(height: 3),
-                            FittedBox(
-                              child: AutoSizeText(
-                                  myData['statewise'][myIndex]['deaths']
-                                      .toString(),
-                                  style: TextStyle(
-                                      fontFamily: 'Lato',
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white)),
-                            ),
-                          ],
-                        ),
-                      ),
-                      onPress: () {
-                        chartData("Deceased", Colors.red);
-                      }),
-                ),
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: <Widget>[
+            //     Expanded(
+            //       flex: 1,
+            //       child: ReusableCard(
+            //         colour: Color(0xFF007AFE).withOpacity(0.7),
+            //         margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
+            //         height: MediaQuery.of(context).size.height * 0.16,
+            //         padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
+            //         cardChild: Center(
+            //           child: Column(
+            //             mainAxisAlignment: MainAxisAlignment.center,
+            //             children: <Widget>[
+            //               FittedBox(
+            //                 child: AutoSizeText("Confirmed",
+            //                     style: TextStyle(
+            //                       fontFamily: 'Lato',
+            //                       fontSize: 15,
+            //                       fontWeight: FontWeight.bold,
+            //                       color: Colors.white,
+            //                     )),
+            //               ),
+            //               SizedBox(
+            //                   height:
+            //                       MediaQuery.of(context).size.height * 0.01),
+            //               FittedBox(
+            //                 child: Text(
+            //                     "[+${myData['statewise'][myIndex]['deltaconfirmed'].toString()}]",
+            //                     style: TextStyle(
+            //                         fontFamily: 'Lato',
+            //                         fontSize: 10,
+            //                         fontWeight: FontWeight.bold,
+            //                         color: Colors.white)),
+            //               ),
+            //               SizedBox(height: 3),
+            //               FittedBox(
+            //                 child: AutoSizeText(
+            //                     myData['statewise'][myIndex]['confirmed']
+            //                         .toString(),
+            //                     style: TextStyle(
+            //                       fontFamily: 'Lato',
+            //                       fontSize: 25,
+            //                       fontWeight: FontWeight.bold,
+            //                       color: Colors.white,
+            //                     )),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //         onPress: () {
+            //           chartData(
+            //               "Confirmed", Color(0xFF007AFE).withOpacity(0.7));
+            //         },
+            //       ),
+            //     ),
+            //     Expanded(
+            //       flex: 1,
+            //       child: ReusableCard(
+            //         colour: Colors.yellow,
+            //         height: MediaQuery.of(context).size.height * 0.16,
+            //         margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
+            //         padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
+            //         cardChild: Center(
+            //           child: Column(
+            //             mainAxisAlignment: MainAxisAlignment.center,
+            //             children: <Widget>[
+            //               FittedBox(
+            //                 child: AutoSizeText("Active",
+            //                     style: TextStyle(
+            //                       fontFamily: 'Lato',
+            //                       fontSize: 15,
+            //                       fontWeight: FontWeight.bold,
+            //                       color: Colors.white,
+            //                     )),
+            //               ),
+            //               SizedBox(
+            //                   height:
+            //                       MediaQuery.of(context).size.height * 0.01),
+            //               FittedBox(
+            //                 child: Text(" ",
+            //                     style: TextStyle(
+            //                         fontFamily: 'Lato',
+            //                         fontSize: 10,
+            //                         fontWeight: FontWeight.bold,
+            //                         color: Colors.white)),
+            //               ),
+            //               SizedBox(height: 3),
+            //               FittedBox(
+            //                 child: AutoSizeText(
+            //                   myData['statewise'][myIndex]['active'].toString(),
+            //                   style: TextStyle(
+            //                       fontFamily: 'Lato',
+            //                       fontSize: 25,
+            //                       fontWeight: FontWeight.bold,
+            //                       color: Colors.white),
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //         onPress: () {
+            //           activeChartData(Colors.yellow);
+            //         },
+            //       ),
+            //     ),
+            //   ],
+            // ),
+            // SizedBox(
+            //   height: MediaQuery.of(context).size.height * 0.000005,
+            // ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: <Widget>[
+            //     Expanded(
+            //       flex: 1,
+            //       child: ReusableCard(
+            //         height: MediaQuery.of(context).size.height * 0.16,
+            //         colour: Color(0xFF27A644).withOpacity(0.7),
+            //         margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
+            //         padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
+            //         cardChild: Center(
+            //           child: Column(
+            //             mainAxisAlignment: MainAxisAlignment.center,
+            //             children: <Widget>[
+            //               FittedBox(
+            //                 child: AutoSizeText(
+            //                   "Recovered",
+            //                   style: TextStyle(
+            //                       fontFamily: 'Lato',
+            //                       fontSize: 15,
+            //                       fontWeight: FontWeight.bold,
+            //                       color: Colors.white),
+            //                 ),
+            //               ),
+            //               SizedBox(
+            //                   height:
+            //                       MediaQuery.of(context).size.height * 0.01),
+            //               FittedBox(
+            //                 child: Text(
+            //                   "[+${myData['statewise'][myIndex]['deltarecovered'].toString()}]",
+            //                   style: TextStyle(
+            //                       fontFamily: 'Lato',
+            //                       fontSize: 10,
+            //                       fontWeight: FontWeight.bold,
+            //                       color: Colors.white),
+            //                 ),
+            //               ),
+            //               SizedBox(height: 3),
+            //               FittedBox(
+            //                 child: AutoSizeText(
+            //                     myData['statewise'][myIndex]['recovered']
+            //                         .toString(),
+            //                     style: TextStyle(
+            //                         fontFamily: 'Lato',
+            //                         fontSize: 25,
+            //                         fontWeight: FontWeight.bold,
+            //                         color: Colors.white)),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //         onPress: () {
+            //           chartData("Recovered", Color(0xFF27A644));
+            //         },
+            //       ),
+            //     ),
+            //     Expanded(
+            //       flex: 1,
+            //       child: ReusableCard(
+            //           height: MediaQuery.of(context).size.height * 0.16,
+            //           colour: Colors.red,
+            //           margin: EdgeInsets.fromLTRB(2, 10, 2, 5),
+            //           padding: EdgeInsets.fromLTRB(5, 5, 5, 2),
+            //           cardChild: Center(
+            //             child: Column(
+            //               mainAxisAlignment: MainAxisAlignment.center,
+            //               children: <Widget>[
+            //                 FittedBox(
+            //                   child: AutoSizeText(
+            //                     "Deaths",
+            //                     style: TextStyle(
+            //                         fontFamily: 'Lato',
+            //                         fontSize: 15,
+            //                         fontWeight: FontWeight.bold,
+            //                         color: Colors.white),
+            //                   ),
+            //                 ),
+            //                 SizedBox(
+            //                     height:
+            //                         MediaQuery.of(context).size.height * 0.01),
+            //                 FittedBox(
+            //                   child: Text(
+            //                     "[+${myData['statewise'][myIndex]['deltadeaths'].toString()}]",
+            //                     style: TextStyle(
+            //                         fontFamily: 'Lato',
+            //                         fontSize: 10,
+            //                         fontWeight: FontWeight.bold,
+            //                         color: Colors.white),
+            //                   ),
+            //                 ),
+            //                 SizedBox(height: 3),
+            //                 FittedBox(
+            //                   child: AutoSizeText(
+            //                       myData['statewise'][myIndex]['deaths']
+            //                           .toString(),
+            //                       style: TextStyle(
+            //                           fontFamily: 'Lato',
+            //                           fontSize: 25,
+            //                           fontWeight: FontWeight.bold,
+            //                           color: Colors.white)),
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            //           onPress: () {
+            //             chartData("Deceased", Colors.red);
+            //           }),
+            //     ),
+            //   ],
+            // ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.01),
             Text(
               "Last updated on $asofDate ",
@@ -472,6 +474,11 @@ class _StateScreenState extends State<StateScreen> {
             )
           ]),
         ),
+
+
+
+
+
       ),
     );
   }

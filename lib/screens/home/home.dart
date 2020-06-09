@@ -10,6 +10,7 @@ import './home_widgets/infoCardset.dart';
 import './home_widgets/countryWorld.dart';
 import './home_widgets/bottom.dart';
 
+
 //import 'package:http/http.dart' as http;
 class MenuDashboardPage extends StatefulWidget {
   final data;
@@ -73,7 +74,9 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
     Size size = MediaQuery.of(context).size;
     screenWidth = size.width;
     screenHeight = size.height;
+    
     return Scaffold(
+      
       body: Stack(children: <Widget>[
         menu(context),
         dashboard(context),
@@ -217,18 +220,18 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       InkWell(
-                          child: Icon(Icons.menu, color: Colors.purple),
+                          child: Icon(Icons.menu, color: Colors.red),
                           onTap: () {
-                            //   setState(() {
-                            //     if(isCollapsed)
-                            //       _controller.forward();
-                            //     else
-                            //        _controller.reverse();
-                            //     isCollapsed= !isCollapsed;
-                            //   });
+                              // setState(() {
+                              //   if(isCollapsed)
+                              //     _controller.forward();
+                              //   else
+                              //      _controller.reverse();
+                              //   isCollapsed= !isCollapsed;
+                              // });
                           }),
                       InkWell(
-                          child: Icon(Icons.favorite, color: Colors.purple),
+                          child: Icon(Icons.favorite, color: Colors.red),
                           onTap: () {
                             //   setState(() {
                             //     if(isCollapsed)
@@ -263,7 +266,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                 ),
                 Expanded(
                   flex: 5,
-                  child: Center(child: Infoset(myData)),
+                  child: Center(child: Infoset(indiaData: myData['statewise'][0],code: 1,)),
                 ),
 
                 Expanded(
