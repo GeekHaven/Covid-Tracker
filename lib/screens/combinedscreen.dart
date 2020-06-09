@@ -72,7 +72,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                       hintText: "search country here",
                       hintStyle: TextStyle(color: Colors.white)),
                 ),
-          backgroundColor: kPrimaryColor[300],
+          backgroundColor: kPrimaryColor,
           elevation: 0,
           actions: <Widget>[
             isSearching

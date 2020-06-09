@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
+import '../home_widgets/infoCardset.dart';
 
 
 
@@ -42,31 +43,39 @@ class _ShowDistrictDataState extends State<ShowDistrictData> {
       appBar: AppBar(
         title: Text(myDistrictData[index]["district"].toString()),
       ),
-      body: Container(
-        child: Center(
-          child: toggle
-              ? PieChart(
-                  dataMap: dataMap,
-                  animationDuration: Duration(milliseconds: 800),
-                  chartLegendSpacing: 32.0,
-                  chartRadius: MediaQuery.of(context).size.width / 2.7,
-                  showChartValuesInPercentage: true,
-                  showChartValues: true,
-                  showChartValuesOutside: false,
-                  chartValueBackgroundColor: Colors.grey[200],
-                  colorList: colorList,
-                  showLegends: true,
-                  legendPosition: LegendPosition.right,
-                  decimalPlaces: 1,
-                  showChartValueLabel: true,
-                  initialAngle: 0,
-                  chartValueStyle: defaultChartValueStyle.copyWith(
-                    color: Colors.blueGrey[900].withOpacity(0.9),
-                  ),
-                  chartType: ChartType.disc,
-                )
-              : Text("Press FAB to show chart"),
-        ),
+      body: Column(
+        children: <Widget>[
+         Container(
+           child: Center(child: Infoset(districtData:myDistrictData[index] ,code: 3,)),
+         ),
+
+          Container(
+            child: Center(
+              child: toggle
+                  ? PieChart(
+                      dataMap: dataMap,
+                      animationDuration: Duration(milliseconds: 800),
+                      chartLegendSpacing: 32.0,
+                      chartRadius: MediaQuery.of(context).size.width / 2.7,
+                      showChartValuesInPercentage: true,
+                      showChartValues: true,
+                      showChartValuesOutside: false,
+                      chartValueBackgroundColor: Colors.grey[200],
+                      colorList: colorList,
+                      showLegends: true,
+                      legendPosition: LegendPosition.right,
+                      decimalPlaces: 1,
+                      showChartValueLabel: true,
+                      initialAngle: 0,
+                      chartValueStyle: defaultChartValueStyle.copyWith(
+                        color: Colors.blueGrey[900].withOpacity(0.9),
+                      ),
+                      chartType: ChartType.disc,
+                    )
+                  : Text("Press FAB to show chart"),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: togglePieChart,
