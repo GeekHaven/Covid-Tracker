@@ -136,6 +136,7 @@ setState(() {
               iconcolor: "red",
               increase:infoCardData[1],
               chartData: chartData,
+              stringplace: "Confirmed",
             ),
 
           Infocard(
@@ -145,6 +146,7 @@ setState(() {
             color: Colors.blue,
             iconcolor: "blue",
             chartData: chartData,
+            stringplace: "Active",
           ),
           Infocard(
             title: 'Deaths',
@@ -153,6 +155,8 @@ setState(() {
             iconcolor: "grey",
             increase:infoCardData[5],
             chartData: chartData,
+            stringplace: "Deceased",
+
           ),
           Infocard(
             title: 'Recovered',
@@ -161,6 +165,7 @@ setState(() {
             iconcolor: "green",
             increase:infoCardData[7],
             chartData: chartData,
+            stringplace: 'Recovered',
           ),
         ],
       )

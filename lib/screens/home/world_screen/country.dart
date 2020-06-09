@@ -9,8 +9,6 @@ class Country extends StatelessWidget {
       appBar: AppBar(
         title: Text('llll'),
        backgroundColor: kPrimaryColor,
-      elevation: 0,
-      
       ),
      
     );

@@ -3,6 +3,10 @@ import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../indiascreen/chart.dart';
+//import 'package:covidtracker/constants.dart';
+import 'package:flutter/material.dart';
+//import 'package:auto_size_text/auto_size_text.dart';
+
 class Infocard extends StatelessWidget {
   final String title;
   final String effectedNum;
@@ -10,6 +14,7 @@ class Infocard extends StatelessWidget {
   final increase;
   final String iconcolor;
   final chartData;
+  final stringplace;
 
   const Infocard({
     Key key,
@@ -19,6 +24,7 @@ class Infocard extends StatelessWidget {
     this.increase,
     this.color,
     this.chartData,
+    this.stringplace
   }) : super(key: key);
 
   @override
@@ -110,7 +116,7 @@ class Infocard extends StatelessWidget {
 
       onTap:() {
                       chartData(
-                          "Confirmed", color.withOpacity(0.7));
+                          stringplace, color.withOpacity(0.7));
                     },
           ),
 

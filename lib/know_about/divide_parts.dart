@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../know_about/cardmodel.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 //import '../know_about/body_part.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 
 class DivideParts extends StatefulWidget {
   final String title;
@@ -26,7 +27,14 @@ class _DividePartsState extends State<DivideParts> {
       infoList = widget.infoList;
     });
   }
-
+ 
+final List<String> imgList = [
+ 
+  "assets/images/air_by_cough_or_sneeze.png",
+  "assets/images/personal_contact.png",
+  "assets/images/contaminated_objects.png",
+  "assets/images/crowd.png"
+];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,34 +53,45 @@ class _DividePartsState extends State<DivideParts> {
           ),
         ),
         SizedBox(height: 20),
-        CarouselSlider(
-          options: CarouselOptions(
-            aspectRatio: 2.0,
-            enlargeCenterPage: true,
-            enableInfiniteScroll: false,
-            initialPage: 2,
-            autoPlay: true,
-            onPageChanged: (index, reason) {
-              _current = index;
-            },
+    
+          SizedBox(
+             height: 150.0,
+          width: 300.0,
+                      child: Carousel(
+              boxFit: BoxFit.contain,
+              autoplay: false,
+              animationCurve: Curves.fastOutSlowIn,
+              animationDuration: Duration(milliseconds: 1000),
+              dotSize: 4.0,
+              dotIncreasedColor: Colors.purple,
+              dotBgColor: Colors.transparent,
+              dotPosition: DotPosition.bottomCenter,
+              dotVerticalPadding: 10.0,
+              showIndicator: true,
+              indicatorBgPadding: 7.0,
+              images: [
+                 ExactAssetImage(infoList[0].imageSource),
+                  ExactAssetImage(infoList[1].imageSource),
+                  ExactAssetImage(infoList[2].imageSource),
+                  ExactAssetImage(infoList[3].imageSource),
+
+  
+  // ,
+  // infoList[2].imageSource,
+  // infoList[3].imageSource
+  
+]
+            ),
           ),
-          items: infoList.map((imgUrl) {
-            Builder(builder: (BuildContext context) {
-              return Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                decoration: BoxDecoration(
-                  color: imgUrl.cardColor,
-                ),
-                child: Image.asset(imgUrl.imageSource),
-              );
-            });
-          }).toList(), 
-        )
+      
       ],
-    ));
+    ),);
   }
 }
 // imageSource: infoList[_current].imageSource,
 //                 title: infoList[_current].title,
 //                 cardColor: infoList[_current].cardColor,
+ 
+
+
+    

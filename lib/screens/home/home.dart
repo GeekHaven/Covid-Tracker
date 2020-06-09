@@ -9,6 +9,8 @@ import './home_widgets/awarness.dart';
 import './home_widgets/infoCardset.dart';
 import './home_widgets/countryWorld.dart';
 import './home_widgets/bottom.dart';
+// import './home_widgets/bottom.dart';
+// import 'package:http/http.dart' as http;
 
 
 //import 'package:http/http.dart' as http;
