@@ -1,15 +1,8 @@
-// import 'dart:convert';
-// import 'package:covidtracker/screens/combinedscreen.dart';
-// import 'package:dio/dio.dart';
+
+import 'package:covidtracker/screens/combinedscreen.dart';
+
 import 'package:flutter/material.dart';
-// import 'package:covidtracker/constants.dart';
-// import './country.dart';
-//import 'dart:convert';
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:covidtracker/constants.dart';
-import './country.dart';
-//import 'package:http/http.dart' as http;
+
 
 
 
@@ -20,7 +13,7 @@ class Allcountries extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-     // child: CombinedScreen(datalist:myCountrydata,text:'country'),
+     child: CombinedScreen(datalist:myCountrydata,text:'country'),
     );
   }
 }

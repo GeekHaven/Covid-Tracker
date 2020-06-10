@@ -1,6 +1,7 @@
 //import 'dart:convert';
 
 import 'package:covidtracker/constants.dart';
+import 'package:covidtracker/screens/home/home_widgets/countryWorld.dart';
 import 'package:flutter/material.dart';
 //import 'package:auto_size_text/auto_size_text.dart';
 import './Infocard.dart';
@@ -26,6 +27,7 @@ class _InfosetState extends State<Infoset> {
 var countryData;
 var chartData;
 var districtData;
+var worldData;
 @override
   void initState() {
     // TODO: implement initState
@@ -35,6 +37,7 @@ setState(() {
   countryData=widget.countryData;
   districtData=widget.districtData;
   chartData=widget.chartData;
+  worldData=widget.worldData;
   if(code==1)
   {
     infoCardData[0]=indiaData['confirmed'];
@@ -68,6 +71,18 @@ setState(() {
     infoCardData[6]=(districtData['recovered']).toString();
     infoCardData[7]=(districtData['delta']['recovered']).toString();
   }
+  if(code==4)
+  {
+    infoCardData[0]=(worldData['cases']).toString();
+    infoCardData[1]=(worldData['todayCases']).toString();
+    infoCardData[2]=(worldData['active']).toString().toString();
+    infoCardData[3]=(worldData['active'].toString());
+    infoCardData[4]=(worldData['deaths']).toString();
+    infoCardData[5]=(worldData['todayDeaths']).toString();
+    infoCardData[6]=(worldData['recovered']).toString();
+    infoCardData[7]=(worldData['todayRecovered']).toString();
+  }
+  
 
 });
 
@@ -102,14 +117,7 @@ setState(() {
               
             ),
 
-          Infocard(
-            title: 'Active Cases',
-            effectedNum:infoCardData[2],
-            increase: '',
-            color: Colors.blue,
-            iconcolor: "blue",
-            
-          ),
+         
           Infocard(
             title: 'Deaths',
             effectedNum:infoCardData[4],
@@ -117,12 +125,20 @@ setState(() {
             iconcolor: "grey",
             increase:infoCardData[5],
           ),
-          Infocard(
+            Infocard(
             title: 'Recovered',
             effectedNum:infoCardData[6],
             color: Colors.green,
             iconcolor: "green",
             increase:infoCardData[7],
+          ),
+           Infocard(
+            title: 'Active Cases',
+            effectedNum:infoCardData[2],
+            increase: '',
+            color: Colors.blue,
+            iconcolor: "blue",
+            
           ),
         ],
       ):GridView(

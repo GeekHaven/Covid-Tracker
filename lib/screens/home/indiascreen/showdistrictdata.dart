@@ -1,4 +1,5 @@
 
+import 'package:covidtracker/screens/home/world_screen/country.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 import '../home_widgets/infoCardset.dart';
@@ -8,7 +9,8 @@ import '../home_widgets/infoCardset.dart';
 class ShowDistrictData extends StatefulWidget {
   var districtData;
   var index;
-  ShowDistrictData({this.districtData, this.index});
+  var text;
+  ShowDistrictData({this.districtData, this.index,this.text});
   @override
   _ShowDistrictDataState createState() => _ShowDistrictDataState();
 }
@@ -17,6 +19,7 @@ class _ShowDistrictDataState extends State<ShowDistrictData> {
   bool toggle = false;
   var myDistrictData;
   var index;
+  var text;
   Map<String, double> dataMap = Map();
   List<Color> colorList = [
     Colors.red,
@@ -29,8 +32,14 @@ class _ShowDistrictDataState extends State<ShowDistrictData> {
     super.initState();
     myDistrictData = widget.districtData;
     index = widget.index;
-    dataMap.putIfAbsent("Deaths",
+    text=widget.text;
+  if(text=="country")  {
+        dataMap.putIfAbsent("Deaths",
+        () => double.parse((myDistrictData[index]["deaths"]).toString()));}
+        else{
+            dataMap.putIfAbsent("Deaths",
         () => double.parse((myDistrictData[index]["deceased"]).toString()));
+        }
     dataMap.putIfAbsent("Recovered",
         () => double.parse((myDistrictData[index]["recovered"]).toString()));
     dataMap.putIfAbsent("Active",
@@ -41,12 +50,12 @@ class _ShowDistrictDataState extends State<ShowDistrictData> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(myDistrictData[index]["district"].toString()),
+        title: (text=="country")?Text(myDistrictData[index]["country"].toString()):Text(myDistrictData[index]["district"].toString()),
       ),
       body: Column(
         children: <Widget>[
          Container(
-           child: Center(child: Infoset(districtData:myDistrictData[index] ,code: 3,)),
+           child: Center(child: (text=="country")?Infoset(worldData:myDistrictData[index] ,code: 4,):Infoset(districtData:myDistrictData[index] ,code: 3)),
          ),
 
           Container(

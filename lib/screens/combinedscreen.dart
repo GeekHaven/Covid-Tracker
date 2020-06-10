@@ -3,12 +3,14 @@ import 'package:covidtracker/screens/home/indiascreen/statescreen.dart';
 //import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtracker/constants.dart';
+import './home/indiascreen/showdistrictdata.dart';
 //import '../screens/home/world_screen/country.dart';
 
 class CombinedScreen extends StatefulWidget {
   var myData;
   var myDistrictData;
   var myDailydata;
+  var myCountryData;
   var datalist;
   var text;
   CombinedScreen(
@@ -27,6 +29,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
   List list_wise = [];
   var myDailyData;
   var noofstate;
+ 
 
   List filteredList = [];
 
@@ -34,6 +37,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
   var myData;
   var myDistrictData;
   var myDailydata;
+  var myCountryData;
 
   @override
   void initState() {
@@ -41,7 +45,9 @@ class _CombinedScreenState extends State<CombinedScreen> {
       myData = widget.myData;
       myDailydata = widget.myDailydata;
       myDistrictData = widget.myDistrictData;
+      myCountryData=widget.myCountryData;
       placeholder = widget.text;
+      
       list_wise = filteredList = widget.datalist;
     });
     super.initState();
@@ -61,7 +67,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
     return Scaffold(
         appBar: AppBar(
           title: !isSearching
-              ? Text('All Countries')
+              ? ( (list_wise.length>50)?Text('All Countries'):Text('All States'))
               : TextField(
                   onChanged: (val) {
                     _filteredList(val);
@@ -69,7 +75,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                       icon: Icon(Icons.search, color: Colors.white),
-                      hintText: "search country here",
+                      hintText: "search here",
                       hintStyle: TextStyle(color: Colors.white)),
                 ),
           backgroundColor: kPrimaryColor,
@@ -102,12 +108,14 @@ class _CombinedScreenState extends State<CombinedScreen> {
                     return GestureDetector(
                       onTap: () {
                         //print(filteredList[index][placeholder]);
-                        String stateName =
-                            myData['statewise'][index]['state'].toString();
+                       
                         //int indexx = index;
                         int i = 0;
-                        while (i < myData['statewise'].length - 1) {
-                          if (myDistrictData[i]['state'] == stateName) {
+                        while (i < list_wise.length - 1) {
+                          if(placeholder=="state"){
+                             String stateName =
+                            myData['statewise'][index]['state'].toString();
+                              if (myDistrictData[i]['state'] == stateName) {
                             Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (context) {
                               return StateScreen(
@@ -118,16 +126,37 @@ class _CombinedScreenState extends State<CombinedScreen> {
                                 index: index,
                               );
                             }));
+                          }}
+                          else{
+                            String countryName =
+                            list_wise[index][placeholder];
+                            if (list_wise[i][placeholder] == countryName) {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (context) {
+                              return  ShowDistrictData(
+                                districtData: list_wise,
+                                index: index,
+                                text:"country",
+                              );
+                            }));
                           }
+                          }
+                        
                           i++;
                         }
                       },
                       child: Card(
                         color: index % 2 == 1 ? Colors.white : Colors.grey[100],
-                        child: ListTile(
-                          // leading:  SizedBox(
-                          //   width: 30,
-                          //  child:Image.network(filteredList[index]['countryInfo']['flag']),) ,
+                        child:(placeholder=="country")? ListTile(
+                         leading:  SizedBox(
+                            width: 30,
+                           child:Image.network(filteredList[index]['countryInfo']['flag']),) ,
+                          title: Text(filteredList[index][placeholder],
+                              style: TextStyle(fontSize: 18)),
+                        ):ListTile(
+                        //  leading:  SizedBox(
+                        //     width: 30,
+                        //    child:Image.network(filteredList[index]['countryInfo']['flag']),) ,
                           title: Text(filteredList[index][placeholder],
                               style: TextStyle(fontSize: 18)),
                         ),
