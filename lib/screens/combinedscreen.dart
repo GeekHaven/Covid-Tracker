@@ -163,7 +163,14 @@ class _CombinedScreenState extends State<CombinedScreen> {
                       ),
                     );
                   })
-              : CircularProgressIndicator(),
+              : Center(
+                  child:FittedBox(child: Column(children: <Widget>[
+                     Text("No Results Found ",style:TextStyle(color: Colors.blue,fontSize: 35,fontWeight: FontWeight.bold),  ),
+                  Image.asset("assets/images/no_results.png"),
+                  ],),)
+                 
+                
+              )
           // ListView(
           //   children: <Widget>[
           //
