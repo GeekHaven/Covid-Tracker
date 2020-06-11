@@ -11,8 +11,10 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: Colors.blueGrey,
       unselectedFontSize: 15,
       selectedFontSize: 20,
+      selectedItemColor: Colors.white,
       currentIndex: _currentindex,
       items: [
         BottomNavigationBarItem(

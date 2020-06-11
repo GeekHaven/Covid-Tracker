@@ -10,7 +10,7 @@ class Awarenesscard extends StatelessWidget {
       //color: Colors.amber,
       child: Card(
         elevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Row(
           children: <Widget>[
             Container(
@@ -56,7 +56,6 @@ class Awarenesscard extends StatelessWidget {
                   },
                   child: Center(
                     child: Row(
-                      // Replace with a Row for horizontal icon + text
                       children: <Widget>[
                         Text(
                           "Learn More",

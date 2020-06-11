@@ -1,6 +1,6 @@
 //import 'dart:convert';
 
-import 'package:covidtracker/constants.dart';
+//import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import './home_widgets/awarness.dart';
@@ -81,7 +81,6 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
         menu(context),
         dashboard(context),
       ]),
-      bottomNavigationBar: BottomBar(),
     );
   }
 
@@ -163,7 +162,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return MenuDashboardPage(data:myData, districtData: myDistrictData, dailyData: myDailyData, countrydata: myCountryData);
+                                          return MenuDashboardPage(
+                                              data: myData,
+                                              districtData: myDistrictData,
+                                              dailyData: myDailyData,
+                                              countrydata: myCountryData);
                                         },
                                       ),
                                     );
@@ -299,81 +302,96 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
           //elevation:8,// this  is making the app shady
           //  borderRadius: BorderRadius.all(Radius.circular(40)),
           //color: kPrimaryColor.withOpacity(0.03),
-          color: Colors.white,
-          child: Container(
-            margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
-            child: Column(
-              children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      InkWell(
-                          child: Icon(Icons.menu, color: Colors.blue),
-                          onTap: () {
-                            setState(() {
-                              if (isCollapsed)
-                                _controller.forward();
-                              else
-                                _controller.reverse();
-                              isCollapsed = !isCollapsed;
-                            });
-                          }),
-                      InkWell(
-                          child: Icon(Icons.favorite, color: Colors.red),
-                          onTap: () {
-                          }),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    child: Column(
+          child: Scaffold(
+            body: Container(
+              margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              _showchart ? Text("  INDIA", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),): Text('  GLOBAL', style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),),
-                              SizedBox(width: MediaQuery.of(context).size.width * 0.25),
-                              Switch.adaptive(
-                                value: _showchart, 
-                                onChanged: (val){
-                                  setState(() {
-                                    _showchart = val;
-                                  });
-                                })
-                            ],
-                          ),
-                        ),
+                        InkWell(
+                            child: Icon(Icons.menu, color: Colors.blue),
+                            onTap: () {
+                              setState(() {
+                                if (isCollapsed)
+                                  _controller.forward();
+                                else
+                                  _controller.reverse();
+                                isCollapsed = !isCollapsed;
+                              });
+                            }),
+                        InkWell(
+                            child: Icon(Icons.favorite, color: Colors.red),
+                            onTap: () {}),
                       ],
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 5,
-                  child: Center(
-                      child: Infoset(
-                    indiaData: myData['statewise'][0],
-                    code: 1,
-                  )),
-                ),
-                Expanded(
-                  flex: 4,
-                  child: Awarenesscard(),
-                ),
-                Expanded(
-                  flex: 4,
-                  child: CountryWorld(
-                      myData: myData,
-                      myDistrictData: myDistrictData,
-                      myDailydata: myDailyData,
-                      myCountryData: myCountryData),
-                ),
-              ],
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                _showchart
+                                    ? Text(
+                                        "  INDIA",
+                                        style: TextStyle(
+                                            fontSize: 40,
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    : Text(
+                                        '  GLOBAL',
+                                        style: TextStyle(
+                                            fontSize: 40,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                SizedBox(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.25),
+                                Switch.adaptive(
+                                    value: _showchart,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        _showchart = val;
+                                      });
+                                    })
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 5,
+                    child: Center(
+                        child: Infoset(
+                      indiaData: myData['statewise'][0],
+                      code: 1,
+                    )),
+                  ),
+                  Expanded(
+                    flex: 4,
+                    child: Awarenesscard(),
+                  ),
+                  Expanded(
+                    flex: 4,
+                    child: CountryWorld(
+                        myData: myData,
+                        myDistrictData: myDistrictData,
+                        myDailydata: myDailyData,
+                        myCountryData: myCountryData),
+                  ),
+                ],
+              ),
             ),
+            bottomNavigationBar: BottomBar(),
           ),
         ),
       ),

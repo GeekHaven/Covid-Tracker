@@ -19,11 +19,11 @@ class CountryWorld extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // decoration: BoxDecoration(
-      //   borderRadius: BorderRadius.circular(30),
-      // ),
-      padding: EdgeInsets.all(10),
-      height: 200,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+         //color: Colors.red,
+      ),
+      padding: EdgeInsets.all(13),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -33,10 +33,10 @@ class CountryWorld extends StatelessWidget {
                 return Allstates(myData: myData,myDistrictData: myDistrictData,myDailydata: myDailydata);
               }));
 
-              //navigateToSubPage(context);
             },
             child: Card(
               elevation: 0,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               child: Image.asset('assets/images/india.jpg'),
             ),
           ),
@@ -45,10 +45,9 @@ class CountryWorld extends StatelessWidget {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                 return Allcountries(myCountryData);
               }));
-
-              //navigateToSubPage(context);
             },
             child: Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               elevation: 0,
               child: Image.asset('assets/images/world.jpg'),
             ),
