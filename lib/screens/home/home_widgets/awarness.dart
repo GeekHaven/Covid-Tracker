@@ -5,24 +5,22 @@ import 'package:flutter/material.dart';
 class Awarenesscard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
- 
     return Container(
-      padding: EdgeInsets.all(15),
-      // decoration: BoxDecoration(
-      //   borderRadius: BorderRadius.circular(100),
-      // ),
-      height: 170,
+      padding: EdgeInsets.all(10),
+      //color: Colors.amber,
       child: Card(
         elevation: 0,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Row(
           children: <Widget>[
             Container(
-              child: Image.asset('assets/images/s6.png'),
+              child: Image.asset('assets/images/man.png'),
             ),
             Column(
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.only(left: 20, top: 30),
+                  //color: Colors.red,
+                  padding: EdgeInsets.only(top: 30),
                   child: RichText(
                     text: TextSpan(
                       text: '',
@@ -48,9 +46,10 @@ class Awarenesscard extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                 FlatButton(
                   textColor: Colors.purple[300],
-                  padding: EdgeInsets.only(top: 10, left: 90),
+                  padding: EdgeInsets.only(top: 10, left: 30),
                   onPressed: () {
                     Navigator.of(context).pushNamed(StartPage.routeName);
                     /*...*/
@@ -59,7 +58,11 @@ class Awarenesscard extends StatelessWidget {
                     child: Row(
                       // Replace with a Row for horizontal icon + text
                       children: <Widget>[
-                        Text("Learn More", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                        Text(
+                          "Learn More",
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
                         SizedBox(width: 5),
                         Icon(Icons.arrow_forward),
                       ],

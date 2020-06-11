@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:covidtracker/constants.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import '../indiascreen/chart.dart';
 //import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+//import '../indiascreen/chart.dart';
+//import 'package:covidtracker/constants.dart';
+//import 'package:flutter/material.dart';
 //import 'package:auto_size_text/auto_size_text.dart';
 
 class Infocard extends StatelessWidget {

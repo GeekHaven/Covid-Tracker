@@ -29,7 +29,6 @@ class _CombinedScreenState extends State<CombinedScreen> {
   List list_wise = [];
   var myDailyData;
   var noofstate;
- 
 
   List filteredList = [];
 
@@ -45,9 +44,9 @@ class _CombinedScreenState extends State<CombinedScreen> {
       myData = widget.myData;
       myDailydata = widget.myDailydata;
       myDistrictData = widget.myDistrictData;
-      myCountryData=widget.myCountryData;
+      myCountryData = widget.myCountryData;
       placeholder = widget.text;
-      
+
       list_wise = filteredList = widget.datalist;
     });
     super.initState();
@@ -67,7 +66,9 @@ class _CombinedScreenState extends State<CombinedScreen> {
     return Scaffold(
         appBar: AppBar(
           title: !isSearching
-              ? ( (list_wise.length>50)?Text('All Countries'):Text('All States'))
+              ? ((list_wise.length > 50)
+                  ? Text('All Countries')
+                  : Text('All States'))
               : TextField(
                   onChanged: (val) {
                     _filteredList(val);
@@ -100,82 +101,91 @@ class _CombinedScreenState extends State<CombinedScreen> {
           ],
         ),
         body: Container(
-          padding: EdgeInsets.all(10),
-          child: filteredList.length > 0
-              ? ListView.builder(
-                  itemCount: filteredList.length,
-                  itemBuilder: (BuildContext context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        //print(filteredList[index][placeholder]);
-                       
-                        //int indexx = index;
-                        int i = 0;
-                        while (i < list_wise.length - 1) {
-                          if(placeholder=="state"){
-                             String stateName =
-                            myData['statewise'][index]['state'].toString();
+            padding: EdgeInsets.all(10),
+            child: filteredList.length > 0
+                ? ListView.builder(
+                    itemCount: filteredList.length,
+                    itemBuilder: (BuildContext context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          //print(filteredList[index][placeholder]);
+
+                          //int indexx = index;
+                          int i = 0;
+                          while (i < list_wise.length - 1) {
+                            if (placeholder == "state") {
+                              String stateName = myData['statewise'][index]
+                                      ['state']
+                                  .toString();
                               if (myDistrictData[i]['state'] == stateName) {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (context) {
-                              return StateScreen(
-                                data: myData,
-                                districtData: myDistrictData,
-                                dailyData: myDailydata,
-                                stateName: stateName,
-                                index: index,
-                              );
-                            }));
-                          }}
-                          else{
-                            String countryName =
-                            list_wise[index][placeholder];
-                            if (list_wise[i][placeholder] == countryName) {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (context) {
-                              return  ShowDistrictData(
-                                districtData: list_wise,
-                                index: index,
-                                text:"country",
-                              );
-                            }));
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
+                                  return StateScreen(
+                                    data: myData,
+                                    districtData: myDistrictData,
+                                    dailyData: myDailydata,
+                                    stateName: stateName,
+                                    index: index,
+                                  );
+                                }));
+                              }
+                            } else {
+                              String countryName =
+                                  list_wise[index][placeholder];
+                              if (list_wise[i][placeholder] == countryName) {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
+                                  return ShowDistrictData(
+                                    districtData: list_wise,
+                                    index: index,
+                                    text: "country",
+                                  );
+                                }));
+                              }
+                            }
+
+                            i++;
                           }
-                          }
-                        
-                          i++;
-                        }
-                      },
-                      child: Card(
-                        color: index % 2 == 1 ? Colors.white : Colors.grey[100],
-                        child:(placeholder=="country")? ListTile(
-                         leading:  SizedBox(
-                            width: 30,
-                           child:Image.network(filteredList[index]['countryInfo']['flag']),) ,
-                          title: Text(filteredList[index][placeholder],
-                              style: TextStyle(fontSize: 18)),
-                        ):ListTile(
-                        //  leading:  SizedBox(
-                        //     width: 30,
-                        //    child:Image.network(filteredList[index]['countryInfo']['flag']),) ,
-                          title: Text(filteredList[index][placeholder],
-                              style: TextStyle(fontSize: 18)),
+                        },
+                        child: Card(
+                          color:
+                              index % 2 == 1 ? Colors.white : Colors.grey[100],
+                          child: (placeholder == "country")
+                              ? ListTile(
+                                  leading: SizedBox(
+                                    width: 30,
+                                    child: Image.network(filteredList[index]
+                                        ['countryInfo']['flag']),
+                                  ),
+                                  title: Text(filteredList[index][placeholder],
+                                      style: TextStyle(fontSize: 18)),
+                                )
+                              : ListTile(
+                                  //  leading:  SizedBox(
+                                  //     width: 30,
+                                  //    child:Image.network(filteredList[index]['countryInfo']['flag']),) ,
+                                  title: Text(filteredList[index][placeholder],
+                                      style: TextStyle(fontSize: 18)),
+                                ),
                         ),
-                      ),
-                    );
-                  })
-              : Center(
-                  child:FittedBox(child: Column(children: <Widget>[
-                     Text("No Results Found ",style:TextStyle(color: Colors.blue,fontSize: 35,fontWeight: FontWeight.bold),  ),
-                  Image.asset("assets/images/no_results.png"),
-                  ],),)
-                 
-                
-              )
-          // ListView(
-          //   children: <Widget>[
-          //
-          //   ],
-          // )),
-        ));
+                      );
+                    })
+                : Center(
+                    child: FittedBox(
+                    child: Column(
+                      children: <Widget>[
+                        Image.asset("assets/images/no_results.png"),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.15),
+                        Text(
+                          "No Results Found ",
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 75,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ))));
   }
 }
