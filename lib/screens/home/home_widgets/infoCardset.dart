@@ -1,9 +1,8 @@
-//import 'dart:convert';
+
 
 import 'package:covidtracker/constants.dart';
-//import 'package:covidtracker/screens/home/home_widgets/countryWorld.dart';
+
 import 'package:flutter/material.dart';
-//import 'package:auto_size_text/auto_size_text.dart';
 import './Infocard.dart';
 
 class Infoset extends StatefulWidget {
