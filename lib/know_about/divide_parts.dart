@@ -1,7 +1,7 @@
 //import 'package:covidtracker/know_about/card_details.dart';
 import 'package:flutter/material.dart';
 import '../know_about/cardmodel.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+//import 'package:carousel_slider/carousel_slider.dart';
 //import '../know_about/body_part.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
@@ -18,7 +18,7 @@ class DivideParts extends StatefulWidget {
 class _DividePartsState extends State<DivideParts> {
   String title;
   List<CardModel> infoList = [];
-  int _current = 0;
+  //int _current = 0;
 
   void initState() {
     super.initState();

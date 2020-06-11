@@ -1,19 +1,17 @@
 //import 'dart:convert';
 
 import 'package:covidtracker/constants.dart';
-//import 'package:covidtracker/menuscreens/developerScreen.dart';
-//import 'package:covidtracker/stats/world.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import './home_widgets/awarness.dart';
 import './home_widgets/infoCardset.dart';
 import './home_widgets/countryWorld.dart';
 import './home_widgets/bottom.dart';
-// import './home_widgets/bottom.dart';
-// import 'package:http/http.dart' as http;
+import 'package:covidtracker/menuscreens/deepdivescreen.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:covidtracker/menuscreens/developer.dart';
+import 'package:covidtracker/menuscreens/faq.dart';
 
-
-//import 'package:http/http.dart' as http;
 class MenuDashboardPage extends StatefulWidget {
   final data;
   final districtData;
@@ -46,6 +44,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
 
   bool isCollapsed = true;
   double screenWidth, screenHeight;
+  bool _showchart = false;
   final Duration duration = const Duration(milliseconds: 300);
   AnimationController _controller;
   Animation<double> _scaleAnimation;
@@ -76,9 +75,8 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
     Size size = MediaQuery.of(context).size;
     screenWidth = size.width;
     screenHeight = size.height;
-    
+
     return Scaffold(
-      
       body: Stack(children: <Widget>[
         menu(context),
         dashboard(context),
@@ -92,108 +90,197 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
       position: _slideAnimation,
       child: ScaleTransition(
         scale: _menuscaleAnimation,
-        child: Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Align(
-                alignment: Alignment.centerLeft,
-                child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      FlatButton(
-                          color: Colors.white,
-                          disabledColor: Colors.white,
-                          textColor: Colors.purple,
-                          highlightColor: Colors.grey,
-                          padding: EdgeInsets.all(7),
-                          child: Text("Home",
-                              style: TextStyle(
-                                  color: Colors.purple,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold)),
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return Container(
-                                      color: Colors.white,
-                                      padding: EdgeInsets.all(10),
-                                      child: Text("Hello World"));
-                                },
-                              ),
-                            );
-                          }),
-                      FlatButton(
-                          color: Colors.white,
-                          disabledColor: Colors.white,
-                          textColor: Colors.purple,
-                          highlightColor: Colors.grey,
-                          padding: EdgeInsets.all(7),
-                          child: Text("About",
-                              style: TextStyle(
-                                  color: Colors.purple,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold)),
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return Container(
-                                      color: Colors.white,
-                                      padding: EdgeInsets.all(10),
-                                      child: Text("Hello World"));
-                                },
-                              ),
-                            );
-                          }),
-                      FlatButton(
-                          color: Colors.white,
-                          disabledColor: Colors.white,
-                          textColor: Colors.purple,
-                          highlightColor: Colors.grey,
-                          padding: EdgeInsets.all(7),
-                          child: Text("FAQ",
-                              style: TextStyle(
-                                  color: Colors.purple,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold)),
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return Container(
-                                      color: Colors.white,
-                                      padding: EdgeInsets.all(10),
-                                      child: Text("Hello World"));
-                                },
-                              ),
-                            );
-                          }),
-                      FlatButton(
-                          color: Colors.white,
-                          disabledColor: Colors.white,
-                          textColor: Colors.purple,
-                          highlightColor: Colors.grey,
-                          padding: EdgeInsets.all(7),
-                          child: Text("Developers",
-                              style: TextStyle(
-                                  color: Colors.purple,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold)),
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return Container(
-                                      color: Colors.white,
-                                      padding: EdgeInsets.all(10),
-                                      child: Text("Hello World"));
-                                },
-                              ),
-                            );
-                          }),
-                    ]))),
+        child: Container(
+          color: Colors.blueGrey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(
+                height: 120,
+              ),
+              Container(
+                color: Colors.blueGrey,
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "     COVID-19",
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.01,
+              ),
+              Container(
+                color: Colors.blueGrey,
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "        Stay Home.. Stay Safe..",
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.15,
+              ),
+              Container(
+                color: Colors.blueGrey,
+                child: Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              FlatButton(
+                                  color: Colors.blueGrey,
+                                  disabledColor: Colors.white,
+                                  textColor: Colors.white,
+                                  padding: EdgeInsets.all(7),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      Icon(Icons.home, color: Colors.white),
+                                      Text("    "),
+                                      Text("Home",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return MenuDashboardPage(data:myData, districtData: myDistrictData, dailyData: myDailyData, countrydata: myCountryData);
+                                        },
+                                      ),
+                                    );
+                                  }),
+                              FlatButton(
+                                  color: Colors.blueGrey,
+                                  disabledColor: Colors.white,
+                                  textColor: Colors.white,
+                                  // highlightColor: Colors.black,
+                                  padding: EdgeInsets.all(7),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      Icon(Icons.info, color: Colors.white),
+                                      Text("    "),
+                                      Text("About",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return DeepDivePage();
+                                        },
+                                      ),
+                                    );
+                                  }),
+                              FlatButton(
+                                  color: Colors.blueGrey,
+                                  disabledColor: Colors.white,
+                                  textColor: Colors.white,
+                                  //highlightColor: Colors.grey,
+                                  padding: EdgeInsets.all(7),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      Icon(Icons.question_answer,
+                                          color: Colors.white),
+                                      Text("    "),
+                                      Text("FAQs",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return Faqpage();
+                                        },
+                                      ),
+                                    );
+                                  }),
+                              FlatButton(
+                                  color: Colors.blueGrey,
+                                  disabledColor: Colors.white,
+                                  textColor: Colors.white,
+                                  // highlightColor: Colors.grey,
+                                  padding: EdgeInsets.all(7),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Icon(Icons.payment, color: Colors.white),
+                                      Text("    "),
+                                      Text("Donate",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                  onPressed: () {
+                                    launch("https://www.pmcares.gov.in/en/");
+                                  }),
+                              FlatButton(
+                                  color: Colors.blueGrey,
+                                  // splashColor: Colors.red,
+                                  disabledColor: Colors.white,
+                                  textColor: Colors.white,
+                                  //highlightColor: Colors.grey,
+                                  padding: EdgeInsets.all(7),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Icon(Icons.group, color: Colors.white),
+                                      Text("    "),
+                                      Text("Developers",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return Developer();
+                                        },
+                                      ),
+                                    );
+                                  }),
+                            ]))),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -211,7 +298,8 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
           animationDuration: duration,
           //elevation:8,// this  is making the app shady
           //  borderRadius: BorderRadius.all(Radius.circular(40)),
-          color: kPrimaryColor.withOpacity(0.03),
+          //color: kPrimaryColor.withOpacity(0.03),
+          color: Colors.white,
           child: Container(
             margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
             child: Column(
@@ -222,26 +310,19 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       InkWell(
-                          child: Icon(Icons.menu, color: Colors.red),
+                          child: Icon(Icons.menu, color: Colors.blue),
                           onTap: () {
-                              // setState(() {
-                              //   if(isCollapsed)
-                              //     _controller.forward();
-                              //   else
-                              //      _controller.reverse();
-                              //   isCollapsed= !isCollapsed;
-                              // });
+                            setState(() {
+                              if (isCollapsed)
+                                _controller.forward();
+                              else
+                                _controller.reverse();
+                              isCollapsed = !isCollapsed;
+                            });
                           }),
                       InkWell(
                           child: Icon(Icons.favorite, color: Colors.red),
                           onTap: () {
-                            //   setState(() {
-                            //     if(isCollapsed)
-                            //       _controller.forward();
-                            //     else
-                            //        _controller.reverse();
-                            //     isCollapsed= !isCollapsed;
-                            //   });
                           }),
                     ],
                   ),
@@ -255,22 +336,30 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Text("INDIA"),
+                              _showchart ? Text("  INDIA", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),): Text('  GLOBAL', style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),),
+                              SizedBox(width: MediaQuery.of(context).size.width * 0.25),
+                              Switch.adaptive(
+                                value: _showchart, 
+                                onChanged: (val){
+                                  setState(() {
+                                    _showchart = val;
+                                  });
+                                })
                             ],
                           ),
                         ),
-                        Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Text("Last Updated 22/2/2020")),
                       ],
                     ),
                   ),
                 ),
                 Expanded(
                   flex: 5,
-                  child: Center(child: Infoset(indiaData: myData['statewise'][0],code: 1,)),
+                  child: Center(
+                      child: Infoset(
+                    indiaData: myData['statewise'][0],
+                    code: 1,
+                  )),
                 ),
-
                 Expanded(
                   flex: 4,
                   child: Awarenesscard(),
@@ -283,7 +372,6 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                       myDailydata: myDailyData,
                       myCountryData: myCountryData),
                 ),
-                //  Expanded(child: null),
               ],
             ),
           ),
