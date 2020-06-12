@@ -13,9 +13,9 @@ final client = NewsapiClient("30494cb548ce46bd92d5acad9b208c1d");
 
   List<Article> news  = [];
 
-  Future<void> getIndiaNews(int code) async{
+  Future<void> getIndiaNews(bool code) async{
     String url ;
-   if(code==1)
+   if(code==false)
      url = "http://newsapi.org/v2/top-headlines?q=COVID&excludeDomains=stackoverflow.com&sortBy=publishedAt&language=en&apiKey=30494cb548ce46bd92d5acad9b208c1d";
     else
     url = "http://newsapi.org/v2/top-headlines?q=COVID&country=in&excludeDomains=stackoverflow.com&sortBy=publishedAt&language=en&apiKey=30494cb548ce46bd92d5acad9b208c1d";

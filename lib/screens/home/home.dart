@@ -8,15 +8,17 @@ import 'package:covidtracker/menuscreens/deepdivescreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:covidtracker/menuscreens/developer.dart';
 import 'package:covidtracker/menuscreens/faq.dart';
+import 'package:covidtracker/constants.dart';
 
 class MenuDashboardPage extends StatefulWidget {
   final data;
   final districtData;
   final dailyData;
   final countrydata;
+  final globalData;
 
   MenuDashboardPage(
-      {this.data, this.districtData, this.dailyData, this.countrydata});
+      {this.data, this.districtData, this.dailyData, this.countrydata,this.globalData});
   @override
   _MenuDashboardPageState createState() => _MenuDashboardPageState();
 }
@@ -27,15 +29,17 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   var myDistrictData;
   var myDailyData;
   var myCountryData;
+   var myGlobalData;
   bool status = false;
   int count = 0;
 
-  void updateUI(data, districtData, dailyData, countrydata) async {
+  void updateUI(data, districtData, dailyData, countrydata,globalData) async {
     setState(() {
       myData = data;
       myDistrictData = districtData;
       myDailyData = dailyData;
       myCountryData = countrydata;
+      myGlobalData= globalData;
     });
   }
 
@@ -52,7 +56,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   void initState() {
     super.initState();
     updateUI(
-        widget.data, widget.districtData, widget.dailyData, widget.countrydata);
+        widget.data, widget.districtData, widget.dailyData, widget.countrydata,widget.globalData);
     _controller = AnimationController(vsync: this, duration: duration);
     _scaleAnimation = Tween<double>(begin: 1, end: 0.8).animate(_controller);
     _menuscaleAnimation =
@@ -309,7 +313,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           InkWell(
-                              child: Icon(Icons.menu, color: Colors.blue),
+                              child: Icon(Icons.menu, color: kPrimaryColor),
                               onTap: () {
                                 setState(() {
                                   if (isCollapsed)
@@ -320,7 +324,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                 });
                               }),
                           InkWell(
-                              child: Icon(Icons.favorite, color: Colors.blue),
+                              child: Icon(Icons.favorite, color: kPrimaryColor),
                               onTap: () {}),
                         ],
                       ),
@@ -365,14 +369,27 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                         ),
                       ),
                     ),
-                    Expanded(
+                   Expanded(
                       flex: 5,
                       child: Center(
-                          child: Infoset(
+                          child: _showchart?Infoset(
                         indiaData: myData['statewise'][0],
                         code: 1,
-                      )),
+                      ):Center(
+                          child: Infoset(
+                        worldData: myGlobalData,
+                        code: 4,
+                      )),)
+                    // 
                     ),
+                    //: Expanded(
+                    //   flex: 5,
+                    //   child: Center(
+                    //       child: Infoset(
+                    //     worldData: myGlobalData,
+                    //     code: 1,
+                    //   )),
+                    // ),
                     Expanded(
                       flex: 4,
                       child: Awarenesscard(),

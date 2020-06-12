@@ -3,6 +3,7 @@ import 'package:covidtracker/screens/home/indiascreen/statescreen.dart';
 //import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtracker/constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import './home/indiascreen/showdistrictdata.dart';
 //import '../screens/home/world_screen/country.dart';
 
@@ -159,6 +160,12 @@ class _CombinedScreenState extends State<CombinedScreen> {
                                   ),
                                   title: Text(filteredList[index][placeholder],
                                       style: TextStyle(fontSize: 18)),
+                                  trailing: SizedBox(   width:50,child:FittedBox(
+                                 
+                                   child: Row(children: <Widget>[
+                                    SvgPicture.asset("assets/images/biotech.svg"),
+                                    Text(filteredList[index]["tests"].toString()),
+                                  ],)),)
                                 )
                               : ListTile(
                                   title: Text(filteredList[index][placeholder],

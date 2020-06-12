@@ -7,6 +7,7 @@ class Apidata{
   final String url2 = "https://api.covid19india.org/v2/state_district_wise.json";
   final String url3 = "https://api.covid19india.org/states_daily.json";
   final String url4=  "https://corona.lmao.ninja/v2/countries";
+    final String url5=  "https://corona.lmao.ninja/v2/all";
   String data;
   Future getData() async{
     http.Response response = await http.get(url);
@@ -47,6 +48,11 @@ class Apidata{
 
  Future  getCountryData() async {
     var response = await Dio().get('https://corona.lmao.ninja/v2/countries');
+    return response.data;
+  }
+
+   Future  getGlobalData() async {
+    var response = await Dio().get(url5);
     return response.data;
   }
 

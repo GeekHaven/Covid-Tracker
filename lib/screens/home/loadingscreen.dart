@@ -17,6 +17,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   var districtData;
   var dailydata;
   var countrydata;
+  var globalData;
    void setData()async{
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
@@ -35,6 +36,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     districtData = await apidata.getDistrictData();
     dailydata=await apidata.getDailyData();
     countrydata=await apidata.getCountryData();
+    globalData=await apidata.getGlobalData();
    if(data == int|| districtData == int ){
       Fluttertoast.showToast(
           msg: "There was an error connecting to the server",
@@ -49,7 +51,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     }
 
    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-      return MenuDashboardPage(data:data, districtData: districtData, dailyData: dailydata, countrydata: countrydata);
+      return MenuDashboardPage(data:data, districtData: districtData, dailyData: dailydata, countrydata: countrydata,globalData:globalData);
     }));
   }
    void initState(){

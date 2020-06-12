@@ -10,6 +10,7 @@ class Infoset extends StatefulWidget {
   final countryData;
   final code;
   final chartData;
+  
 
   Infoset({this.indiaData,this.districtData,this.worldData,this.countryData,this.code,this.chartData});
 
@@ -25,6 +26,7 @@ var countryData;
 var chartData;
 var districtData;
 var worldData;
+
 @override
   void initState() {
 setState(() {
@@ -34,6 +36,7 @@ setState(() {
   districtData=widget.districtData;
   chartData=widget.chartData;
   worldData=widget.worldData;
+
   if(code==1)
   {
     infoCardData[0]=indiaData['confirmed'];
@@ -78,6 +81,7 @@ setState(() {
     infoCardData[6]=(worldData['recovered']).toString();
     infoCardData[7]=(worldData['todayRecovered']).toString();
   }
+  
   
 
 });
