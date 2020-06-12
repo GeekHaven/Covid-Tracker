@@ -161,9 +161,6 @@ class _CombinedScreenState extends State<CombinedScreen> {
                                       style: TextStyle(fontSize: 18)),
                                 )
                               : ListTile(
-                                  //  leading:  SizedBox(
-                                  //     width: 30,
-                                  //    child:Image.network(filteredList[index]['countryInfo']['flag']),) ,
                                   title: Text(filteredList[index][placeholder],
                                       style: TextStyle(fontSize: 18)),
                                 ),
@@ -176,7 +173,9 @@ class _CombinedScreenState extends State<CombinedScreen> {
                       children: <Widget>[
                         Image.asset("assets/images/no_results.png"),
                         SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.15),
+                            height: (MediaQuery.of(context).size.height -
+                                    MediaQuery.of(context).padding.top) *
+                                0.15),
                         Text(
                           "No Results Found ",
                           style: TextStyle(

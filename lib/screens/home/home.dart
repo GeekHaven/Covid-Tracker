@@ -1,6 +1,3 @@
-//import 'dart:convert';
-
-//import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import './home_widgets/awarness.dart';
@@ -90,15 +87,17 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
       child: ScaleTransition(
         scale: _menuscaleAnimation,
         child: Container(
-          color: Colors.blueGrey,
+          color: Colors.blueGrey[600],
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               SizedBox(
-                height: 120,
+                height: (MediaQuery.of(context).size.height -
+                        MediaQuery.of(context).padding.top) *
+                    0.13,
               ),
               Container(
-                color: Colors.blueGrey,
+                color: Colors.blueGrey[600],
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
@@ -111,10 +110,12 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.01,
+                height: (MediaQuery.of(context).size.height -
+                        MediaQuery.of(context).padding.top) *
+                    0.01,
               ),
               Container(
-                color: Colors.blueGrey,
+                color: Colors.blueGrey[600],
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
@@ -127,10 +128,12 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.15,
+                height: (MediaQuery.of(context).size.height -
+                        MediaQuery.of(context).padding.top) *
+                    0.16,
               ),
               Container(
-                color: Colors.blueGrey,
+                color: Colors.blueGrey[600],
                 child: Padding(
                     padding: const EdgeInsets.only(left: 16.0),
                     child: Align(
@@ -141,7 +144,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               FlatButton(
-                                  color: Colors.blueGrey,
+                                  color: Colors.blueGrey[600],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
                                   padding: EdgeInsets.all(7),
@@ -172,10 +175,9 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     );
                                   }),
                               FlatButton(
-                                  color: Colors.blueGrey,
+                                  color: Colors.blueGrey[600],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
-                                  // highlightColor: Colors.black,
                                   padding: EdgeInsets.all(7),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -200,10 +202,9 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     );
                                   }),
                               FlatButton(
-                                  color: Colors.blueGrey,
+                                  color: Colors.blueGrey[600],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
-                                  //highlightColor: Colors.grey,
                                   padding: EdgeInsets.all(7),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -229,10 +230,9 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     );
                                   }),
                               FlatButton(
-                                  color: Colors.blueGrey,
+                                  color: Colors.blueGrey[600],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
-                                  // highlightColor: Colors.grey,
                                   padding: EdgeInsets.all(7),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -251,11 +251,9 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     launch("https://www.pmcares.gov.in/en/");
                                   }),
                               FlatButton(
-                                  color: Colors.blueGrey,
-                                  // splashColor: Colors.red,
+                                  color: Colors.blueGrey[600],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
-                                  //highlightColor: Colors.grey,
                                   padding: EdgeInsets.all(7),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -299,96 +297,96 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
         scale: _scaleAnimation,
         child: Material(
           animationDuration: duration,
-          //elevation:8,// this  is making the app shady
-          //  borderRadius: BorderRadius.all(Radius.circular(40)),
-          //color: kPrimaryColor.withOpacity(0.03),
           child: Scaffold(
-            body: Container(
-              margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    flex: 2,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        InkWell(
-                            child: Icon(Icons.menu, color: Colors.blue),
-                            onTap: () {
-                              setState(() {
-                                if (isCollapsed)
-                                  _controller.forward();
-                                else
-                                  _controller.reverse();
-                                isCollapsed = !isCollapsed;
-                              });
-                            }),
-                        InkWell(
-                            child: Icon(Icons.favorite, color: Colors.red),
-                            onTap: () {}),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      child: Column(
+            body: SafeArea(
+              child: Container(
+                margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                _showchart
-                                    ? Text(
-                                        "  INDIA",
-                                        style: TextStyle(
-                                            fontSize: 40,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    : Text(
-                                        '  GLOBAL',
-                                        style: TextStyle(
-                                            fontSize: 40,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.25),
-                                Switch.adaptive(
-                                    value: _showchart,
-                                    onChanged: (val) {
-                                      setState(() {
-                                        _showchart = val;
-                                      });
-                                    })
-                              ],
-                            ),
-                          ),
+                          InkWell(
+                              child: Icon(Icons.menu, color: Colors.blue),
+                              onTap: () {
+                                setState(() {
+                                  if (isCollapsed)
+                                    _controller.forward();
+                                  else
+                                    _controller.reverse();
+                                  isCollapsed = !isCollapsed;
+                                });
+                              }),
+                          InkWell(
+                              child: Icon(Icons.favorite, color: Colors.blue),
+                              onTap: () {}),
                         ],
                       ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 5,
-                    child: Center(
-                        child: Infoset(
-                      indiaData: myData['statewise'][0],
-                      code: 1,
-                    )),
-                  ),
-                  Expanded(
-                    flex: 4,
-                    child: Awarenesscard(),
-                  ),
-                  Expanded(
-                    flex: 4,
-                    child: CountryWorld(
-                        myData: myData,
-                        myDistrictData: myDistrictData,
-                        myDailydata: myDailyData,
-                        myCountryData: myCountryData),
-                  ),
-                ],
+                    Expanded(
+                      flex: 0,
+                      child: Container(
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  _showchart
+                                      ? Text(
+                                          "  INDIA",
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      : Text(
+                                          '  GLOBAL',
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                  SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.25),
+                                  Switch.adaptive(
+                                      value: _showchart,
+                                      onChanged: (val) {
+                                        setState(() {
+                                          _showchart = val;
+                                        });
+                                      })
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 5,
+                      child: Center(
+                          child: Infoset(
+                        indiaData: myData['statewise'][0],
+                        code: 1,
+                      )),
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: Awarenesscard(),
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: CountryWorld(
+                          myData: myData,
+                          myDistrictData: myDistrictData,
+                          myDailydata: myDailyData,
+                          myCountryData: myCountryData),
+                    ),
+                  ],
+                ),
               ),
             ),
             bottomNavigationBar: BottomBar(),

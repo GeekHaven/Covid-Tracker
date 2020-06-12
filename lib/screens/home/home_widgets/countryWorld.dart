@@ -23,7 +23,7 @@ class CountryWorld extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
          //color: Colors.red,
       ),
-      padding: EdgeInsets.all(13),
+      padding: EdgeInsets.all(16.1),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

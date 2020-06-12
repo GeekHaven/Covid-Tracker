@@ -16,34 +16,24 @@ class Infocard extends StatelessWidget {
   final chartData;
   final stringplace;
 
-  const Infocard({
-    Key key,
-    this.title,
-    this.effectedNum,
-    this.iconcolor,
-    this.increase,
-    this.color,
-    this.chartData,
-    this.stringplace
-  }) : super(key: key);
+  const Infocard(
+      {Key key,
+      this.title,
+      this.effectedNum,
+      this.iconcolor,
+      this.increase,
+      this.color,
+      this.chartData,
+      this.stringplace})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.5,
-      // margin: EdgeInsets.fromLTRB(10, 10, 5, 5),
-      // decoration: BoxDecoration(
-      //   color: kPrimaryColor.withOpacity(0.3),
-      //   borderRadius: BorderRadius.all(Radius.circular(0)),
-      // ),
-
-      child:
-
-//     alignment: Alignment.topCenter,
-
-          GestureDetector(
-                      child: Container(
-        child: Row(
+      child: GestureDetector(
+        child: Container(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Padding(
@@ -53,16 +43,22 @@ class Infocard extends StatelessWidget {
                     SvgPicture.asset(
                       'assets/images/$iconcolor.svg',
                       fit: BoxFit.contain,
-                      height: 30,
+                      height: (MediaQuery.of(context).size.height -
+                              MediaQuery.of(context).padding.top) *
+                          0.04,
                     ),
                     SizedBox(
-                      height: 10,
+                      height: (MediaQuery.of(context).size.height -
+                              MediaQuery.of(context).padding.top) *
+                          0.002,
                     )
                   ],
                 ),
               ),
               SizedBox(
-                width: 15,
+                width: (MediaQuery.of(context).size.width -
+                        MediaQuery.of(context).padding.top) *
+                    0.03,
               ),
               FittedBox(
                 child: Column(
@@ -74,31 +70,35 @@ class Infocard extends StatelessWidget {
                         title,
                         style: TextStyle(
                             fontFamily: 'Lato',
-                            fontSize: 10,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                             color: color),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.007),
+                    SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.007),
                     FittedBox(
                       child: AutoSizeText(
                         effectedNum,
                         style: TextStyle(
                             fontFamily: 'Lato',
-                            fontSize: 20,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.003),
+                    SizedBox(
+                        height: (MediaQuery.of(context).size.height -
+                                MediaQuery.of(context).padding.top) *
+                            0.003),
                     Row(
                       children: <Widget>[
-                        Icon(Icons.arrow_upward,color: color,),
+                        Icon(Icons.arrow_upward, color: color),
                         AutoSizeText(
                           " $increase",
                           style: TextStyle(
                               fontFamily: 'Lato',
-                              fontSize: 12,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                               color: Colors.black.withOpacity(0.7)),
                         ),
@@ -106,21 +106,14 @@ class Infocard extends StatelessWidget {
                     ),
                   ],
                 ),
-               
               )
             ],
-        ),
-        
-      ),
-
-
-      onTap:() {
-                      chartData(
-                          stringplace, color.withOpacity(0.7));
-                    },
           ),
-
-      
+        ),
+        onTap: () {
+          chartData(stringplace, color.withOpacity(0.7));
+        },
+      ),
     );
   }
 }

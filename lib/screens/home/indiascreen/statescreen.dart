@@ -167,7 +167,6 @@ class _StateScreenState extends State<StateScreen> {
                         style: TextStyle(
                           fontFamily: 'Lato',
                           fontSize: 18,
-                          //fontWeight: FontWeight.bold,
                           letterSpacing: .5,
                         ),
                       ),
@@ -202,14 +201,14 @@ class _StateScreenState extends State<StateScreen> {
       ),
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.fromLTRB(10, 25, 10, 25),
+          margin: EdgeInsets.fromLTRB(10, 35, 10, 25),
           child: ListView(children: <Widget>[
             Center(
                 child: Infoset(
                     countryData: myData['statewise'][myIndex],
                     code: 2,
                     chartData: chartData)),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+            SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.005),
             Text(
               "Last updated on $asofDate ",
               textAlign: TextAlign.center,
@@ -219,9 +218,9 @@ class _StateScreenState extends State<StateScreen> {
                 fontSize: 15,
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.015),
+            SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.02),
             Chart(mySpots: spots, chartColor: colors),
-            SizedBox(height: 5),
+            SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.01),
             Text(
               "*Last 31 days",
               textAlign: TextAlign.right,
@@ -231,7 +230,7 @@ class _StateScreenState extends State<StateScreen> {
                 fontSize: 15,
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.03),
             ExpansionTile(
               title: Text(
                 'Districts',

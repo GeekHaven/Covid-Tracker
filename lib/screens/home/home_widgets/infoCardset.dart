@@ -1,7 +1,5 @@
 
 
-import 'package:covidtracker/constants.dart';
-
 import 'package:flutter/material.dart';
 import './Infocard.dart';
 
@@ -29,7 +27,6 @@ var districtData;
 var worldData;
 @override
   void initState() {
-    // TODO: implement initState
 setState(() {
   code=widget.code;
   indiaData=widget.indiaData;
@@ -90,14 +87,16 @@ setState(() {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // padding: EdgeInsets.all(10),
-       height: 200,
+      height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.22,
       width: double.infinity,
+      padding: EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
-        color: kPrimaryColor.withOpacity(0.03),
+        //color: kPrimaryColor.withOpacity(0.03),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(50),
           bottomRight: Radius.circular(50),
+          topLeft: Radius.circular(50),
+          topRight: Radius.circular(50),
         ),
       ),
 
@@ -105,23 +104,23 @@ setState(() {
 
       child: (code!=2)?GridView(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 200/80),
+            // mainAxisSpacing: 5,
+            // crossAxisSpacing: 5,
+            crossAxisCount: 2, 
+            childAspectRatio: 200/90),
         children: <Widget>[
              Infocard(
               title: 'Total Cases',
               effectedNum: infoCardData[0],
-              color: Colors.red,
-              iconcolor: "red",
+              color: Colors.blue,
+              iconcolor: "blue",
               increase:infoCardData[1],
-              
             ),
-
-         
           Infocard(
             title: 'Deaths',
             effectedNum:infoCardData[4],
-            color: Colors.grey,
-            iconcolor: "grey",
+            color: Colors.red,
+            iconcolor: "red",
             increase:infoCardData[5],
           ),
             Infocard(
@@ -135,20 +134,23 @@ setState(() {
             title: 'Active Cases',
             effectedNum:infoCardData[2],
             increase: '',
-            color: Colors.blue,
-            iconcolor: "blue",
+            color: Colors.grey,
+            iconcolor: "grey",
             
           ),
         ],
       ):GridView(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 200/80),
+            // mainAxisSpacing: 5,
+            // crossAxisSpacing: 5,
+            crossAxisCount: 2, 
+            childAspectRatio: 200/90),
         children: <Widget>[
              Infocard(
               title: 'Total Cases',
               effectedNum: infoCardData[0],
-              color: Colors.red,
-              iconcolor: "red",
+              color: Colors.blue,
+              iconcolor: "blue",
               increase:infoCardData[1],
               chartData: chartData,
               stringplace: "Confirmed",
@@ -158,16 +160,16 @@ setState(() {
             title: 'Active Cases',
             effectedNum:infoCardData[2],
             increase: '',
-            color: Colors.blue,
-            iconcolor: "blue",
+            color: Colors.grey,
+            iconcolor: "grey",
             chartData: chartData,
             stringplace: "Active",
           ),
           Infocard(
             title: 'Deaths',
             effectedNum:infoCardData[4],
-            color: Colors.grey,
-            iconcolor: "grey",
+            color: Colors.red,
+            iconcolor: "red",
             increase:infoCardData[5],
             chartData: chartData,
             stringplace: "Deceased",
