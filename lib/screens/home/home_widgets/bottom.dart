@@ -1,3 +1,4 @@
+import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtracker/news_section/newsview.dart';
 class BottomBar extends StatefulWidget {
@@ -11,9 +12,9 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Colors.blueGrey,
-      unselectedFontSize: 8,
-      selectedFontSize: 14,
+      backgroundColor: kPrimaryColor,
+      unselectedFontSize: 15,
+      selectedFontSize: 20,
       selectedItemColor: Colors.white,
       currentIndex: _currentindex,
       items: [
@@ -35,9 +36,7 @@ class _BottomBarState extends State<BottomBar> {
         if(index==1)
        Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (context) {
-                                  return NewsView(1
-                               
-                                  );
+                                  return NewsView(false);
                                 }));
    
       },

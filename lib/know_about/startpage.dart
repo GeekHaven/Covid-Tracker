@@ -91,8 +91,9 @@ class StartPage extends StatelessWidget {
                           onPressed: () => Navigator.pop(context),
                         ),
                         backgroundColor: Color(0xFF23395D),
-                        expandedHeight:
-                            MediaQuery.of(context).size.height * 0.3,
+                        expandedHeight: (MediaQuery.of(context).size.height -
+                                MediaQuery.of(context).padding.top) *
+                            0.3,
                         floating: false,
                         snap: false,
                         pinned: false,
@@ -120,19 +121,19 @@ class StartPage extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: <Widget>[
-                                            // Align(
-                                            //     alignment: Alignment.center,
-                                            //     child: AutoSizeText(
-                                            //       'Covid-19',
-                                            //       style: TextStyle(
-                                            //         color: Colors.white,
-                                            //         fontSize: 48,
-                                            //         fontWeight: FontWeight.w400,
-                                            //       ),
-                                            //       maxLines: 1,
-                                            //     )),
-                                            SizedBox(height: 62.0),
-                                            SizedBox(width: 42.0),
+                                            SizedBox(
+                                                height: (MediaQuery.of(context)
+                                                            .size
+                                                            .height -
+                                                        MediaQuery.of(context)
+                                                            .padding
+                                                            .top) *
+                                                    0.075),
+                                            SizedBox(
+                                                width: (MediaQuery.of(context)
+                                                        .size
+                                                        .width) *
+                                                    0.04),
                                             Align(
                                                 //alignment: Alignment.center,
                                                 child: AutoSizeText(
@@ -151,15 +152,6 @@ class StartPage extends StatelessWidget {
                                     ),
                                     flex: 4,
                                   ),
-                                  // Expanded(
-                                  //   flex: 2,
-                                  //   child: Transform(
-                                  //     transform: Matrix4.rotationY(math.pi),
-                                  //     child: Image.asset(
-                                  //         "assets/images/corona_person.png"),
-                                  //     alignment: Alignment.center,
-                                  //   ),
-                                  // ),
                                 ],
                               ),
                             ),
@@ -197,7 +189,7 @@ class StartPage extends StatelessWidget {
                                         color: Colors.black.withBlue(100),
                                       ),
                                     ),
-                                    SizedBox(height: 7),
+                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.01),
                                     Row(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.end,
@@ -222,7 +214,7 @@ class StartPage extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(height: 25),
+                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.03),
                                     BodyPart(
                                       point: 0.5,
                                       child: Text(
@@ -237,7 +229,7 @@ class StartPage extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 20),
+                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.025),
                                     BodyPart(
                                       point: 0.75,
                                       child: Text(
@@ -260,7 +252,7 @@ class StartPage extends StatelessWidget {
                                         infoList: symptomsList,
                                       ),
                                     ),
-                                    SizedBox(height: 34.0),
+                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.025),
                                     BodyPart(
                                       point: 1.5,
                                       child: DivideParts(
@@ -268,7 +260,7 @@ class StartPage extends StatelessWidget {
                                         infoList: spreadList,
                                       ),
                                     ),
-                                    SizedBox(height: 34.0),
+                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.025),
                                     BodyPart(
                                       point: 2,
                                       child: DivideParts(
@@ -276,7 +268,7 @@ class StartPage extends StatelessWidget {
                                         infoList: preventList,
                                       ),
                                     ),
-                                    SizedBox(height: 34),
+                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.025),
                                   ],
                                 ))
                           ],
