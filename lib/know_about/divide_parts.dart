@@ -29,12 +29,6 @@ class _DividePartsState extends State<DivideParts> {
     });
   }
 
-  final List<String> imgList = [
-    "assets/images/air_by_cough_or_sneeze.png",
-    "assets/images/personal_contact.png",
-    "assets/images/contaminated_objects.png",
-    "assets/images/crowd.png"
-  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,7 +43,6 @@ class _DividePartsState extends State<DivideParts> {
               fontSize: 28.0,
               fontWeight: FontWeight.w900,
               letterSpacing: 0.4,
-              color: Colors.black.withBlue(100),
             ),
           ),
           SizedBox(
