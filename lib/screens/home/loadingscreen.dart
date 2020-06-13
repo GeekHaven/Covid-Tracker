@@ -1,6 +1,7 @@
 import 'package:covidtracker/apidata.dart';
 import 'package:flutter/material.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../home/home.dart';
 
@@ -69,7 +70,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               FittedBox(
-                child: Image.asset('assets/images/s6.png'),
+                child: Column(
+                  children: <Widget>[
+                    SvgPicture.asset("assets/images/gocorona.svg",width: 200,),
+                    
+                  ],
+                )
               )
             ],
           )
