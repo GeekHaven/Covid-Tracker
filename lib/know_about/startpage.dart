@@ -47,19 +47,19 @@ class StartPage extends StatelessWidget {
   final List<CardModel> preventList = [
     CardModel(
         title: "Wash Your Hands Often",
-        imageSource: "assets/images/handwash.png",
+        imageSource: "assets/images/Handwashing-pana.png",
         cardColor: Colors.greenAccent),
     CardModel(
         title: "Wear a Face Mask",
-        imageSource: "assets/images/mask.png",
+        imageSource: "assets/images/Person with medical mask-pana.png",
         cardColor: Colors.greenAccent),
     CardModel(
         title: "Avoid Contact with Sick People",
-        imageSource: "assets/images/avoid_personal_contact.png",
+        imageSource: "assets/images/Social Distancing-amico.png",
         cardColor: Colors.greenAccent),
     CardModel(
         title: "Always Cover Your Cough or Sneeze",
-        imageSource: "assets/images/cover_nose.png",
+        imageSource: "assets/images/balconies.png",
         cardColor: Colors.greenAccent),
   ];
 
@@ -102,7 +102,7 @@ class StartPage extends StatelessWidget {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 image: AssetImage(
-                                  "assets/images/corona_cardbig.png",
+                                  "assets/images/bgimage.jpg",
                                 ),
                                 fit: BoxFit.cover,
                                 alignment: Alignment.centerRight,
@@ -128,16 +128,16 @@ class StartPage extends StatelessWidget {
                                                         MediaQuery.of(context)
                                                             .padding
                                                             .top) *
-                                                    0.075),
+                                                    0.18),
                                             SizedBox(
                                                 width: (MediaQuery.of(context)
                                                         .size
                                                         .width) *
-                                                    0.04),
+                                                    0.08),
                                             Align(
                                                 //alignment: Alignment.center,
                                                 child: AutoSizeText(
-                                              'Everything you need \nto know',
+                                              '           Everything you need \n           to know',
                                               style: TextStyle(
                                                 color: Colors.white
                                                     .withOpacity(0.9),
@@ -186,7 +186,6 @@ class StartPage extends StatelessWidget {
                                         fontSize: 28.0,
                                         fontWeight: FontWeight.w900,
                                         letterSpacing: 0.4,
-                                        color: Colors.black.withBlue(100),
                                       ),
                                     ),
                                     SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.01),
@@ -197,9 +196,7 @@ class StartPage extends StatelessWidget {
                                         Icon(
                                           Icons.phone,
                                           size: 20,
-                                          color: Colors.black
-                                              .withBlue(200)
-                                              .withOpacity(0.6),
+                                          color: Colors.green[700]
                                         ),
                                         SizedBox(width: 7),
                                         Text(
@@ -207,9 +204,6 @@ class StartPage extends StatelessWidget {
                                           style: TextStyle(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.w600,
-                                            color: Colors.black
-                                                .withBlue(200)
-                                                .withOpacity(0.6),
                                           ),
                                         ),
                                       ],
@@ -222,9 +216,6 @@ class StartPage extends StatelessWidget {
                                         style: TextStyle(
                                           fontSize: 22.0,
                                           fontWeight: FontWeight.w500,
-                                          color: Colors.black
-                                              .withBlue(100)
-                                              .withOpacity(0.75),
                                           height: 1.5,
                                         ),
                                       ),
@@ -237,9 +228,6 @@ class StartPage extends StatelessWidget {
                                         style: TextStyle(
                                           fontSize: 22.0,
                                           fontWeight: FontWeight.w500,
-                                          color: Colors.black
-                                              .withBlue(100)
-                                              .withOpacity(0.8),
                                           height: 1.5,
                                         ),
                                       ),
