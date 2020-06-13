@@ -209,7 +209,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return DeepDivePage();
+                                          return DeepDivePage(data: myData,
+                                              districtData: myDistrictData,
+                                              dailyData: myDailyData,
+                                              countrydata: myCountryData,
+                                              globalData: myGlobalData,);
                                         },
                                       ),
                                     );
@@ -369,6 +373,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     inactiveTrackColor: Colors.green[200],
                                    // inactiveThumbColor: Colors.green[200],
                                       value: _showchart,
+                                      activeColor: Colors.green[700],
                                       onChanged: (val) {
                                         setState(() {
                                           _showchart = val;

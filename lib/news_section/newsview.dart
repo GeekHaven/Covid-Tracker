@@ -88,10 +88,6 @@ class _NewsViewState extends State<NewsView> {
                 child: Container(
                   child: Column(
                     children: <Widget>[
-                      /////we nneed to write code to select country or global
-                      ///
-
-                      /// News Article
                       Container(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,6 +112,7 @@ class _NewsViewState extends State<NewsView> {
                               activeColor: kPrimaryColor,
                                     inactiveTrackColor: Colors.green[200],
                                 value: _showchart,
+                               
                                 onChanged: (val) {
                                   setState(() {
                                     _showchart = val;
