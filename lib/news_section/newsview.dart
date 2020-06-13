@@ -112,6 +112,7 @@ class _NewsViewState extends State<NewsView> {
                               activeColor: kPrimaryColor,
                                     inactiveTrackColor: Colors.green[200],
                                 value: _showchart,
+                               
                                 onChanged: (val) {
                                   setState(() {
                                     _showchart = val;
