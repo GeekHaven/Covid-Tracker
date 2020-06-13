@@ -41,7 +41,7 @@ class _NewsViewState extends State<NewsView> {
     Route route = MaterialPageRoute(builder: (context) => NewsView(_showchart));
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.green[700],
         title: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -70,10 +70,6 @@ class _NewsViewState extends State<NewsView> {
                 child: Container(
                   child: Column(
                     children: <Widget>[
-                      /////we nneed to write code to select country or global
-                      ///
-
-                      /// News Article
                       Container(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -96,6 +92,7 @@ class _NewsViewState extends State<NewsView> {
                                     MediaQuery.of(context).size.width * 0.25),
                             Switch.adaptive(
                                 value: _showchart,
+                                activeColor: Colors.green[700],
                                 onChanged: (val) {
                                   setState(() {
                                     _showchart = val;

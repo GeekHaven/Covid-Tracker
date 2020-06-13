@@ -365,6 +365,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                           0.25),
                                   Switch.adaptive(
                                       value: _showchart,
+                                      activeColor: Colors.green[700],
                                       onChanged: (val) {
                                         setState(() {
                                           _showchart = val;
