@@ -1,3 +1,4 @@
+import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -16,7 +17,7 @@ class _DeepDivePageState extends State<DeepDivePage> {
         home: SafeArea(
             child: Scaffold(
             appBar: AppBar(
-            backgroundColor: Colors.purple,  
+            backgroundColor: kPrimaryColor,  
             title:Text("COVID-19 Tracker", style:TextStyle(fontWeight:FontWeight.bold))
             ),
             body: Container(
@@ -27,7 +28,7 @@ class _DeepDivePageState extends State<DeepDivePage> {
                 initialUrl:'https://www.covid19india.org/'
               )
             ),
-            ),
+          ),
         )
     );
   }
