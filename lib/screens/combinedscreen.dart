@@ -108,11 +108,9 @@ class _CombinedScreenState extends State<CombinedScreen> {
                     itemBuilder: (BuildContext context, index) {
                       return GestureDetector(
                         onTap: () {
-                          print(filteredList[index][placeholder]);
-
-                          //int indexx = index;
-                          int i = 1;
-                          while (i < filteredList.length ) {
+                          int i = 0;
+                          placeholder == 'state' ? i=1 : i=0;
+                          while (i < filteredList.length) {
                             if (placeholder == "state") {
                               String stateName = filteredList[index][placeholder] 
                                   .toString();
