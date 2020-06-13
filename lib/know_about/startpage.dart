@@ -12,16 +12,16 @@ class StartPage extends StatelessWidget {
   final List<CardModel> spreadList = [
     CardModel(
         title: "Air by Cough or Sneeze",
-        imageSource: "assets/images/air_by_cough_or_sneeze.png"),
+        imageSource: "assets/images/sneez.png"),
     CardModel(
         title: "Personal \nContact",
-        imageSource: "assets/images/personal_contact.png"),
+        imageSource: "assets/images/group.png"),
     CardModel(
         title: "Contaminated \nObjects",
-        imageSource: "assets/images/contaminated_objects.png"),
+        imageSource: "assets/images/handshake.png"),
     CardModel(
       title: "Crowd \nGathering",
-      imageSource: "assets/images/crowd.png",
+      imageSource: "assets/images/bench.png",
     ),
   ];
 
