@@ -47,7 +47,6 @@ class _CombinedScreenState extends State<CombinedScreen> {
       myDistrictData = widget.myDistrictData;
       myCountryData = widget.myCountryData;
       placeholder = widget.text;
-
       list_wise = filteredList = widget.datalist;
     });
     super.initState();
@@ -77,7 +76,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                       icon: Icon(Icons.search, color: Colors.white),
-                      hintText: "search here",
+                      hintText: "Search here",
                       hintStyle: TextStyle(color: Colors.white)),
                 ),
           backgroundColor: kPrimaryColor,
@@ -110,15 +109,12 @@ class _CombinedScreenState extends State<CombinedScreen> {
                       return GestureDetector(
                         onTap: () {
                           //print(filteredList[index][placeholder]);
-
-                          //int indexx = index;
                           int i = 0;
-                          while (i < list_wise.length - 1) {
+                          while (i < filteredList.length - 1) {
                             if (placeholder == "state") {
-                              String stateName = myData['statewise'][index]
-                                      ['state']
+                              String stateName = filteredList[index][placeholder] 
                                   .toString();
-                              if (myDistrictData[i]['state'] == stateName) {
+                              if (filteredList[i]['state'] == stateName) {
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (context) {
                                   return StateScreen(
@@ -130,14 +126,16 @@ class _CombinedScreenState extends State<CombinedScreen> {
                                   );
                                 }));
                               }
-                            } else {
-                              String countryName =
-                                  list_wise[index][placeholder];
-                              if (list_wise[i][placeholder] == countryName) {
+                            } 
+                            else {
+                              String countryName = filteredList[index][placeholder];
+                                //print(countryName);
+                              if (filteredList[i][placeholder] == countryName) {
+                                print(filteredList[i][placeholder]);
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (context) {
                                   return ShowDistrictData(
-                                    districtData: list_wise,
+                                    districtData: filteredList,
                                     index: index,
                                     text: "country",
                                   );
