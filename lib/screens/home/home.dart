@@ -199,6 +199,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       Text("    "),
                                       Text("Deep Dive",
                                           style: TextStyle(
+                                            
                                               color: Colors.white,
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold)),
@@ -364,6 +365,9 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       width: MediaQuery.of(context).size.width *
                                           0.25),
                                   Switch.adaptive(
+                                    activeColor: kPrimaryColor,
+                                    inactiveTrackColor: Colors.green[200],
+                                   // inactiveThumbColor: Colors.green[200],
                                       value: _showchart,
                                       onChanged: (val) {
                                         setState(() {
