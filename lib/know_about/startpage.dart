@@ -1,7 +1,6 @@
 import '../know_about/body_part.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import '../know_about/cardmodel.dart';
 import '../know_about/divide_parts.dart';
 //import 'dart:math' as math;
@@ -106,53 +105,6 @@ class StartPage extends StatelessWidget {
                                 ),
                                 fit: BoxFit.cover,
                                 alignment: Alignment.centerRight,
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  bottom: 8.0, left: 20.0, top: 8.0),
-                              child: Row(
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Material(
-                                      type: MaterialType.transparency,
-                                      child: Container(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            SizedBox(
-                                                height: (MediaQuery.of(context)
-                                                            .size
-                                                            .height -
-                                                        MediaQuery.of(context)
-                                                            .padding
-                                                            .top) *
-                                                    0.18),
-                                            SizedBox(
-                                                width: (MediaQuery.of(context)
-                                                        .size
-                                                        .width) *
-                                                    0.08),
-                                            Align(
-                                                //alignment: Alignment.center,
-                                                child: AutoSizeText(
-                                              '           Everything you need \n           to know',
-                                              style: TextStyle(
-                                                color: Colors.white
-                                                    .withOpacity(0.9),
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                              maxLines: 2,
-                                            )),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    flex: 4,
-                                  ),
-                                ],
                               ),
                             ),
                           ),

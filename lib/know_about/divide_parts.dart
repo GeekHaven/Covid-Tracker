@@ -19,7 +19,6 @@ class DivideParts extends StatefulWidget {
 class _DividePartsState extends State<DivideParts> {
   String title;
   List<CardModel> infoList = [];
-  //int _current = 0;
 
   void initState() {
     super.initState();
@@ -53,7 +52,7 @@ class _DividePartsState extends State<DivideParts> {
             height: (MediaQuery.of(context).size.height -
                     MediaQuery.of(context).padding.top) *
                 0.18,
-            width: 300.0,
+
             child: Carousel(
                 boxFit: BoxFit.contain,
                 autoplay: false,
