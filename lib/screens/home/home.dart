@@ -208,7 +208,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return DeepDivePage();
+                                          return DeepDivePage(data: myData,
+                                              districtData: myDistrictData,
+                                              dailyData: myDailyData,
+                                              countrydata: myCountryData,
+                                              globalData: myGlobalData,);
                                         },
                                       ),
                                     );
