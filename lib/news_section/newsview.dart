@@ -1,6 +1,7 @@
+import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
 import './news_widget.dart';
-
+import 'package:avatar_glow/avatar_glow.dart';
 import './newsdata.dart';
 //import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -41,29 +42,46 @@ class _NewsViewState extends State<NewsView> {
     Route route = MaterialPageRoute(builder: (context) => NewsView(_showchart));
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green[700],
+        backgroundColor: kPrimaryColor,
         title: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          "Corona",
-          style:
-          TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "Corona",
+              style:
+                  TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
+            ),
+            Text(
+              " News",
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+            ),
+            SizedBox(width: 50),
+          ],
         ),
-        Text(
-          " News",
-          style: TextStyle(color: Colors.red, fontWeight: FontWeight.w600),
-        ),
-        SizedBox(width:30),
-      ],
-    ),
       ),
-      
       body: SafeArea(
         child: _loading
             ? Center(
-                child: CircularProgressIndicator(
-                  valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+                child: AvatarGlow(
+                  glowColor: Colors.green,
+                  endRadius: 90.0,
+                  duration: Duration(milliseconds: 2000),
+                  repeat: true,
+                  showTwoGlows: true,
+                  repeatPauseDuration: Duration(milliseconds: 100),
+                  child: Material(
+                    elevation: 8.0,
+                    shape: CircleBorder(),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.grey[100],
+                      child: Image.asset(
+                        'assets/images/glow.png',
+                        height: 50,
+                      ),
+                      radius: 40.0,
+                    ),
+                  ),
                 ),
               )
             : SingleChildScrollView(
@@ -91,13 +109,14 @@ class _NewsViewState extends State<NewsView> {
                                 width:
                                     MediaQuery.of(context).size.width * 0.25),
                             Switch.adaptive(
+                              activeColor: kPrimaryColor,
+                                    inactiveTrackColor: Colors.green[200],
                                 value: _showchart,
-                                activeColor: Colors.green[700],
                                 onChanged: (val) {
                                   setState(() {
                                     _showchart = val;
                                   });
-                                Navigator.pushReplacement(context, route);
+                                  Navigator.pushReplacement(context, route);
                                 })
                           ],
                         ),

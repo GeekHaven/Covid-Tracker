@@ -106,7 +106,6 @@ class _CombinedScreenState extends State<CombinedScreen> {
                 ? ListView.builder(
                     itemCount: filteredList.length,
                     itemBuilder: (BuildContext context, index) {
-                        
                       return GestureDetector(
                         onTap: () {
                           int i = 0;

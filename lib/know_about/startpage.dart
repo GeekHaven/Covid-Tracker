@@ -28,19 +28,19 @@ class StartPage extends StatelessWidget {
   final List<CardModel> symptomsList = [
     CardModel(
         title: "Dry Cough",
-        imageSource: "assets/images/cough.png",
+        imageSource: "assets/images/cough1.png",
         cardColor: Colors.redAccent),
     CardModel(
         title: "High Fever",
-        imageSource: "assets/images/fever.png",
+        imageSource: "assets/images/fever1.png",
         cardColor: Colors.redAccent),
     CardModel(
         title: "Sore \nThroat",
-        imageSource: "assets/images/sore_throat.png",
+        imageSource: "assets/images/cold1.png",
         cardColor: Colors.redAccent),
     CardModel(
         title: "Difficulty in\nBreathing",
-        imageSource: "assets/images/headache.png",
+        imageSource: "assets/images/headache1.png",
         cardColor: Colors.redAccent),
   ];
 

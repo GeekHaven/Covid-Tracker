@@ -1,4 +1,5 @@
 //import 'package:covidtracker/know_about/card_details.dart';
+import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
 import '../know_about/cardmodel.dart';
 //import 'package:carousel_slider/carousel_slider.dart';
@@ -66,7 +67,7 @@ class _DividePartsState extends State<DivideParts> {
                 animationCurve: Curves.fastOutSlowIn,
                 animationDuration: Duration(milliseconds: 1000),
                 dotSize: 4.0,
-                dotIncreasedColor: Colors.purple,
+                dotIncreasedColor: kPrimaryColor,
                 dotBgColor: Colors.transparent,
                 dotPosition: DotPosition.topRight,
                 dotVerticalPadding: 10.0,
