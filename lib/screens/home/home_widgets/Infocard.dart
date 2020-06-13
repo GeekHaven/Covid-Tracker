@@ -1,11 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
-//import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-//import '../indiascreen/chart.dart';
-//import 'package:covidtracker/constants.dart';
-//import 'package:flutter/material.dart';
-//import 'package:auto_size_text/auto_size_text.dart';
 
 class Infocard extends StatelessWidget {
   final String title;
@@ -15,6 +10,7 @@ class Infocard extends StatelessWidget {
   final String iconcolor;
   final chartData;
   final stringplace;
+  final activeChartData;
 
   const Infocard(
       {Key key,
@@ -24,7 +20,8 @@ class Infocard extends StatelessWidget {
       this.increase,
       this.color,
       this.chartData,
-      this.stringplace})
+      this.stringplace,
+      this.activeChartData})
       : super(key: key);
 
   @override
@@ -72,7 +69,7 @@ class Infocard extends StatelessWidget {
                             fontFamily: 'Lato',
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
-                            color: Colors.green[700]),
+                            color: color),
                       ),
                     ),
                     SizedBox(
@@ -94,7 +91,7 @@ class Infocard extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         
-                        (color!=Colors.grey)?AutoSizeText(
+                        (color!=Colors.yellow)?AutoSizeText(
                           "[+$increase]",
                           style: TextStyle(
                               fontFamily: 'Lato',
@@ -118,7 +115,7 @@ class Infocard extends StatelessWidget {
           ),
         ),
         onTap: () {
-          chartData(stringplace, color.withOpacity(0.7));
+          title != 'Active Cases'? chartData(stringplace, color.withOpacity(0.7)) : activeChartData(color.withOpacity(0.7));
         },
       ),
     );

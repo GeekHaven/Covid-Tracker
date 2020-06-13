@@ -207,7 +207,9 @@ class _StateScreenState extends State<StateScreen> {
                 child: Infoset(
                     countryData: myData['statewise'][myIndex],
                     code: 2,
-                    chartData: chartData)),
+                    chartData: chartData,
+                    activeChartData: activeChartData,
+                    )),
             SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.005),
             Text(
               "Last updated on $asofDate ",

@@ -16,12 +16,12 @@ class Awarenesscard extends StatelessWidget {
       padding: EdgeInsets.all(1),
     
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
               child: SvgPicture.asset('assets/images/doctor.svg',width: 200,),
             ),
-            SizedBox(width:50),
+            SizedBox(width:30),
             Column(
               children: <Widget>[
                 Container(
