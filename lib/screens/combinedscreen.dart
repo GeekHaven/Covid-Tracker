@@ -106,10 +106,11 @@ class _CombinedScreenState extends State<CombinedScreen> {
                 ? ListView.builder(
                     itemCount: filteredList.length,
                     itemBuilder: (BuildContext context, index) {
+                        
                       return GestureDetector(
                         onTap: () {
                           int i = 0;
-                          while (i < filteredList.length) {
+                          while (i < filteredList.length - 1) {
                             if (placeholder == "state") {
                               String stateName = filteredList[index][placeholder] 
                                   .toString();
@@ -134,7 +135,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (context) {
                                   return ShowDistrictData(
-                                    districtData: filteredList,
+                                    pieData: filteredList,
                                     index: index,
                                     text: "country",
                                   );
@@ -157,13 +158,18 @@ class _CombinedScreenState extends State<CombinedScreen> {
                                   ),
                                   title: Text(filteredList[index][placeholder],
                                       style: TextStyle(fontSize: 18)),
-                                  trailing: SizedBox(   width:50,child:FittedBox(
-                                 
-                                   child: Row(children: <Widget>[
-                                    SvgPicture.asset("assets/images/biotech.svg"),
-                                    Text(filteredList[index]["tests"].toString()),
-                                  ],)),)
-                                )
+                                  trailing: SizedBox(
+                                    width: 50,
+                                    child: FittedBox(
+                                        child: Row(
+                                      children: <Widget>[
+                                        SvgPicture.asset(
+                                            "assets/images/biotech.svg"),
+                                        Text(filteredList[index]["tests"]
+                                            .toString()),
+                                      ],
+                                    )),
+                                  ))
                               : ListTile(
                                   title: Text(filteredList[index][placeholder],
                                       style: TextStyle(fontSize: 18)),

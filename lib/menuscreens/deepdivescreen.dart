@@ -13,6 +13,7 @@ class _DeepDivePageState extends State<DeepDivePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         home: SafeArea(
             child: Scaffold(
             appBar: AppBar(
