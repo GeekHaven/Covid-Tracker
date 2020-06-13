@@ -91,7 +91,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
       child: ScaleTransition(
         scale: _menuscaleAnimation,
         child: Container(
-          color: Colors.blueGrey[600],
+          color: Colors.cyan[900],
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -101,7 +101,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     0.13,
               ),
               Container(
-                color: Colors.blueGrey[600],
+                color: Colors.cyan[900],
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
@@ -119,7 +119,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     0.01,
               ),
               Container(
-                color: Colors.blueGrey[600],
+                color: Colors.cyan[900],
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
@@ -137,7 +137,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     0.16,
               ),
               Container(
-                color: Colors.blueGrey[600],
+                color: Colors.cyan[900],
                 child: Padding(
                     padding: const EdgeInsets.only(left: 16.0),
                     child: Align(
@@ -148,7 +148,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               FlatButton(
-                                  color: Colors.blueGrey[600],
+                                  color: Colors.cyan[900],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
                                   padding: EdgeInsets.all(7),
@@ -173,13 +173,14 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                               data: myData,
                                               districtData: myDistrictData,
                                               dailyData: myDailyData,
-                                              countrydata: myCountryData);
+                                              countrydata: myCountryData,
+                                              );
                                         },
                                       ),
                                     );
                                   }),
                               FlatButton(
-                                  color: Colors.blueGrey[600],
+                                  color: Colors.cyan[900],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
                                   padding: EdgeInsets.all(7),
@@ -206,7 +207,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     );
                                   }),
                               FlatButton(
-                                  color: Colors.blueGrey[600],
+                                  color: Colors.cyan[900],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
                                   padding: EdgeInsets.all(7),
@@ -234,7 +235,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     );
                                   }),
                               FlatButton(
-                                  color: Colors.blueGrey[600],
+                                  color: Colors.cyan[900],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
                                   padding: EdgeInsets.all(7),
@@ -255,7 +256,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     launch("https://www.pmcares.gov.in/en/");
                                   }),
                               FlatButton(
-                                  color: Colors.blueGrey[600],
+                                  color: Colors.cyan[900],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
                                   padding: EdgeInsets.all(7),

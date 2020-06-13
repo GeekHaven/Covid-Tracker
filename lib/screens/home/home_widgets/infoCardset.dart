@@ -108,10 +108,9 @@ setState(() {
 
       child: (code!=2)?GridView(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            // mainAxisSpacing: 5,
-            // crossAxisSpacing: 5,
+            //mainAxisSpacing: 5,
             crossAxisCount: 2, 
-            childAspectRatio: 200/90),
+            childAspectRatio: 200/82),
         children: <Widget>[
              Infocard(
               title: 'Total Cases',
@@ -146,9 +145,9 @@ setState(() {
       ):GridView(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             // mainAxisSpacing: 5,
-            // crossAxisSpacing: 5,
+            crossAxisSpacing: 5,
             crossAxisCount: 2, 
-            childAspectRatio: 200/90),
+            childAspectRatio: 200/82),
         children: <Widget>[
              Infocard(
               title: 'Total Cases',

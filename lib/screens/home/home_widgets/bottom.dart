@@ -23,10 +23,9 @@ class _BottomBarState extends State<BottomBar> {
             title: Text("Home"),
             backgroundColor: Colors.purple),
         BottomNavigationBarItem(
-            icon: Icon(Icons.panorama_fish_eye),
+            icon: Icon(Icons.description),
             title: Text("News"),
             backgroundColor: Colors.purple)
-            
       ],
       onTap: (index) {
         setState(() {
