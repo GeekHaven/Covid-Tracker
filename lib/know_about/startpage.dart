@@ -102,7 +102,7 @@ class StartPage extends StatelessWidget {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 image: AssetImage(
-                                  "assets/images/corona_cardbig.png",
+                                  "assets/images/bgimage.jpg",
                                 ),
                                 fit: BoxFit.cover,
                                 alignment: Alignment.centerRight,
@@ -128,16 +128,16 @@ class StartPage extends StatelessWidget {
                                                         MediaQuery.of(context)
                                                             .padding
                                                             .top) *
-                                                    0.075),
+                                                    0.18),
                                             SizedBox(
                                                 width: (MediaQuery.of(context)
                                                         .size
                                                         .width) *
-                                                    0.04),
+                                                    0.08),
                                             Align(
                                                 //alignment: Alignment.center,
                                                 child: AutoSizeText(
-                                              'Everything you need \nto know',
+                                              '           Everything you need \n           to know',
                                               style: TextStyle(
                                                 color: Colors.white
                                                     .withOpacity(0.9),
