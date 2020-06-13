@@ -3,16 +3,16 @@ import 'package:pie_chart/pie_chart.dart';
 import '../home_widgets/infoCardset.dart';
 
 class ShowDistrictData extends StatefulWidget {
-  var districtData;
+  var pieData;
   var index;
   var text;
-  ShowDistrictData({this.districtData, this.index, this.text});
+  ShowDistrictData({this.pieData, this.index, this.text});
   @override
   _ShowDistrictDataState createState() => _ShowDistrictDataState();
 }
 
 class _ShowDistrictDataState extends State<ShowDistrictData> {
-  var myDistrictData;
+  var mypieData;
   var index;
   var text;
   Map<String, double> dataMap = Map();
@@ -25,20 +25,20 @@ class _ShowDistrictDataState extends State<ShowDistrictData> {
   @override
   void initState() {
     super.initState();
-    myDistrictData = widget.districtData;
+    mypieData = widget.pieData;
     index = widget.index;
     text = widget.text;
     if (text == "country") {
       dataMap.putIfAbsent("Total No of Deaths",
-          () => double.parse((myDistrictData[index]["deaths"]).toString()));
+          () => double.parse((mypieData[index]["deaths"]).toString()));
     } else {
       dataMap.putIfAbsent("Total No of Deaths", 
-          () => double.parse((myDistrictData[index]["deceased"]).toString()));
+          () => double.parse((mypieData[index]["deceased"]).toString()));
     }
     dataMap.putIfAbsent("Total No of Recovered cases",
-        () => double.parse((myDistrictData[index]["recovered"]).toString()));
+        () => double.parse((mypieData[index]["recovered"]).toString()));
     dataMap.putIfAbsent("Total No of Active cases",
-        () => double.parse((myDistrictData[index]["active"]).toString()));
+        () => double.parse((mypieData[index]["active"]).toString()));
   }
 
   @override
@@ -46,8 +46,8 @@ class _ShowDistrictDataState extends State<ShowDistrictData> {
     return Scaffold(
       appBar: AppBar(
         title: (text == "country")
-            ? Text(myDistrictData[index]["country"].toString())
-            : Text(myDistrictData[index]["district"].toString()),
+            ? Text(mypieData[index]["country"].toString())
+            : Text(mypieData[index]["district"].toString()),
       ),
       body: ListView(
               children: <Widget>[Column(
@@ -57,10 +57,10 @@ class _ShowDistrictDataState extends State<ShowDistrictData> {
               child: Center(
                   child: (text == "country")
                       ? Infoset(
-                          worldData: myDistrictData[index],
+                          worldData: mypieData[index],
                           code: 4,
                         )
-                      : Infoset(districtData: myDistrictData[index], code: 3)),
+                      : Infoset(districtData: mypieData[index], code: 3)),
             ),
             SizedBox(
                 height: (MediaQuery.of(context).size.height -

@@ -109,15 +109,13 @@ class _CombinedScreenState extends State<CombinedScreen> {
                     itemBuilder: (BuildContext context, index) {
                       return GestureDetector(
                         onTap: () {
-                          //print(filteredList[index][placeholder]);
+                          print(filteredList[index][placeholder]);
 
                           //int indexx = index;
                           int i = 0;
                           while (i < list_wise.length - 1) {
                             if (placeholder == "state") {
-                              String stateName = myData['statewise'][index]
-                                      ['state']
-                                  .toString();
+                              String stateName = myData['statewise'][index]['state'].toString();
                               if (myDistrictData[i]['state'] == stateName) {
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (context) {
@@ -132,12 +130,12 @@ class _CombinedScreenState extends State<CombinedScreen> {
                               }
                             } else {
                               String countryName =
-                                  list_wise[index][placeholder];
-                              if (list_wise[i][placeholder] == countryName) {
+                                  list_wise[index][placeholder].toString();
+                              if (filteredList[i][placeholder] == countryName) {
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (context) {
                                   return ShowDistrictData(
-                                    districtData: list_wise,
+                                    pieData: list_wise,
                                     index: index,
                                     text: "country",
                                   );
@@ -160,13 +158,18 @@ class _CombinedScreenState extends State<CombinedScreen> {
                                   ),
                                   title: Text(filteredList[index][placeholder],
                                       style: TextStyle(fontSize: 18)),
-                                  trailing: SizedBox(   width:50,child:FittedBox(
-                                 
-                                   child: Row(children: <Widget>[
-                                    SvgPicture.asset("assets/images/biotech.svg"),
-                                    Text(filteredList[index]["tests"].toString()),
-                                  ],)),)
-                                )
+                                  trailing: SizedBox(
+                                    width: 50,
+                                    child: FittedBox(
+                                        child: Row(
+                                      children: <Widget>[
+                                        SvgPicture.asset(
+                                            "assets/images/biotech.svg"),
+                                        Text(filteredList[index]["tests"]
+                                            .toString()),
+                                      ],
+                                    )),
+                                  ))
                               : ListTile(
                                   title: Text(filteredList[index][placeholder],
                                       style: TextStyle(fontSize: 18)),

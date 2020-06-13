@@ -196,7 +196,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     children: <Widget>[
                                       Icon(Icons.info, color: Colors.white),
                                       Text("    "),
-                                      Text("About",
+                                      Text("Deep Dive",
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 20,

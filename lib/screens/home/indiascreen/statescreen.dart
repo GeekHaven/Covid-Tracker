@@ -181,7 +181,7 @@ class _StateScreenState extends State<StateScreen> {
                 MaterialPageRoute(
                   builder: (context) {
                     return ShowDistrictData(
-                        districtData: filteredData, index: index);
+                        pieData: filteredData, index: index);
                   },
                 ),
               );
