@@ -72,7 +72,7 @@ class Infocard extends StatelessWidget {
                             fontFamily: 'Lato',
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
-                            color: color),
+                            color: Colors.green[700]),
                       ),
                     ),
                     SizedBox(
@@ -82,7 +82,7 @@ class Infocard extends StatelessWidget {
                         effectedNum,
                         style: TextStyle(
                             fontFamily: 'Lato',
-                            fontSize: 22,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
@@ -93,14 +93,21 @@ class Infocard extends StatelessWidget {
                             0.003),
                     Row(
                       children: <Widget>[
-                        Icon(Icons.arrow_upward, color: color),
-                        AutoSizeText(
-                          " $increase",
+                        
+                        (color!=Colors.grey)?AutoSizeText(
+                          "[+$increase]",
                           style: TextStyle(
                               fontFamily: 'Lato',
-                              fontSize: 14,
+                              fontSize: 10,
                               fontWeight: FontWeight.bold,
-                              color: Colors.black.withOpacity(0.7)),
+                              color: color),
+                        ):AutoSizeText(
+                          "",
+                          style: TextStyle(
+                              fontFamily: 'Lato',
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              color: color),
                         ),
                       ],
                     ),

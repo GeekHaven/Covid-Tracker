@@ -1,5 +1,6 @@
 import 'package:covidtracker/know_about/startpage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 //import 'package:covidtracker/constants.dart';
 
 class Awarenesscard extends StatelessWidget {
@@ -9,17 +10,18 @@ class Awarenesscard extends StatelessWidget {
         text: ' Awareness\n',
         style: TextStyle(
             fontWeight: FontWeight.bold,
-            color: Colors.purple[300],
+            color: Colors.green[700],
             fontSize: 18));
     return Container(
       padding: EdgeInsets.all(1),
-      child: Card(
-        elevation: 0,
+    
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             Container(
-              child: Image.asset('assets/images/man.png'),
+              child: SvgPicture.asset('assets/images/doctor.svg',width: 200,),
             ),
+            SizedBox(width:50),
             Column(
               children: <Widget>[
                 Container(
@@ -38,7 +40,7 @@ class Awarenesscard extends StatelessWidget {
                             text: ' Panic.',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.purple[300],
+                                color: Colors.green[700],
                                 fontSize: 20)),
                       ],
                     ),
@@ -49,7 +51,7 @@ class Awarenesscard extends StatelessWidget {
                             MediaQuery.of(context).padding.top) *
                         0.0001),
                 FlatButton(
-                  textColor: Colors.purple[300],
+                  textColor: Colors.green[700],
                   padding: EdgeInsets.only(top: 10, left: 30),
                   onPressed: () {
                     Navigator.of(context).pushNamed(StartPage.routeName);
@@ -79,7 +81,7 @@ class Awarenesscard extends StatelessWidget {
             )
           ],
         ),
-      ),
+      
     );
   }
 }

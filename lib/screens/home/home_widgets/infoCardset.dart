@@ -145,8 +145,8 @@ setState(() {
         ],
       ):GridView(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            // mainAxisSpacing: 5,
-            // crossAxisSpacing: 5,
+            mainAxisSpacing: 15,
+            crossAxisSpacing: 5,
             crossAxisCount: 2, 
             childAspectRatio: 200/90),
         children: <Widget>[
@@ -159,7 +159,7 @@ setState(() {
               chartData: chartData,
               stringplace: "Confirmed",
             ),
-
+          
           Infocard(
             title: 'Active Cases',
             effectedNum:infoCardData[2],
