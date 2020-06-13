@@ -25,7 +25,6 @@ class Chart extends StatelessWidget {
               padding: const EdgeInsets.only(right: 18.0, left: 12.0, top: 24, bottom: 12),
               child: LineChart(
                 mainData(mySpots,chartColor),
-                //swapAnimationDuration: Duration(seconds: 2),
               ),
             ),
           ),
@@ -105,15 +104,7 @@ LineChartData mainData(mySpots,List<Color> myColors) {
         margin: 12,
       ),
     ),
-    // axisTitleData: FlAxisTitleData(
-    //   show: true,
-    //   bottomTitle: AxisTitle(
-    //     showTitle: true,
-    //     titleText: DateTime.now().toString(),
-    //   )
-    //),
     borderData: FlBorderData(show: false, border: Border.all(color: Colors.purpleAccent, width: 1)),
-    
     lineBarsData: [
       LineChartBarData(
         spots: spots,

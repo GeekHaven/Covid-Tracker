@@ -1,6 +1,6 @@
-import 'package:covidtracker/constants.dart';
+//import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:covidtracker/news_section/newsview.dart';
+//import 'package:covidtracker/news_section/newsview.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../world_screen/Allcountries.dart';
 import '../indiascreen/allstates.dart';
@@ -18,7 +18,7 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  int _currentindex = 0;
+  int _selectedPageIndex = 0;
   var myData;
   var myDistrictData;
   var myDailydata;
@@ -42,36 +42,38 @@ class _BottomBarState extends State<BottomBar> {
       unselectedFontSize: 15,
       selectedFontSize: 20,
       selectedItemColor: Colors.white,
-      currentIndex: _currentindex,
+      currentIndex: _selectedPageIndex,
       items: [
         BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text("Home"),
-            backgroundColor: Colors.purple),
+          icon: Icon(Icons.home),
+          title: Text("Home"),
+        ),
         BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              "assets/images/india.svg",
-              width: 20,
-            ),
-            title: Text("News"),
-            backgroundColor: Colors.purple),
+          icon: SvgPicture.asset(
+            "assets/images/india.svg",
+            width: 20,
+          ),
+          title: Text("India"),
+        ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.public),
-            title: Text("News"),
-            backgroundColor: Colors.purple)
+          icon: Icon(Icons.public),
+          title: Text("Global"),
+        )
       ],
       onTap: (index) {
         setState(() {
-          _currentindex = index;
+          _selectedPageIndex = index;
         });
 
-        if (index == 1){
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return Allstates(myData: myData,myDistrictData: myDistrictData,myDailydata: myDailydata);
-            }));
+        if (index == 1) {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return Allstates(
+                myData: myData,
+                myDistrictData: myDistrictData,
+                myDailydata: myDailydata);
+          }));
         }
         
-
         if (index == 2)
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
             return Allcountries(myCountryData);

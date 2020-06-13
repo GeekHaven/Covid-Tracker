@@ -179,7 +179,8 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                               data: myData,
                                               districtData: myDistrictData,
                                               dailyData: myDailyData,
-                                              countrydata: myCountryData);
+                                              countrydata: myCountryData,
+                                              );
                                         },
                                       ),
                                     );

@@ -10,9 +10,9 @@ class Infoset extends StatefulWidget {
   final countryData;
   final code;
   final chartData;
-  
+  final activeChartData;
 
-  Infoset({this.indiaData,this.districtData,this.worldData,this.countryData,this.code,this.chartData});
+  Infoset({this.indiaData,this.districtData,this.worldData,this.countryData,this.code,this.chartData, this.activeChartData});
 
   @override
   _InfosetState createState() => _InfosetState();
@@ -26,6 +26,7 @@ var countryData;
 var chartData;
 var districtData;
 var worldData;
+var activeChartData;
 
 @override
   void initState() {
@@ -36,6 +37,7 @@ setState(() {
   districtData=widget.districtData;
   chartData=widget.chartData;
   worldData=widget.worldData;
+  activeChartData = widget.activeChartData;
 
   if(code==1)
   {
@@ -95,7 +97,6 @@ setState(() {
       width: double.infinity,
       padding: EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
-        //color: kPrimaryColor.withOpacity(0.03),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(50),
           bottomRight: Radius.circular(50),
@@ -108,10 +109,10 @@ setState(() {
 
       child: (code!=2)?GridView(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            // mainAxisSpacing: 5,
-            // crossAxisSpacing: 5,
+            mainAxisSpacing: 5,
+            //crossAxisSpacing: 2,
             crossAxisCount: 2, 
-            childAspectRatio: 200/90),
+            childAspectRatio: 200/82),
         children: <Widget>[
              Infocard(
               title: 'Total Cases',
@@ -138,17 +139,17 @@ setState(() {
             title: 'Active Cases',
             effectedNum:infoCardData[2],
             increase: '',
-            color: Colors.grey,
-            iconcolor: "grey",
-            
+            color: Colors.yellow,
+            iconcolor: "yellow",
+            activeChartData: activeChartData,
           ),
         ],
       ):GridView(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisSpacing: 15,
+            mainAxisSpacing: 10,
             crossAxisSpacing: 5,
             crossAxisCount: 2, 
-            childAspectRatio: 200/90),
+            childAspectRatio: 200/82),
         children: <Widget>[
              Infocard(
               title: 'Total Cases',
@@ -159,15 +160,16 @@ setState(() {
               chartData: chartData,
               stringplace: "Confirmed",
             ),
-          
+
           Infocard(
             title: 'Active Cases',
             effectedNum:infoCardData[2],
             increase: '',
-            color: Colors.grey,
-            iconcolor: "grey",
+            color: Colors.yellow,
+            iconcolor: "yellow",
             chartData: chartData,
-            stringplace: "Active",
+            activeChartData: activeChartData,
+            //stringplace: "Active",
           ),
           Infocard(
             title: 'Deaths',

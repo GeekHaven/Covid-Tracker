@@ -57,7 +57,7 @@ class _DeveloperState extends State<Developer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
+      body: Container(
       width: double.infinity,
       child: Column(
         children: <Widget>[
