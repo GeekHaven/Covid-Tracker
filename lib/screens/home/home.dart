@@ -106,8 +106,6 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     0.13,
               ),
               Container(
-              
-              //  color: Colors.blueGrey[600],
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
@@ -423,6 +421,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                 ),
               ),
             ),
+            
             bottomNavigationBar: BottomBar(
 
                           myData: myData,

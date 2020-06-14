@@ -73,7 +73,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
                 child: Column(
                   children: <Widget>[
                     SvgPicture.asset("assets/images/gocorona.svg",width: 200,),
-                    
                   ],
                 )
               )
