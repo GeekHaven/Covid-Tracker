@@ -356,7 +356,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     Expanded(
                       flex: 0,
                       child: Container(
-                        margin: EdgeInsets.fromLTRB(22, 0, 10, 0),
+                        margin: EdgeInsets.fromLTRB(5.2*SizeConfig.widthMultiplier, 0, 2.36*SizeConfig.widthMultiplier, 0),
                         child: Column(
                           children: <Widget>[
                             Container(
