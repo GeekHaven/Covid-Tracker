@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:covidtracker/news_section/newsview.dart';
 
-class CountryWorld extends StatelessWidget {
+class NewsScreen extends StatelessWidget {
   var textSpan = TextSpan(
       text: ' News\n',
       style: TextStyle(
@@ -13,7 +13,6 @@ class CountryWorld extends StatelessWidget {
     return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
-          //color: Colors.red,
         ),
         child: Row(
           children: <Widget>[

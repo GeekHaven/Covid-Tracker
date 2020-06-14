@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import './home_widgets/awarness.dart';
 import './home_widgets/infoCardset.dart';
-import './home_widgets/countryWorld.dart';
+import './home_widgets/newsscreen.dart';
 import './home_widgets/bottom.dart';
 import 'package:covidtracker/menuscreens/deepdivescreen.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -424,12 +424,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     ),
                     Expanded(
                       flex: 4,
-                      child: CountryWorld(
-                          // myData: myData,
-                          // myDistrictData: myDistrictData,
-                          // myDailydata: myDailyData,
-                          // myCountryData: myCountryData
-                          ),
+                      child: NewsScreen(),
                     ),
                   ],
                 ),

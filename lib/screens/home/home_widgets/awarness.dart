@@ -11,7 +11,7 @@ class Awarenesscard extends StatelessWidget {
         style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.green[700],
-            fontSize: 1.96 * SizeConfig.textMultiplier));
+            fontSize: 2.18 * SizeConfig.textMultiplier));
     return Container(
       padding: EdgeInsets.all(1),
       child: Row(
@@ -23,7 +23,7 @@ class Awarenesscard extends StatelessWidget {
               width: 47.3 * SizeConfig.widthMultiplier,
             ),
           ),
-          SizedBox(width: 6.14 * SizeConfig.widthMultiplier),
+          SizedBox(width: 6 * SizeConfig.widthMultiplier),
           Column(
             children: <Widget>[
               Container(
@@ -36,9 +36,9 @@ class Awarenesscard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                     children: <TextSpan>[
-                      TextSpan(text: 'Spread '),
+                      TextSpan(text: 'Spread ', style: TextStyle(fontSize: 2.18 * SizeConfig.textMultiplier)),
                       textSpan,
-                      TextSpan(text: '       not '),
+                      TextSpan(text: '       not ', style: TextStyle(fontSize: 2.18 * SizeConfig.textMultiplier)),
                       TextSpan(
                           text: ' Panic.',
                           style: TextStyle(
@@ -72,10 +72,10 @@ class Awarenesscard extends StatelessWidget {
                           Text(
                             "Learn More",
                             style: TextStyle(
-                                fontSize: 1.3 * SizeConfig.textMultiplier,
+                                fontSize: 1.96 * SizeConfig.textMultiplier,
                                 fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(width: 1.2 * SizeConfig.widthMultiplier),
+                          SizedBox(width: 1.4 * SizeConfig.widthMultiplier),
                           Icon(Icons.arrow_forward),
                         ],
                       ),
