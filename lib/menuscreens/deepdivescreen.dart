@@ -66,8 +66,8 @@ class _DeepDivePageState extends State<DeepDivePage> {
                     }),
                 Text("  COVID-19 Tracker",
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 2.61 * SizeConfig.textMultiplier)),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 2.61 * SizeConfig.textMultiplier)),
               ],
             )),
         body: Container(
