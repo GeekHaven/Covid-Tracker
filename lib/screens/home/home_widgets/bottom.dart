@@ -36,8 +36,8 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       backgroundColor: Colors.green[700],
-      unselectedFontSize: 1.5 * SizeConfig.textMultiplier,
-      selectedFontSize: 2 * SizeConfig.textMultiplier,
+      unselectedFontSize: 1.4 * SizeConfig.textMultiplier,
+      selectedFontSize: 1.8 * SizeConfig.textMultiplier,
       selectedItemColor: Colors.white,
       currentIndex: _selectedPageIndex,
       items: [
