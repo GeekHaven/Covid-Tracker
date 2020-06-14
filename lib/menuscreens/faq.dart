@@ -28,8 +28,9 @@ class Faqpage extends StatelessWidget {
                         title: Text(
                           DataSource.questionAnswers[index]["question"],
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 1.96 * SizeConfig.textMultiplier),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 1.96 * SizeConfig.textMultiplier,
+                          ),
                         ),
                         children: <Widget>[
                           Padding(

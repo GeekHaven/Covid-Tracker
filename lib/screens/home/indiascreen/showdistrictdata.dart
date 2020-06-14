@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 import '../home_widgets/infoCardset.dart';
+import 'package:covidtracker/config.dart';
 
 class ShowDistrictData extends StatefulWidget {
   var pieData;
@@ -53,7 +54,7 @@ class _ShowDistrictDataState extends State<ShowDistrictData> {
               children: <Widget>[Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(top: 30, left:15, right:10, bottom:10),
+              margin: EdgeInsets.only(top: 3.3 * SizeConfig.heightMultiplier, left: 3.55 * SizeConfig.widthMultiplier, right: 2.36 * SizeConfig.widthMultiplier, bottom: 1.1 * SizeConfig.heightMultiplier),
               child: Center(
                   child: (text == "country")
                       ? Infoset(
@@ -63,16 +64,14 @@ class _ShowDistrictDataState extends State<ShowDistrictData> {
                       : Infoset(districtData: mypieData[index], code: 3)),
             ),
             SizedBox(
-                height: (MediaQuery.of(context).size.height -
-                        MediaQuery.of(context).padding.top) *
-                    0.01),
+                height: 1 * SizeConfig.heightMultiplier),
             Container(
               child: Center(
                   child: PieChart(
                 dataMap: dataMap,
                 animationDuration: Duration(milliseconds: 1500),
-                chartLegendSpacing: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.07,
-                chartRadius: MediaQuery.of(context).size.width / 1.7,
+                chartLegendSpacing: 7 * SizeConfig.heightMultiplier,
+                chartRadius: 27.15 * SizeConfig.heightMultiplier,
                 showChartValuesInPercentage: true,
                 showChartValues: true,
                 showChartValuesOutside: false,

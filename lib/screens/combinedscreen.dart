@@ -1,11 +1,9 @@
-//import 'dart:convert';
 import 'package:covidtracker/screens/home/indiascreen/statescreen.dart';
-//import 'package:dio/dio.dart';
+import 'package:covidtracker/config.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtracker/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import './home/indiascreen/showdistrictdata.dart';
-//import '../screens/home/world_screen/country.dart';
 
 class CombinedScreen extends StatefulWidget {
   var myData;
@@ -101,7 +99,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
           ],
         ),
         body: Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(1.1 * SizeConfig.heightMultiplier),
             child: filteredList.length > 0
                 ? ListView.builder(
                     itemCount: filteredList.length,
@@ -109,11 +107,11 @@ class _CombinedScreenState extends State<CombinedScreen> {
                       return GestureDetector(
                         onTap: () {
                           int i = 0;
-                          placeholder == 'state' ? i=1 : i=0;
+                          placeholder == 'state' ? i = 1 : i = 0;
                           while (i < filteredList.length) {
                             if (placeholder == "state") {
-                              String stateName = filteredList[index][placeholder] 
-                                  .toString();
+                              String stateName =
+                                  filteredList[index][placeholder].toString();
                               if (filteredList[i]['state'] == stateName) {
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (context) {
@@ -126,10 +124,9 @@ class _CombinedScreenState extends State<CombinedScreen> {
                                   );
                                 }));
                               }
-                            } 
-                            else {
-                              String countryName = filteredList[index][placeholder];
-                                //print(countryName);
+                            } else {
+                              String countryName =
+                                  filteredList[index][placeholder];
                               if (filteredList[i][placeholder] == countryName) {
                                 print(filteredList[i][placeholder]);
                                 Navigator.of(context)
@@ -152,27 +149,32 @@ class _CombinedScreenState extends State<CombinedScreen> {
                           child: (placeholder == "country")
                               ? ListTile(
                                   leading: SizedBox(
-                                    width: 30,
+                                    width: 6.86 * SizeConfig.widthMultiplier,
                                     child: Image.network(filteredList[index]
                                         ['countryInfo']['flag']),
                                   ),
                                   title: Text(filteredList[index][placeholder],
-                                      style: TextStyle(fontSize: 18)),
+                                      style: TextStyle(
+                                          fontSize: 1.96 *
+                                              SizeConfig.textMultiplier)),
                                   trailing: SizedBox(
-                                    width: 50,
+                                    width: 11.44 * SizeConfig.widthMultiplier,
                                     child: FittedBox(
                                         child: Row(
                                       children: <Widget>[
                                         SvgPicture.asset(
                                             "assets/images/biotech.svg"),
-                                        Text(filteredList[index]["testsPerOneMillion"]
+                                        Text(filteredList[index]
+                                                ["testsPerOneMillion"]
                                             .toString()),
                                       ],
                                     )),
                                   ))
                               : ListTile(
                                   title: Text(filteredList[index][placeholder],
-                                      style: TextStyle(fontSize: 18)),
+                                      style: TextStyle(
+                                          fontSize: 1.96 *
+                                              SizeConfig.textMultiplier)),
                                 ),
                         ),
                       );
@@ -181,16 +183,13 @@ class _CombinedScreenState extends State<CombinedScreen> {
                     child: FittedBox(
                     child: Column(
                       children: <Widget>[
-                        SvgPicture.asset("assets/images/error"),
-                        SizedBox(
-                            height: (MediaQuery.of(context).size.height -
-                                    MediaQuery.of(context).padding.top) *
-                                0.15),
+                        SvgPicture.asset("assets/images/error.svg"),
+                        SizedBox(height: 15 * SizeConfig.heightMultiplier),
                         Text(
                           "No Results Found ",
                           style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 75,
+                              color: kPrimaryColor,
+                              fontSize: 11 * SizeConfig.textMultiplier,
                               fontWeight: FontWeight.bold),
                         ),
                       ],
