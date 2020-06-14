@@ -1,3 +1,4 @@
+import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
 import './article_view.dart';
 import 'package:covidtracker/config.dart';
@@ -18,7 +19,7 @@ Widget MyAppBar(){
         )
       ],
     ),
-    backgroundColor: Colors.transparent,
+    backgroundColor: kPrimaryColor,
   );
 }
 
