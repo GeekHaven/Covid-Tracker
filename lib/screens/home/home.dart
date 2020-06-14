@@ -1,3 +1,4 @@
+import 'package:covidtracker/config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import './home_widgets/awarness.dart';
@@ -18,7 +19,11 @@ class MenuDashboardPage extends StatefulWidget {
   final globalData;
 
   MenuDashboardPage(
-      {this.data, this.districtData, this.dailyData, this.countrydata,this.globalData});
+      {this.data,
+      this.districtData,
+      this.dailyData,
+      this.countrydata,
+      this.globalData});
   @override
   _MenuDashboardPageState createState() => _MenuDashboardPageState();
 }
@@ -29,17 +34,17 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   var myDistrictData;
   var myDailyData;
   var myCountryData;
-   var myGlobalData;
+  var myGlobalData;
   bool status = false;
   int count = 0;
 
-  void updateUI(data, districtData, dailyData, countrydata,globalData) async {
+  void updateUI(data, districtData, dailyData, countrydata, globalData) async {
     setState(() {
       myData = data;
       myDistrictData = districtData;
       myDailyData = dailyData;
       myCountryData = countrydata;
-      myGlobalData= globalData;
+      myGlobalData = globalData;
     });
   }
 
@@ -55,8 +60,8 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   @override
   void initState() {
     super.initState();
-    updateUI(
-        widget.data, widget.districtData, widget.dailyData, widget.countrydata,widget.globalData);
+    updateUI(widget.data, widget.districtData, widget.dailyData,
+        widget.countrydata, widget.globalData);
     _controller = AnimationController(vsync: this, duration: duration);
     _scaleAnimation = Tween<double>(begin: 1, end: 0.8).animate(_controller);
     _menuscaleAnimation =
@@ -91,12 +96,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
       child: ScaleTransition(
         scale: _menuscaleAnimation,
         child: Container(
-            decoration: BoxDecoration(
-                  gradient: LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-    colors: [ Colors.teal[300],Colors.green[900]])
-                ),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Colors.teal[300], Colors.green[900]])),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -106,14 +110,12 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     0.13,
               ),
               Container(
-              
-              //  color: Colors.blueGrey[600],
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
                     "     COVID-19",
                     style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 2.72 * SizeConfig.textMultiplier,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
@@ -125,13 +127,12 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     0.01,
               ),
               Container(
-               // color: Colors.blueGrey[600],
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
                     "        Stay Home.. Stay Safe..",
                     style: TextStyle(
-                        fontSize: 15,
+                        fontSize: 1.63 * SizeConfig.textMultiplier,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
@@ -143,9 +144,9 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     0.16,
               ),
               Container(
-               // color: Colors.blueGrey[600],
                 child: Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
+                    padding: EdgeInsets.only(
+                        left: 3.78 * SizeConfig.widthMultiplier),
                     child: Align(
                         alignment: Alignment.centerLeft,
                         child: Column(
@@ -154,10 +155,10 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               FlatButton(
-                                  //color: Colors.blueGrey[600],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
-                                  padding: EdgeInsets.all(7),
+                                  padding: EdgeInsets.all(
+                                      0.78 * SizeConfig.heightMultiplier),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -167,7 +168,8 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       Text("Home",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 20,
+                                              fontSize: 2.19 *
+                                                  SizeConfig.textMultiplier,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -176,21 +178,21 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       MaterialPageRoute(
                                         builder: (context) {
                                           return MenuDashboardPage(
-                                              data: myData,
-                                              districtData: myDistrictData,
-                                              dailyData: myDailyData,
-                                              countrydata: myCountryData,
-                                              globalData: myGlobalData,
-                                              );
+                                            data: myData,
+                                            districtData: myDistrictData,
+                                            dailyData: myDailyData,
+                                            countrydata: myCountryData,
+                                            globalData: myGlobalData,
+                                          );
                                         },
                                       ),
                                     );
                                   }),
                               FlatButton(
-                                 // color: Colors.blueGrey[600],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
-                                  padding: EdgeInsets.all(7),
+                                  padding: EdgeInsets.all(
+                                      0.78 * SizeConfig.heightMultiplier),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -199,9 +201,9 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       Text("    "),
                                       Text("Deep Dive",
                                           style: TextStyle(
-                                            
                                               color: Colors.white,
-                                              fontSize: 20,
+                                              fontSize: 2.18 *
+                                                  SizeConfig.textMultiplier,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -209,20 +211,22 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return DeepDivePage(data: myData,
-                                              districtData: myDistrictData,
-                                              dailyData: myDailyData,
-                                              countrydata: myCountryData,
-                                              globalData: myGlobalData,);
+                                          return DeepDivePage(
+                                            data: myData,
+                                            districtData: myDistrictData,
+                                            dailyData: myDailyData,
+                                            countrydata: myCountryData,
+                                            globalData: myGlobalData,
+                                          );
                                         },
                                       ),
                                     );
                                   }),
                               FlatButton(
-                                 // color: Colors.blueGrey[600],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
-                                  padding: EdgeInsets.all(7),
+                                  padding: EdgeInsets.all(
+                                      0.78 * SizeConfig.heightMultiplier),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -233,7 +237,8 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       Text("FAQs",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 20,
+                                              fontSize: 2.18 *
+                                                  SizeConfig.textMultiplier,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -247,10 +252,10 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     );
                                   }),
                               FlatButton(
-                                 // color: Colors.blueGrey[600],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
-                                  padding: EdgeInsets.all(7),
+                                  padding: EdgeInsets.all(
+                                      0.78 * SizeConfig.heightMultiplier),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
@@ -260,7 +265,8 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       Text("Donate",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 20,
+                                              fontSize: 2.18 *
+                                                  SizeConfig.textMultiplier,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -268,10 +274,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     launch("https://www.pmcares.gov.in/en/");
                                   }),
                               FlatButton(
-                                 // color: Colors.blueGrey[600],
+                                  // color: Colors.blueGrey[600],
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
-                                  padding: EdgeInsets.all(7),
+                                  padding: EdgeInsets.all(
+                                      0.78 * SizeConfig.heightMultiplier),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
@@ -281,7 +288,8 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       Text("Developers",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 20,
+                                              fontSize: 2.18 *
+                                                  SizeConfig.textMultiplier,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -369,9 +377,9 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       width: MediaQuery.of(context).size.width *
                                           0.25),
                                   Switch.adaptive(
-                                    activeColor: kPrimaryColor,
-                                    inactiveTrackColor: Colors.green[200],
-                                   // inactiveThumbColor: Colors.green[200],
+                                      activeColor: kPrimaryColor,
+                                      inactiveTrackColor: Colors.green[200],
+                                      // inactiveThumbColor: Colors.green[200],
                                       value: _showchart,
                                       //activeColor: Colors.green[700],
                                       onChanged: (val) {
@@ -386,19 +394,22 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                         ),
                       ),
                     ),
-                   Expanded(
-                      flex: 5,
-                      child: Center(
-                          child: _showchart?Infoset(
-                        indiaData: myData['statewise'][0],
-                        code: 1,
-                      ):Center(
-                          child: Infoset(
-                        worldData: myGlobalData,
-                        code: 4,
-                      )),)
-                    // 
-                    ),
+                    Expanded(
+                        flex: 5,
+                        child: Center(
+                          child: _showchart
+                              ? Infoset(
+                                  indiaData: myData['statewise'][0],
+                                  code: 1,
+                                )
+                              : Center(
+                                  child: Infoset(
+                                  worldData: myGlobalData,
+                                  code: 4,
+                                )),
+                        )
+                        //
+                        ),
                     //: Expanded(
                     //   flex: 5,
                     //   child: Center(
@@ -425,12 +436,10 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
               ),
             ),
             bottomNavigationBar: BottomBar(
-
-                          myData: myData,
-                          myDistrictData: myDistrictData,
-                          myDailydata: myDailyData,
-                          myCountryData: myCountryData
-            ),
+                myData: myData,
+                myDistrictData: myDistrictData,
+                myDailydata: myDailyData,
+                myCountryData: myCountryData),
           ),
         ),
       ),

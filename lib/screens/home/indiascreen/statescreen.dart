@@ -152,7 +152,7 @@ class _StateScreenState extends State<StateScreen> {
         districtsList.add(
           GestureDetector(
             child: Container(
-              width: 195,
+              //width: 19,
               margin: EdgeInsets.only(top: 20),
               alignment: Alignment.center,
               color: index % 2 == 1 ? Colors.white : Colors.grey[100],
@@ -210,7 +210,7 @@ class _StateScreenState extends State<StateScreen> {
                     chartData: chartData,
                     activeChartData: activeChartData,
                     )),
-            SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.005),
+            SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.02),
             Text(
               "Last updated on $asofDate ",
               textAlign: TextAlign.center,
@@ -222,7 +222,7 @@ class _StateScreenState extends State<StateScreen> {
             ),
             SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.02),
             Chart(mySpots: spots, chartColor: colors),
-            SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.01),
+            SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.02),
             Text(
               "*Last 31 days",
               textAlign: TextAlign.right,

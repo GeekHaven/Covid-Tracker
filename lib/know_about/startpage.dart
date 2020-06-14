@@ -1,13 +1,11 @@
 import '../know_about/body_part.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import '../know_about/cardmodel.dart';
 import '../know_about/divide_parts.dart';
 //import 'dart:math' as math;
 
 class StartPage extends StatelessWidget {
-  static const routeName = '/corona-detail';
 
   final List<CardModel> spreadList = [
     CardModel(
@@ -108,53 +106,6 @@ class StartPage extends StatelessWidget {
                                 alignment: Alignment.centerRight,
                               ),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  bottom: 8.0, left: 20.0, top: 8.0),
-                              child: Row(
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Material(
-                                      type: MaterialType.transparency,
-                                      child: Container(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            SizedBox(
-                                                height: (MediaQuery.of(context)
-                                                            .size
-                                                            .height -
-                                                        MediaQuery.of(context)
-                                                            .padding
-                                                            .top) *
-                                                    0.18),
-                                            SizedBox(
-                                                width: (MediaQuery.of(context)
-                                                        .size
-                                                        .width) *
-                                                    0.08),
-                                            Align(
-                                                //alignment: Alignment.center,
-                                                child: AutoSizeText(
-                                              '           Everything you need \n           to know',
-                                              style: TextStyle(
-                                                color: Colors.white
-                                                    .withOpacity(0.9),
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                              maxLines: 2,
-                                            )),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    flex: 4,
-                                  ),
-                                ],
-                              ),
-                            ),
                           ),
                         ),
                       ),
@@ -188,27 +139,7 @@ class StartPage extends StatelessWidget {
                                         letterSpacing: 0.4,
                                       ),
                                     ),
-                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.01),
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.phone,
-                                          size: 20,
-                                          color: Colors.green[700]
-                                        ),
-                                        SizedBox(width: 7),
-                                        Text(
-                                          'HelpLine Number - 011-23978046',
-                                          style: TextStyle(
-                                            fontSize: 18.0,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.03),
+                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.02),
                                     BodyPart(
                                       point: 0.5,
                                       child: Text(

@@ -1,6 +1,4 @@
-//import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
-//import 'package:covidtracker/news_section/newsview.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../world_screen/Allcountries.dart';
 import '../indiascreen/allstates.dart';
@@ -26,8 +24,6 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   void initState() {
-    // TODO: implement initState
-
     myCountryData = widget.myCountryData;
     myDistrictData = widget.myDistrictData;
     myDailydata = widget.myDailydata;
@@ -73,7 +69,7 @@ class _BottomBarState extends State<BottomBar> {
                 myDailydata: myDailydata);
           }));
         }
-        
+
         if (index == 2)
           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
             return Allcountries(myCountryData);
