@@ -13,7 +13,7 @@ class Awarenesscard extends StatelessWidget {
             color: Colors.green[700],
             fontSize: 2.18 * SizeConfig.textMultiplier));
     return Container(
-      padding: EdgeInsets.all(15),
+      margin: EdgeInsets.symmetric(horizontal: 3.1*SizeConfig.widthMultiplier),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
