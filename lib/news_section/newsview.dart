@@ -42,21 +42,25 @@ class _NewsViewState extends State<NewsView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "Corona",
-              style:
-                  TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
-            ),
-            Text(
-              " News",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-            ),
-            SizedBox(width: 11.8 * SizeConfig.widthMultiplier),
-          ],
+        title: Container(
+          margin: EdgeInsets.fromLTRB(5.2 * SizeConfig.widthMultiplier, 0,
+              2.36 * SizeConfig.widthMultiplier, 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "Corona",
+                style: TextStyle(
+                    color: Colors.black87, fontWeight: FontWeight.w600),
+              ),
+              Text(
+                " News",
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              ),
+              SizedBox(width: 11.8 * SizeConfig.widthMultiplier),
+            ],
+          ),
         ),
       ),
       body: SafeArea(
@@ -92,21 +96,33 @@ class _NewsViewState extends State<NewsView> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             _showchart
-                                ? Text(
-                                    "  INDIA",
-                                    style: TextStyle(
-                                        fontSize:
-                                            2.61 * SizeConfig.heightMultiplier,
-                                        fontWeight: FontWeight.bold),
+                                ? Row(
+                                    children: <Widget>[
+                                      Icon(Icons.av_timer),
+                                      Text(
+                                        "  INDIA",
+                                        style: TextStyle(
+                                            fontSize: 2.62 *
+                                                SizeConfig.textMultiplier,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
                                   )
-                                : Text(
-                                    '  GLOBAL',
-                                    style: TextStyle(
-                                        fontSize:
-                                            2.61 * SizeConfig.heightMultiplier,
-                                        fontWeight: FontWeight.bold),
+                                : Row(
+                                    children: <Widget>[
+                                      Icon(Icons.public),
+                                      Text(
+                                        '  GLOBAL',
+                                        style: TextStyle(
+                                            fontSize: 2.62 *
+                                                SizeConfig.textMultiplier,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
                                   ),
-                            SizedBox(width: 25 * SizeConfig.widthMultiplier),
+                            SizedBox(
+                              width: 25 * SizeConfig.widthMultiplier,
+                            ),
                             Switch.adaptive(
                                 activeColor: kPrimaryColor,
                                 inactiveTrackColor: Colors.green[200],
