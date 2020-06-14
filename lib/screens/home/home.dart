@@ -124,7 +124,9 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                   child: Text(
                     "     COVID-19",
                     style: TextStyle(
-                        fontSize: 2.72 * SizeConfig.textMultiplier,
+                        fontSize: (MediaQuery.of(context).size.height -
+                                MediaQuery.of(context).padding.top) *
+                            0.027,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
@@ -141,7 +143,9 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                   child: Text(
                     "        Stay Home.. Stay Safe..",
                     style: TextStyle(
-                        fontSize: 1.63 * SizeConfig.textMultiplier,
+                        fontSize: (MediaQuery.of(context).size.height -
+                                MediaQuery.of(context).padding.top) *
+                            0.0163,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
@@ -155,7 +159,9 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
               Container(
                 child: Padding(
                     padding: EdgeInsets.only(
-                        left: 3.78 * SizeConfig.widthMultiplier),
+                        left: (MediaQuery.of(context).size.height -
+                                MediaQuery.of(context).padding.top) *
+                            0.04),
                     child: Align(
                         alignment: Alignment.centerLeft,
                         child: Column(
@@ -167,7 +173,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
                                   padding: EdgeInsets.all(
-                                      0.78 * SizeConfig.heightMultiplier),
+                                      (MediaQuery.of(context).size.height -
+                                              MediaQuery.of(context)
+                                                  .padding
+                                                  .top) *
+                                          0.004),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -177,8 +187,13 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       Text("Home",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 2.19 *
-                                                  SizeConfig.textMultiplier,
+                                              fontSize: (MediaQuery.of(context)
+                                                          .size
+                                                          .height -
+                                                      MediaQuery.of(context)
+                                                          .padding
+                                                          .top) *
+                                                  0.0219,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -204,7 +219,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
                                   padding: EdgeInsets.all(
-                                      0.78 * SizeConfig.heightMultiplier),
+                                      (MediaQuery.of(context).size.height -
+                                              MediaQuery.of(context)
+                                                  .padding
+                                                  .top) *
+                                          0.004),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -214,8 +233,13 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       Text("Deep Dive",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 2.18 *
-                                                  SizeConfig.textMultiplier,
+                                              fontSize: (MediaQuery.of(context)
+                                                          .size
+                                                          .height -
+                                                      MediaQuery.of(context)
+                                                          .padding
+                                                          .top) *
+                                                  0.0218,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -235,7 +259,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
                                   padding: EdgeInsets.all(
-                                      0.78 * SizeConfig.heightMultiplier),
+                                      (MediaQuery.of(context).size.height -
+                                              MediaQuery.of(context)
+                                                  .padding
+                                                  .top) *
+                                          0.004),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -246,8 +274,13 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       Text("FAQs",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 2.18 *
-                                                  SizeConfig.textMultiplier,
+                                              fontSize: (MediaQuery.of(context)
+                                                          .size
+                                                          .height -
+                                                      MediaQuery.of(context)
+                                                          .padding
+                                                          .top) *
+                                                  0.0218,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -267,7 +300,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
                                   padding: EdgeInsets.all(
-                                      0.78 * SizeConfig.heightMultiplier),
+                                      (MediaQuery.of(context).size.height -
+                                              MediaQuery.of(context)
+                                                  .padding
+                                                  .top) *
+                                          0.004),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
@@ -277,8 +314,13 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       Text("Donate",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 2.18 *
-                                                  SizeConfig.textMultiplier,
+                                              fontSize: (MediaQuery.of(context)
+                                                          .size
+                                                          .height -
+                                                      MediaQuery.of(context)
+                                                          .padding
+                                                          .top) *
+                                                  0.0218,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -290,7 +332,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                   disabledColor: Colors.white,
                                   textColor: Colors.white,
                                   padding: EdgeInsets.all(
-                                      0.78 * SizeConfig.heightMultiplier),
+                                      (MediaQuery.of(context).size.height -
+                                              MediaQuery.of(context)
+                                                  .padding
+                                                  .top) *
+                                          0.004),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
@@ -300,8 +346,13 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       Text("Developers",
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 2.18 *
-                                                  SizeConfig.textMultiplier,
+                                              fontSize: (MediaQuery.of(context)
+                                                          .size
+                                                          .height -
+                                                      MediaQuery.of(context)
+                                                          .padding
+                                                          .top) *
+                                                  0.0218,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -501,7 +552,6 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     SizeConfig().init(constraints, orientation, isCollapsed);
 
                     if (isCollapsed) {
-                      
                       if (index == 1) {
                         SizeConfig().init(constraints, orientation, false);
                         Navigator.of(context)
@@ -520,8 +570,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                           return Allcountries(myCountryData);
                         }));
                       }
-                    } 
-                    else {
+                    } else {
                       SizeConfig().init(constraints, orientation, true);
                     }
                   }),
