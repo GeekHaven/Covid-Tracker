@@ -23,7 +23,7 @@ class Awarenesscard extends StatelessWidget {
               width: 47.3 * SizeConfig.widthMultiplier,
             ),
           ),
-          SizedBox(width: 6 * SizeConfig.widthMultiplier),
+          SizedBox(width: 4 * SizeConfig.widthMultiplier),
           Column(
             children: <Widget>[
               Container(
