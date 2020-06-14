@@ -6,7 +6,6 @@ import '../know_about/divide_parts.dart';
 //import 'dart:math' as math;
 
 class StartPage extends StatelessWidget {
-  static const routeName = '/corona-detail';
 
   final List<CardModel> spreadList = [
     CardModel(
@@ -140,27 +139,7 @@ class StartPage extends StatelessWidget {
                                         letterSpacing: 0.4,
                                       ),
                                     ),
-                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.01),
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.phone,
-                                          size: 20,
-                                          color: Colors.green[700]
-                                        ),
-                                        SizedBox(width: 7),
-                                        Text(
-                                          'HelpLine Number - 011-23978046',
-                                          style: TextStyle(
-                                            fontSize: 18.0,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.03),
+                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.02),
                                     BodyPart(
                                       point: 0.5,
                                       child: Text(
