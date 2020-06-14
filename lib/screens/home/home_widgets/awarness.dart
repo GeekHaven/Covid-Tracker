@@ -13,14 +13,14 @@ class Awarenesscard extends StatelessWidget {
             color: Colors.green[700],
             fontSize: 2.18 * SizeConfig.textMultiplier));
     return Container(
-      padding: EdgeInsets.all(1),
+      padding: EdgeInsets.all(15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Container(
             child: Image.asset(
               'assets/images/doctor.png',
-              width: 47.3 * SizeConfig.widthMultiplier,
+              width: 46 * SizeConfig.widthMultiplier,
             ),
           ),
           Column(

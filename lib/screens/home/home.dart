@@ -126,7 +126,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     style: TextStyle(
                         fontSize: (MediaQuery.of(context).size.height -
                                 MediaQuery.of(context).padding.top) *
-                            0.027,
+                            0.03,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
@@ -141,11 +141,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    "        Stay Home.. Stay Safe..",
+                    "         Stay Home.. Stay Safe..",
                     style: TextStyle(
                         fontSize: (MediaQuery.of(context).size.height -
                                 MediaQuery.of(context).padding.top) *
-                            0.0163,
+                            0.0165,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
@@ -161,7 +161,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     padding: EdgeInsets.only(
                         left: (MediaQuery.of(context).size.height -
                                 MediaQuery.of(context).padding.top) *
-                            0.04),
+                            0.03),
                     child: Align(
                         alignment: Alignment.centerLeft,
                         child: Column(
@@ -177,7 +177,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                               MediaQuery.of(context)
                                                   .padding
                                                   .top) *
-                                          0.004),
+                                          0.003),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -193,7 +193,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                                       MediaQuery.of(context)
                                                           .padding
                                                           .top) *
-                                                  0.0219,
+                                                  0.0220,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -223,7 +223,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                               MediaQuery.of(context)
                                                   .padding
                                                   .top) *
-                                          0.004),
+                                          0.003),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -239,7 +239,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                                       MediaQuery.of(context)
                                                           .padding
                                                           .top) *
-                                                  0.0218,
+                                                  0.0220,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -263,7 +263,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                               MediaQuery.of(context)
                                                   .padding
                                                   .top) *
-                                          0.004),
+                                          0.0025),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -280,7 +280,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                                       MediaQuery.of(context)
                                                           .padding
                                                           .top) *
-                                                  0.0218,
+                                                  0.0220,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -304,7 +304,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                               MediaQuery.of(context)
                                                   .padding
                                                   .top) *
-                                          0.004),
+                                          0.003),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
@@ -320,7 +320,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                                       MediaQuery.of(context)
                                                           .padding
                                                           .top) *
-                                                  0.0218,
+                                                  0.0220,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
@@ -336,7 +336,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                               MediaQuery.of(context)
                                                   .padding
                                                   .top) *
-                                          0.004),
+                                          0.003),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
@@ -352,7 +352,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                                       MediaQuery.of(context)
                                                           .padding
                                                           .top) *
-                                                  0.0218,
+                                                  0.0220,
                                               fontWeight: FontWeight.bold)),
                                     ],
                                   ),
