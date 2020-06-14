@@ -41,5 +41,6 @@ class SizeConfig {
 
     print(_screenWidth);
     print(_screenHeight);
+    
   }
 }
