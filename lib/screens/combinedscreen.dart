@@ -183,7 +183,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                     child: FittedBox(
                     child: Column(
                       children: <Widget>[
-                        SvgPicture.asset("assets/images/error.svg"),
+                        Image.asset("assets/images/404.png"),
                         SizedBox(height: 15 * SizeConfig.heightMultiplier),
                         Text(
                           "No Results Found ",

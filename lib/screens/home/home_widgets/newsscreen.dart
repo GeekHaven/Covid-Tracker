@@ -50,9 +50,12 @@ class NewsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              width: 57 * SizeConfig.widthMultiplier,
-              child: SvgPicture.asset('assets/images/updates.svg'),
+            Expanded(
+              flex: 1,
+                          child: SizedBox(
+               // width: 70 * SizeConfig.widthMultiplier,
+                child: SvgPicture.asset('assets/images/updates.svg'),
+              ),
             ),
           ],
         ));

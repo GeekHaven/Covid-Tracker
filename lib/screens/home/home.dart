@@ -10,7 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:covidtracker/menuscreens/developer.dart';
 import 'package:covidtracker/menuscreens/faq.dart';
 import 'package:covidtracker/constants.dart';
-
+    
 class MenuDashboardPage extends StatefulWidget {
   final data;
   final districtData;
@@ -356,6 +356,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     Expanded(
                       flex: 0,
                       child: Container(
+                        margin: EdgeInsets.fromLTRB(22, 0, 10, 0),
                         child: Column(
                           children: <Widget>[
                             Container(
@@ -364,20 +365,30 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   _showchart
-                                      ? Text(
-                                          "  INDIA",
-                                          style: TextStyle(
-                                              fontSize: 2.62 *
-                                                  SizeConfig.textMultiplier,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      : Text(
-                                          '  GLOBAL',
-                                          style: TextStyle(
-                                              fontSize: 2.62 *
-                                                  SizeConfig.textMultiplier,
-                                              fontWeight: FontWeight.bold),
-                                        ),
+                                      ? Row(
+                                        children: <Widget>[
+                                          Icon(Icons.av_timer),
+                                          Text(
+                                              "  INDIA",
+                                              style: TextStyle(
+                                                  fontSize: 2.62 *
+                                                      SizeConfig.textMultiplier,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                        ],
+                                      )
+                                      : Row(
+                                        children: <Widget>[
+                                          Icon(Icons.public),
+                                          Text(
+                                              '  GLOBAL',
+                                              style: TextStyle(
+                                                  fontSize: 2.62 *
+                                                      SizeConfig.textMultiplier,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                        ],
+                                      ),
                                   SizedBox(
                                     width: 25 * SizeConfig.widthMultiplier,
                                   ),
