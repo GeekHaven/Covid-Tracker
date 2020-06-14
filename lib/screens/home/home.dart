@@ -353,7 +353,10 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             InkWell(
-                                child: Icon(Icons.menu, color: kPrimaryColor),
+                                child: SizedBox(
+                                  width: 5*SizeConfig.widthMultiplier,
+                                  height: 3*SizeConfig.heightMultiplier,
+                                  child: Icon(Icons.menu, color: kPrimaryColor)),
                                 onTap: () {
                                   setState(() {
                                     SizeConfig().init(
@@ -458,7 +461,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                       ),
                       Expanded(
                         flex: 4,
-                        child: NewsScreen(!isCollapsed),
+                        child: NewsScreen(true),
                       ),
                     ],
                   ),
