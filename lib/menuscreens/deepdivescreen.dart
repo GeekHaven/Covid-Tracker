@@ -59,6 +59,7 @@ class _DeepDivePageState extends State<DeepDivePage> {
                               dailyData: myDailyData,
                               countrydata: myCountryData,
                               globalData: myGlobalData,
+                              btmcode:0,
                             );
                           },
                         ),

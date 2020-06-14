@@ -13,7 +13,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:covidtracker/screens/home/world_screen/Allcountries.dart';
 import 'package:covidtracker/screens/home/indiascreen/allstates.dart';
 
-    
 class MenuDashboardPage extends StatefulWidget {
   final data;
   final districtData;
@@ -40,7 +39,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   var myDailyData;
   var myCountryData;
   var myGlobalData;
-  int _selectedPageIndex ;
+  int _selectedPageIndex;
   bool status = false;
   int count = 0;
 
@@ -51,7 +50,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
       myDailyData = dailyData;
       myCountryData = countrydata;
       myGlobalData = globalData;
-      _selectedPageIndex =widget.btmcode;
+      _selectedPageIndex = widget.btmcode;
     });
   }
 
@@ -190,6 +189,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                             dailyData: myDailyData,
                                             countrydata: myCountryData,
                                             globalData: myGlobalData,
+                                            btmcode: 0,
                                           );
                                         },
                                       ),
@@ -328,165 +328,191 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
       child: ScaleTransition(
         scale: _scaleAnimation,
         child: Material(
-          animationDuration: duration,
-          child: Scaffold(
-            body: SafeArea(
-              child: Container(
-                margin: EdgeInsets.only(
-                    left: 2.36 * SizeConfig.widthMultiplier,
-                    right: 2.36 * SizeConfig.widthMultiplier,
-                    top: 1.1 * SizeConfig.heightMultiplier),
-                child: Column(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 1,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          InkWell(
-                              child: Icon(Icons.menu, color: kPrimaryColor),
-                              onTap: () {
-                                setState(() {
-                                  if (isCollapsed)
-                                    _controller.forward();
-                                  else
-                                    _controller.reverse();
-                                  isCollapsed = !isCollapsed;
-                                });
-                              }),
-                          InkWell(
-                              child: Icon(Icons.favorite, color: kPrimaryColor),
-                              onTap: () {}),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      flex: 0,
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(5.2*SizeConfig.widthMultiplier, 0, 2.36*SizeConfig.widthMultiplier, 0),
-                        child: Column(
+            animationDuration: duration,
+            child: Scaffold(
+              body: SafeArea(
+                child: Container(
+                  margin: EdgeInsets.only(
+                      left: 2.36 * SizeConfig.widthMultiplier,
+                      right: 2.36 * SizeConfig.widthMultiplier,
+                      top: 1.1 * SizeConfig.heightMultiplier),
+                  child: Column(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Container(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  _showchart
-                                      ? Row(
-                                        children: <Widget>[
-                                          Icon(Icons.av_timer),
-                                          Text(
-                                              "  INDIA",
-                                              style: TextStyle(
-                                                  fontSize: 2.62 *
-                                                      SizeConfig.textMultiplier,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                        ],
-                                      )
-                                      : Row(
-                                        children: <Widget>[
-                                          Icon(Icons.public),
-                                          Text(
-                                              '  GLOBAL',
-                                              style: TextStyle(
-                                                  fontSize: 2.62 *
-                                                      SizeConfig.textMultiplier,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                        ],
-                                      ),
-                                  SizedBox(
-                                    width: 25 * SizeConfig.widthMultiplier,
-                                  ),
-                                  Switch.adaptive(
-                                      activeColor: kPrimaryColor,
-                                      value: _showchart,
-                                      onChanged: (val) {
-                                        setState(() {
-                                          _showchart = val;
-                                        });
-                                      })
-                                ],
-                              ),
-                            ),
+                            InkWell(
+                                child: Icon(Icons.menu, color: kPrimaryColor),
+                                onTap: () {
+                                  setState(() {
+                                    if (isCollapsed)
+                                      _controller.forward();
+                                    else
+                                      _controller.reverse();
+                                    isCollapsed = !isCollapsed;
+                                  });
+                                }),
+                            InkWell(
+                                child:
+                                    Icon(Icons.favorite, color: kPrimaryColor),
+                                onTap: () {}),
                           ],
                         ),
                       ),
-                    ),
-                    Expanded(
-                        flex: 5,
-                        child: Center(
-                          child: _showchart
-                              ? Infoset(
-                                  indiaData: myData['statewise'][0],
-                                  code: 1,
-                                )
-                              : Center(
-                                  child: Infoset(
-                                  worldData: myGlobalData,
-                                  code: 4,
-                                )),
-                        )),
-                    Expanded(
-                      flex: 4,
-                      child: Awarenesscard(),
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: NewsScreen(),
-                    ),
-                  ],
+                      Expanded(
+                        flex: 0,
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(
+                              5.2 * SizeConfig.widthMultiplier,
+                              0,
+                              2.36 * SizeConfig.widthMultiplier,
+                              0),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    _showchart
+                                        ? Row(
+                                            children: <Widget>[
+                                              Icon(Icons.av_timer),
+                                              Text(
+                                                "  INDIA",
+                                                style: TextStyle(
+                                                    fontSize: 2.62 *
+                                                        SizeConfig
+                                                            .textMultiplier,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ],
+                                          )
+                                        : Row(
+                                            children: <Widget>[
+                                              Icon(Icons.public),
+                                              Text(
+                                                '  GLOBAL',
+                                                style: TextStyle(
+                                                    fontSize: 2.62 *
+                                                        SizeConfig
+                                                            .textMultiplier,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                    SizedBox(
+                                      width: 25 * SizeConfig.widthMultiplier,
+                                    ),
+                                    Switch.adaptive(
+                                        activeColor: kPrimaryColor,
+                                        value: _showchart,
+                                        onChanged: (val) {
+                                          setState(() {
+                                            _showchart = val;
+                                          });
+                                        })
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                          flex: 5,
+                          child: Center(
+                            child: _showchart
+                                ? Infoset(
+                                    indiaData: myData['statewise'][0],
+                                    code: 1,
+                                  )
+                                : Center(
+                                    child: Infoset(
+                                    worldData: myGlobalData,
+                                    code: 4,
+                                  )),
+                          )),
+                      Expanded(
+                        flex: 4,
+                        child: Awarenesscard(),
+                      ),
+                      Expanded(
+                        flex: 4,
+                        child: NewsScreen(),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            bottomNavigationBar: BottomNavigationBar(
-      backgroundColor: Colors.green[700],
-      unselectedFontSize: 1.4 * SizeConfig.textMultiplier,
-      selectedFontSize: 1.8 * SizeConfig.textMultiplier,
-      selectedItemColor: Colors.white,
-      currentIndex: widget.btmcode,
-      items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          title: Text("Home"),
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            "assets/images/india.svg",
-            width: 4.73 * SizeConfig.widthMultiplier,
-          ),
-          title: Text(
-            "India",
-            style: TextStyle(fontSize: 2.3 * SizeConfig.textMultiplier),
-          ),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.public),
-          title: Text("Global"),
-        )
-      ],
-      onTap: (index) {
-        setState(() {
-          _selectedPageIndex = index;
-        });
+              bottomNavigationBar: BottomNavigationBar(
+                backgroundColor: Colors.green[700],
+                unselectedFontSize: 1.4 * SizeConfig.textMultiplier,
+                selectedFontSize: 1.8 * SizeConfig.textMultiplier,
+                selectedItemColor: Colors.white,
+                currentIndex: widget.btmcode,
+                items: [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home),
+                    title: Text("Home"),
+                  ),
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      "assets/images/india.svg",
+                      width: 4.73 * SizeConfig.widthMultiplier,
+                    ),
+                    title: Text(
+                      "India",
+                      style:
+                          TextStyle(fontSize: 2.3 * SizeConfig.textMultiplier),
+                    ),
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.public),
+                    title: Text("Global"),
+                  )
+                ],
+                onTap: (index) {
+                  setState(() {
+                    _selectedPageIndex = index;
+                  });
 
-        if (index == 1) {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-            return Allstates(
-                myData: myData,
-                myDistrictData: myDistrictData,
-                myDailydata: myDailyData);
-          }));
-        }
+                  if (index == 0) {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return MenuDashboardPage(
+                        data: myData,
+                        districtData: myDistrictData,
+                        dailyData: myDailyData,
+                        countrydata: myCountryData,
+                        globalData: myGlobalData,
+                        btmcode: 0,
+                      );
+                    }));
+                  }
 
-        if (index == 2)
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-            return Allcountries(myCountryData);
-          }));
-      },
-    ),)
-        ),
+                  if (index == 1) {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return Allstates(
+                          myData: myData,
+                          myDistrictData: myDistrictData,
+                          myDailydata: myDailyData);
+                    }));
+                  }
+
+                  if (index == 2)
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return Allcountries(myCountryData);
+                    }));
+                },
+              ),
+            )),
       ),
     );
   }
