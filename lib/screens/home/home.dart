@@ -183,7 +183,8 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     ],
                                   ),
                                   onPressed: () {
-                                    SizeConfig().init(constraints, orientation, isCollapsed);
+                                    SizeConfig().init(
+                                        constraints, orientation, isCollapsed);
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
@@ -219,11 +220,13 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     ],
                                   ),
                                   onPressed: () {
-                                    SizeConfig().init(constraints, orientation, isCollapsed);
+                                    SizeConfig().init(
+                                        constraints, orientation, isCollapsed);
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return DeepDivePage(constraints, orientation, false);
+                                          return DeepDivePage(constraints,
+                                              orientation, isCollapsed);
                                         },
                                       ),
                                     );
@@ -249,11 +252,13 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     ],
                                   ),
                                   onPressed: () {
-                                    SizeConfig().init(constraints, orientation, isCollapsed);
+                                    SizeConfig().init(
+                                        constraints, orientation, isCollapsed);
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return Faqpage(constraints, orientation, false);
+                                          return Faqpage(
+                                              constraints, orientation, false);
                                         },
                                       ),
                                     );
@@ -301,11 +306,13 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     ],
                                   ),
                                   onPressed: () {
-                                    SizeConfig().init(constraints, orientation, isCollapsed);
+                                    SizeConfig().init(
+                                        constraints, orientation, isCollapsed);
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return Developer(constraints, orientation, false);
+                                          return Developer(
+                                              constraints, orientation, false);
                                         },
                                       ),
                                     );
@@ -349,7 +356,8 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                 child: Icon(Icons.menu, color: kPrimaryColor),
                                 onTap: () {
                                   setState(() {
-                                    SizeConfig().init(constraints, orientation, isCollapsed);
+                                    SizeConfig().init(
+                                        constraints, orientation, isCollapsed);
                                     if (isCollapsed)
                                       _controller.forward();
                                     else
@@ -450,75 +458,77 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                       ),
                       Expanded(
                         flex: 4,
-                        child: NewsScreen(),
+                        child: NewsScreen(isCollapsed) ,
                       ),
                     ],
                   ),
                 ),
               ),
               bottomNavigationBar: BottomNavigationBar(
-                backgroundColor: Colors.green[700],
-                unselectedFontSize: 1.4 * SizeConfig.textMultiplier,
-                selectedFontSize: 1.8 * SizeConfig.textMultiplier,
-                selectedItemColor: Colors.white,
-                currentIndex: widget.btmcode,
-                items: [
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
-                    title: Text("Home"),
-                  ),
-                  BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      "assets/images/india.svg",
-                      width: 4.73 * SizeConfig.widthMultiplier,
+                  backgroundColor: Colors.green[700],
+                  unselectedFontSize: 1.4 * SizeConfig.textMultiplier,
+                  selectedFontSize: 1.8 * SizeConfig.textMultiplier,
+                  selectedItemColor: Colors.white,
+                  currentIndex: widget.btmcode,
+                  items: [
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.home),
+                      title: Text("Home"),
                     ),
-                    title: Text(
-                      "India",
-                      style:
-                          TextStyle(fontSize: 2.3 * SizeConfig.textMultiplier),
+                    BottomNavigationBarItem(
+                      icon: SvgPicture.asset(
+                        "assets/images/india.svg",
+                        width: 4.73 * SizeConfig.widthMultiplier,
+                      ),
+                      title: Text(
+                        "India",
+                        style: TextStyle(
+                            fontSize: 2.3 * SizeConfig.textMultiplier),
+                      ),
                     ),
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.public),
-                    title: Text("Global"),
-                  )
-                ],
-                onTap: (index) {
-                  setState(() {
-                    _selectedPageIndex = index;
-                  });
-                  SizeConfig().init(constraints, orientation, isCollapsed);
-                  if (index == 0) {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return MenuDashboardPage(
-                        data: myData,
-                        districtData: myDistrictData,
-                        dailyData: myDailyData,
-                        countrydata: myCountryData,
-                        globalData: myGlobalData,
-                        btmcode: 0,
-                      );
-                    }));
-                  }
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.public),
+                      title: Text("Global"),
+                    )
+                  ],
+                  onTap: (index) {
+                    setState(() {
+                      _selectedPageIndex = index;
+                    });
+                    SizeConfig().init(constraints, orientation, isCollapsed);
+                    if (index == 0) {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return MenuDashboardPage(
+                          data: myData,
+                          districtData: myDistrictData,
+                          dailyData: myDailyData,
+                          countrydata: myCountryData,
+                          globalData: myGlobalData,
+                          btmcode: 0,
+                        );
+                      }));
+                    }
 
-                  if (index == 1) {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return Allstates(
-                          myData: myData,
-                          myDistrictData: myDistrictData,
-                          myDailydata: myDailyData);
-                    }));
-                  }
+                    if (!isCollapsed) {
 
-                  if (index == 2)
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return Allcountries(myCountryData);
-                    }));
-                },
-              ),
+                      if (index == 1) {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return Allstates(
+                              myData: myData,
+                              myDistrictData: myDistrictData,
+                              myDailydata: myDailyData);
+                        }));
+                      }
+
+                      if (index == 2)
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return Allcountries(myCountryData);
+                        }));
+                    }
+                  }),
             )),
       ),
     );

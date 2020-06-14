@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:covidtracker/config.dart';
 import 'package:covidtracker/news_section/newsview.dart';
 
 class NewsScreen extends StatelessWidget {
+
+  var isCollapsed ;
+  NewsScreen(this.isCollapsed);
   var textSpan = TextSpan(
       text: ' News\n',
       style: TextStyle(
@@ -25,10 +27,12 @@ class NewsScreen extends StatelessWidget {
                     top: 1.1 * SizeConfig.heightMultiplier,
                     left: 4.73 * SizeConfig.widthMultiplier),
                 onPressed: () {
-                  Navigator.of(context)
+                  if(!isCollapsed){
+                    Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
                     return NewsView(false);
                   }));
+                  }
                 },
                 child: Center(
                   child: Card(
