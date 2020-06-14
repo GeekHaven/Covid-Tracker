@@ -93,45 +93,49 @@ class _NewsViewState extends State<NewsView> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             _showchart
-                                        ? Container(
-                                         //padding: EdgeInsets.symmetric(horizontal: 30),
-                                          child: Row(
-                                            
-                                              children: <Widget>[
-                                                SvgPicture.asset(
-                                                  "assets/images/india.svg",
-                                                  width: 4.73 *
-                                                      SizeConfig.widthMultiplier,
-                                                ),
-                                                Text(
-                                                  "  INDIA",
-                                                  style: TextStyle(
-                                                      fontSize: 2.62 *
-                                                          SizeConfig
-                                                              .textMultiplier,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                              ],
-                                            ),
-                                        )
-                                        : Row(
-                                            children: <Widget>[
-                                              Icon(Icons.public),
-                                              Text(
-                                                '  GLOBAL',
-                                                style: TextStyle(
-                                                    fontSize: 2.62 *
-                                                        SizeConfig
-                                                            .textMultiplier,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                            ],
-                                          ),
-                                    SizedBox(
-                                      width: 25 * SizeConfig.widthMultiplier,
+                                ? Container(
+                                    child: Row(
+                                      children: <Widget>[
+                                        SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.04),
+                                        SvgPicture.asset(
+                                          "assets/images/india.svg",
+                                          width:
+                                              4.73 * SizeConfig.widthMultiplier,
+                                        ),
+                                        Text(
+                                          "  INDIA",
+                                          style: TextStyle(
+                                              fontSize: 2.62 *
+                                                  SizeConfig.textMultiplier,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
                                     ),
+                                  )
+                                : Row(
+                                    children: <Widget>[
+                                      SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.04),
+                                      Icon(Icons.public),
+                                      Text(
+                                        '  GLOBAL',
+                                        style: TextStyle(
+                                            fontSize: 2.62 *
+                                                SizeConfig.textMultiplier,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                            SizedBox(
+                              width: 25 * SizeConfig.widthMultiplier,
+                            ),
                             Switch.adaptive(
                                 activeColor: kPrimaryColor,
                                 inactiveTrackColor: Colors.green[200],
@@ -146,8 +150,8 @@ class _NewsViewState extends State<NewsView> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(
-                            top: 2.2 * SizeConfig.heightMultiplier),
+                        padding: EdgeInsets.only(
+                            top: 1.5 * SizeConfig.heightMultiplier),
                         child: ListView.builder(
                             itemCount: newslist.length,
                             shrinkWrap: true,
