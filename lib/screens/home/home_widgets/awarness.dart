@@ -15,7 +15,7 @@ class Awarenesscard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(1),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Container(
             child: SvgPicture.asset(
@@ -23,7 +23,6 @@ class Awarenesscard extends StatelessWidget {
               width: 47.3 * SizeConfig.widthMultiplier,
             ),
           ),
-          SizedBox(width: 4 * SizeConfig.widthMultiplier),
           Column(
             children: <Widget>[
               Container(
@@ -36,9 +35,15 @@ class Awarenesscard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                     children: <TextSpan>[
-                      TextSpan(text: 'Spread ', style: TextStyle(fontSize: 2.18 * SizeConfig.textMultiplier)),
+                      TextSpan(
+                          text: 'Spread ',
+                          style: TextStyle(
+                              fontSize: 2.18 * SizeConfig.textMultiplier)),
                       textSpan,
-                      TextSpan(text: '       not ', style: TextStyle(fontSize: 2.18 * SizeConfig.textMultiplier)),
+                      TextSpan(
+                          text: '       not ',
+                          style: TextStyle(
+                              fontSize: 2.18 * SizeConfig.textMultiplier)),
                       TextSpan(
                           text: ' Panic.',
                           style: TextStyle(
@@ -53,8 +58,9 @@ class Awarenesscard extends StatelessWidget {
               FlatButton(
                 textColor: Colors.green[700],
                 padding: EdgeInsets.only(
-                    top: 2.1 * SizeConfig.heightMultiplier,
-                    left: 4 * SizeConfig.widthMultiplier,),
+                  top: 2.1 * SizeConfig.heightMultiplier,
+                  left: 4 * SizeConfig.widthMultiplier,
+                ),
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
@@ -72,7 +78,7 @@ class Awarenesscard extends StatelessWidget {
                           Text(
                             "  Learn More ",
                             style: TextStyle(
-                                fontSize: 2 * SizeConfig.textMultiplier,
+                                fontSize: 2.2 * SizeConfig.textMultiplier,
                                 fontWeight: FontWeight.bold),
                           ),
                           SizedBox(width: 1.4 * SizeConfig.widthMultiplier),
