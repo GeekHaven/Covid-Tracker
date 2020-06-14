@@ -458,7 +458,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                       ),
                       Expanded(
                         flex: 4,
-                        child: NewsScreen(isCollapsed) ,
+                        child: NewsScreen(false),
                       ),
                     ],
                   ),
@@ -513,6 +513,8 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     if (isCollapsed) {
 
                       if (index == 1) {
+                        
+                        SizeConfig().init(constraints, orientation, false);
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
                           return Allstates(
@@ -522,12 +524,16 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                         }));
                       }
 
-                      if (index == 2)
+                      if (index == 2){
+
+                        SizeConfig().init(constraints, orientation, false);
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
                           return Allcountries(myCountryData);
                         }));
-                    }
+                      }
+                        
+                      }
                   }),
             )),
       ),

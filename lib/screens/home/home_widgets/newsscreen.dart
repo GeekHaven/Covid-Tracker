@@ -27,7 +27,7 @@ class NewsScreen extends StatelessWidget {
                     top: 1.1 * SizeConfig.heightMultiplier,
                     left: 4.73 * SizeConfig.widthMultiplier),
                 onPressed: () {
-                  if(!isCollapsed){
+                  if(isCollapsed){
                     Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
                     return NewsView(false);
