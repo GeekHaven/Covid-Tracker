@@ -72,6 +72,7 @@ class _DeveloperState extends State<Developer> {
             },
             child: Expanded(
               child: Container(
+                height: 54.5 * SizeConfig.heightMultiplier,
                 width: double.infinity,
                 decoration: BoxDecoration(
                     image: DecorationImage(
@@ -116,7 +117,7 @@ class _DeveloperState extends State<Developer> {
                     ),
                     Text(products[currentIndex][5]),
                     SizedBox(
-                      height: 1.6 * SizeConfig.heightMultiplier,
+                      height: 1.8 * SizeConfig.heightMultiplier,
                     ),
                     FlatButton(
                       padding:
@@ -150,7 +151,7 @@ class _DeveloperState extends State<Developer> {
                         children: <Widget>[
                           Image.asset(
                             "assets/images/twittericon.png",
-                            width: 3.27 * SizeConfig.widthMultiplier,
+                            width: 7.1 * SizeConfig.widthMultiplier,
                             height: 3.5 * SizeConfig.heightMultiplier,
                           ),
                           Text(
@@ -170,7 +171,6 @@ class _DeveloperState extends State<Developer> {
               ),
             ),
           )
-          //) ,
         ],
       ),
     ));
@@ -182,7 +182,8 @@ class _DeveloperState extends State<Developer> {
             height: 0.5 * SizeConfig.heightMultiplier,
             margin: EdgeInsets.only(right: 1.18 * SizeConfig.widthMultiplier),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.45 * SizeConfig.heightMultiplier),
+                borderRadius:
+                    BorderRadius.circular(5.45 * SizeConfig.heightMultiplier),
                 color: isActive ? Colors.white : Colors.grey)));
   }
 
