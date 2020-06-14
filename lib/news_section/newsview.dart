@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import './news_widget.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import './newsdata.dart';
-//import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:covidtracker/config.dart';
 
 class NewsView extends StatefulWidget {
   var code;
@@ -31,7 +31,6 @@ class _NewsViewState extends State<NewsView> {
   void initState() {
     _loading = true;
     _showchart = widget.code;
-    // TODO: implement initState
     super.initState();
 
     getNews();
@@ -56,7 +55,7 @@ class _NewsViewState extends State<NewsView> {
               style:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
-            SizedBox(width: 50),
+            SizedBox(width: 11.8 * SizeConfig.widthMultiplier),
           ],
         ),
       ),
@@ -65,7 +64,7 @@ class _NewsViewState extends State<NewsView> {
             ? Center(
                 child: AvatarGlow(
                   glowColor: Colors.green,
-                  endRadius: 90.0,
+                  endRadius: 9.8 * SizeConfig.heightMultiplier,
                   duration: Duration(milliseconds: 2000),
                   repeat: true,
                   showTwoGlows: true,
@@ -77,9 +76,9 @@ class _NewsViewState extends State<NewsView> {
                       backgroundColor: Colors.grey[100],
                       child: Image.asset(
                         'assets/images/glow.png',
-                        height: 50,
+                        height: 5.45 * SizeConfig.heightMultiplier,
                       ),
-                      radius: 40.0,
+                      radius: 4.36 * SizeConfig.heightMultiplier,
                     ),
                   ),
                 ),
@@ -96,23 +95,22 @@ class _NewsViewState extends State<NewsView> {
                                 ? Text(
                                     "  INDIA",
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize:
+                                            2.61 * SizeConfig.heightMultiplier,
                                         fontWeight: FontWeight.bold),
                                   )
                                 : Text(
                                     '  GLOBAL',
                                     style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize:
+                                            2.61 * SizeConfig.heightMultiplier,
                                         fontWeight: FontWeight.bold),
                                   ),
-                            SizedBox(
-                                width:
-                                    MediaQuery.of(context).size.width * 0.25),
+                            SizedBox(width: 25 * SizeConfig.widthMultiplier),
                             Switch.adaptive(
-                              activeColor: kPrimaryColor,
-                                    inactiveTrackColor: Colors.green[200],
+                                activeColor: kPrimaryColor,
+                                inactiveTrackColor: Colors.green[200],
                                 value: _showchart,
-                               
                                 onChanged: (val) {
                                   setState(() {
                                     _showchart = val;
@@ -123,7 +121,8 @@ class _NewsViewState extends State<NewsView> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 16),
+                        margin: EdgeInsets.only(
+                            top: 2.2 * SizeConfig.heightMultiplier),
                         child: ListView.builder(
                             itemCount: newslist.length,
                             shrinkWrap: true,

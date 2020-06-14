@@ -1,10 +1,8 @@
-//import 'package:covidtracker/know_about/card_details.dart';
 import 'package:covidtracker/constants.dart';
 import 'package:flutter/material.dart';
 import '../know_about/cardmodel.dart';
-//import 'package:carousel_slider/carousel_slider.dart';
-//import '../know_about/body_part.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:covidtracker/config.dart';
 
 class DivideParts extends StatefulWidget {
   final String title;
@@ -39,32 +37,26 @@ class _DividePartsState extends State<DivideParts> {
             widget.title,
             textAlign: TextAlign.left,
             style: TextStyle(
-              fontSize: 28.0,
+              fontSize: 3.05 * SizeConfig.heightMultiplier,
               fontWeight: FontWeight.w900,
-              letterSpacing: 0.4,
+              letterSpacing: 0.1 * SizeConfig.widthMultiplier,
             ),
           ),
+          SizedBox(height: 2 * SizeConfig.heightMultiplier),
           SizedBox(
-              height: (MediaQuery.of(context).size.height -
-                      MediaQuery.of(context).padding.top) *
-                  0.02),
-          SizedBox(
-            height: (MediaQuery.of(context).size.height -
-                    MediaQuery.of(context).padding.top) *
-                0.18,
-
+            height: 18 * SizeConfig.heightMultiplier,
             child: Carousel(
                 boxFit: BoxFit.contain,
                 autoplay: false,
                 animationCurve: Curves.fastOutSlowIn,
                 animationDuration: Duration(milliseconds: 1000),
-                dotSize: 4.0,
+                dotSize: 0.43 * SizeConfig.heightMultiplier,
                 dotIncreasedColor: kPrimaryColor,
                 dotBgColor: Colors.transparent,
                 dotPosition: DotPosition.topRight,
-                dotVerticalPadding: 10.0,
+                dotVerticalPadding: 1.1 * SizeConfig.heightMultiplier,
                 showIndicator: true,
-                indicatorBgPadding: 7.0,
+                indicatorBgPadding: 0.85 * SizeConfig.heightMultiplier,
                 images: [
                   ExactAssetImage(infoList[0].imageSource),
                   ExactAssetImage(infoList[1].imageSource),

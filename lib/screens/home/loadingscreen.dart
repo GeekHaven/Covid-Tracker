@@ -91,14 +91,14 @@ class _LoadingScreenState extends State<LoadingScreen> {
                     Text(
                       "Go ",
                       style: TextStyle(
-                          fontSize: 2.3 * SizeConfig.textMultiplier,
+                          fontSize: 2.5 * SizeConfig.textMultiplier,
                           fontWeight: FontWeight.bold,
                           color: Colors.green[700]),
                     ),
                     Text(
                       "Corona",
                       style: TextStyle(
-                          fontSize: 2.3 * SizeConfig.textMultiplier,
+                          fontSize: 2.5 * SizeConfig.textMultiplier,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),

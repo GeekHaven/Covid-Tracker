@@ -1,3 +1,5 @@
+import 'package:covidtracker/config.dart';
+
 import '../know_about/body_part.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,14 +8,12 @@ import '../know_about/divide_parts.dart';
 //import 'dart:math' as math;
 
 class StartPage extends StatelessWidget {
-
   final List<CardModel> spreadList = [
     CardModel(
         title: "Air by Cough or Sneeze",
         imageSource: "assets/images/sneez.png"),
     CardModel(
-        title: "Personal \nContact",
-        imageSource: "assets/images/group.png"),
+        title: "Personal \nContact", imageSource: "assets/images/group.png"),
     CardModel(
         title: "Contaminated \nObjects",
         imageSource: "assets/images/handshake.png"),
@@ -89,9 +89,7 @@ class StartPage extends StatelessWidget {
                           onPressed: () => Navigator.pop(context),
                         ),
                         backgroundColor: Color(0xFF23395D),
-                        expandedHeight: (MediaQuery.of(context).size.height -
-                                MediaQuery.of(context).padding.top) *
-                            0.3,
+                        expandedHeight: 30 * SizeConfig.heightMultiplier,
                         floating: false,
                         snap: false,
                         pinned: false,
@@ -118,8 +116,10 @@ class StartPage extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(24.0),
-                            topRight: Radius.circular(24.0),
+                            topLeft: Radius.circular(
+                                2.61 * SizeConfig.heightMultiplier),
+                            topRight: Radius.circular(
+                                2.61 * SizeConfig.heightMultiplier),
                           ),
                         ),
                         child: Column(
@@ -127,43 +127,57 @@ class StartPage extends StatelessWidget {
                             Container(
                                 width: MediaQuery.of(context).size.width,
                                 margin: EdgeInsets.only(
-                                    left: 20.0, right: 20.0, top: 32),
+                                    left: 4.72 * SizeConfig.widthMultiplier,
+                                    right: 4.72 * SizeConfig.widthMultiplier,
+                                    top: 3.49 * SizeConfig.heightMultiplier),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Text(
                                       'COVID-19 (Coronavirus)',
                                       style: TextStyle(
-                                        fontSize: 28.0,
+                                        fontSize:
+                                            3.05 * SizeConfig.heightMultiplier,
                                         fontWeight: FontWeight.w900,
-                                        letterSpacing: 0.4,
+                                        letterSpacing:
+                                            0.1 * SizeConfig.widthMultiplier,
                                       ),
                                     ),
-                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.02),
+                                    SizedBox(
+                                        height:
+                                            2 * SizeConfig.heightMultiplier),
                                     BodyPart(
                                       point: 0.5,
                                       child: Text(
                                         'Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.',
                                         style: TextStyle(
-                                          fontSize: 22.0,
+                                          fontSize: 2.39 *
+                                              SizeConfig.heightMultiplier,
                                           fontWeight: FontWeight.w500,
-                                          height: 1.5,
+                                          height: 0.16 *
+                                              SizeConfig.heightMultiplier,
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.025),
+                                    SizedBox(
+                                        height:
+                                            2.5 * SizeConfig.heightMultiplier),
                                     BodyPart(
                                       point: 0.75,
                                       child: Text(
                                         'Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment.',
                                         style: TextStyle(
-                                          fontSize: 22.0,
+                                          fontSize: 2.39 *
+                                              SizeConfig.heightMultiplier,
                                           fontWeight: FontWeight.w500,
-                                          height: 1.5,
+                                          height: 0.16 *
+                                              SizeConfig.heightMultiplier,
                                         ),
                                       ),
                                     ),
-                                    SizedBox(height: 30.0),
+                                    SizedBox(
+                                        height:
+                                            3.27 * SizeConfig.heightMultiplier),
                                     BodyPart(
                                       point: 1,
                                       child: DivideParts(
@@ -171,7 +185,9 @@ class StartPage extends StatelessWidget {
                                         infoList: symptomsList,
                                       ),
                                     ),
-                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.025),
+                                    SizedBox(
+                                        height:
+                                            2.5 * SizeConfig.heightMultiplier),
                                     BodyPart(
                                       point: 1.5,
                                       child: DivideParts(
@@ -179,7 +195,9 @@ class StartPage extends StatelessWidget {
                                         infoList: spreadList,
                                       ),
                                     ),
-                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.025),
+                                    SizedBox(
+                                        height:
+                                            2.5 * SizeConfig.heightMultiplier),
                                     BodyPart(
                                       point: 2,
                                       child: DivideParts(
@@ -187,7 +205,9 @@ class StartPage extends StatelessWidget {
                                         infoList: preventList,
                                       ),
                                     ),
-                                    SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.025),
+                                    SizedBox(
+                                        height:
+                                            2.5 * SizeConfig.heightMultiplier),
                                   ],
                                 ))
                           ],
