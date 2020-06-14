@@ -491,24 +491,25 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                       _selectedPageIndex = index;
                     });
                     SizeConfig().init(constraints, orientation, isCollapsed);
-                    if (index == 0) {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return MenuDashboardPage(
-                          data: myData,
-                          districtData: myDistrictData,
-                          dailyData: myDailyData,
-                          countrydata: myCountryData,
-                          globalData: myGlobalData,
-                          btmcode: 0,
-                        );
-                      }));
-                    }
 
-                    if (!isCollapsed) {
+                    if (isCollapsed) {
+                      if (index == 0) {
+                        SizeConfig().init(constraints, orientation, false);
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return MenuDashboardPage(
+                            data: myData,
+                            districtData: myDistrictData,
+                            dailyData: myDailyData,
+                            countrydata: myCountryData,
+                            globalData: myGlobalData,
+                            btmcode: 0,
+                          );
+                      
+                        }));
+                      }
 
                       if (index == 1) {
-                        
                         SizeConfig().init(constraints, orientation, false);
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
@@ -519,16 +520,32 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                         }));
                       }
 
-                      if (index == 2){
-
+                      if (index == 2) {
                         SizeConfig().init(constraints, orientation, false);
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
                           return Allcountries(myCountryData);
                         }));
                       }
-                        
+                    } 
+                    else {
+                      SizeConfig().init(constraints, orientation, true);
+                      if (index == 0) {
+                        SizeConfig().init(constraints, orientation, false);
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return MenuDashboardPage(
+                            data: myData,
+                            districtData: myDistrictData,
+                            dailyData: myDailyData,
+                            countrydata: myCountryData,
+                            globalData: myGlobalData,
+                            btmcode: 0,
+                          );
+                      
+                        }));
                       }
+                    }
                   }),
             )),
       ),
