@@ -498,22 +498,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     SizeConfig().init(constraints, orientation, isCollapsed);
 
                     if (isCollapsed) {
-                      if (index == 0) {
-                        SizeConfig().init(constraints, orientation, false);
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return MenuDashboardPage(
-                            data: myData,
-                            districtData: myDistrictData,
-                            dailyData: myDailyData,
-                            countrydata: myCountryData,
-                            globalData: myGlobalData,
-                            btmcode: 0,
-                          );
                       
-                        }));
-                      }
-
                       if (index == 1) {
                         SizeConfig().init(constraints, orientation, false);
                         Navigator.of(context)
@@ -535,21 +520,6 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     } 
                     else {
                       SizeConfig().init(constraints, orientation, true);
-                      if (index == 0) {
-                        SizeConfig().init(constraints, orientation, false);
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return MenuDashboardPage(
-                            data: myData,
-                            districtData: myDistrictData,
-                            dailyData: myDailyData,
-                            countrydata: myCountryData,
-                            globalData: myGlobalData,
-                            btmcode: 0,
-                          );
-                      
-                        }));
-                      }
                     }
                   }),
             )),

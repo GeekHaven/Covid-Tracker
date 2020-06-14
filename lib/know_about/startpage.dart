@@ -100,7 +100,7 @@ class StartPage extends StatelessWidget {
                                 image: AssetImage(
                                   "assets/images/bgimage.jpg",
                                 ),
-                                fit: BoxFit.cover,
+                                fit: BoxFit.fill,
                                 alignment: Alignment.centerRight,
                               ),
                             ),
