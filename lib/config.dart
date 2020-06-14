@@ -16,19 +16,13 @@ class SizeConfig {
   static bool isPortrait = true;
   static bool isMobilePortrait = false;
 
-  void init(BoxConstraints constraints, Orientation orientation) {
-    if (orientation == Orientation.portrait) {
+  void init(BoxConstraints constraints, Orientation orientation, bool isCollapsed) {
+    if (isCollapsed == false) {
       _screenWidth = constraints.maxWidth;
       _screenHeight = constraints.maxHeight;
-      isPortrait = true;
-      if (_screenWidth < 450) {
-        isMobilePortrait = true;
-      }
     } else {
-      _screenWidth = constraints.maxHeight;
-      _screenHeight = constraints.maxWidth;
-      isPortrait = false;
-      isMobilePortrait = false;
+      _screenWidth = constraints.maxWidth * 0.75 ;
+      _screenHeight = constraints.maxHeight * 0.75 ;
     }
 
     _blockWidth = _screenWidth / 100;

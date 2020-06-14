@@ -13,11 +13,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  bool isCollapsed = false;
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return OrientationBuilder(builder: (context, orientation) {
-        SizeConfig().init(constraints, orientation);
+        SizeConfig().init(constraints, orientation, false);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'CovidTracker',

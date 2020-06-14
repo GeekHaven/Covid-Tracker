@@ -22,9 +22,9 @@ class Faqpage extends StatelessWidget {
                 child: ExpansionTile( 
                 title:Text(DataSource.questionAnswers[index]["question"],style: TextStyle(fontWeight: FontWeight.bold,fontSize: 1.96 * SizeConfig.textMultiplier),),children: <Widget>[
                Padding( 
-                 padding:const EdgeInsets.all(8.0),
+                 padding: EdgeInsets.all(0.85 * SizeConfig.heightMultiplier),
                  child :Container(
-                   padding: EdgeInsets.all(8),
+                   padding: EdgeInsets.all(0.85 * SizeConfig.heightMultiplier),
                    child: Text(DataSource.questionAnswers[index]["answer"],style: TextStyle(fontSize: 20),)))
               ],),
                 )

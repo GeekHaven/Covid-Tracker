@@ -88,12 +88,15 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
     screenWidth = size.width;
     screenHeight = size.height;
 
-    return Scaffold(
-      body: Stack(children: <Widget>[
-        menu(context),
-        dashboard(context),
-      ]),
-    );
+    return LayoutBuilder(builder: (context, constraints) {
+      return OrientationBuilder(builder: (context, orientation) {
+        return Scaffold(
+            body: Stack(children: <Widget>[
+          menu(context),
+          dashboard(context, orientation, constraints),
+        ]));
+      });
+    });
   }
 
   Widget menu(context) {
@@ -318,7 +321,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
     );
   }
 
-  Widget dashboard(context) {
+  Widget dashboard(context, orientation, constraints) {
     return AnimatedPositioned(
       duration: duration,
       top: 0,
@@ -347,6 +350,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                 child: Icon(Icons.menu, color: kPrimaryColor),
                                 onTap: () {
                                   setState(() {
+                                    SizeConfig().init(constraints, orientation, isCollapsed);
                                     if (isCollapsed)
                                       _controller.forward();
                                     else
