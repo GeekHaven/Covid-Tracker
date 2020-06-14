@@ -18,8 +18,8 @@ class Awarenesscard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Container(
-            child: SvgPicture.asset(
-              'assets/images/doctor.svg',
+            child: Image.asset(
+              'assets/images/doctor.png',
               width: 47.3 * SizeConfig.widthMultiplier,
             ),
           ),

@@ -1,9 +1,11 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:covidtracker/screens/home/indiascreen/statescreen.dart';
 import 'package:covidtracker/config.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtracker/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import './home/indiascreen/showdistrictdata.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class CombinedScreen extends StatefulWidget {
   var myData;
@@ -149,31 +151,40 @@ class _CombinedScreenState extends State<CombinedScreen> {
                           child: (placeholder == "country")
                               ? ListTile(
                                   leading: SizedBox(
-                                    width: 6.86 * SizeConfig.widthMultiplier,
+                                    width: 7 * SizeConfig.widthMultiplier,
                                     child: Image.network(filteredList[index]
                                         ['countryInfo']['flag']),
                                   ),
                                   title: Text(filteredList[index][placeholder],
                                       style: TextStyle(
-                                          fontSize: 1.96 *
+                                          fontSize: 2.18 *
                                               SizeConfig.textMultiplier)),
                                   trailing: SizedBox(
                                     width: 11.44 * SizeConfig.widthMultiplier,
-                                    child: FittedBox(
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: FittedBox(
                                         child: Row(
-                                      children: <Widget>[
-                                        SvgPicture.asset(
-                                            "assets/images/biotech.svg"),
-                                        Text(filteredList[index]
-                                                ["testsPerOneMillion"]
-                                            .toString()),
-                                      ],
-                                    )),
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            SvgPicture.asset(
+                                                "assets/images/biotech.svg" ,width: 3.5*SizeConfig.imageSizeMultiplier,),
+                                            AutoSizeText(
+                                              filteredList[index]
+                                                      ["testsPerOneMillion"]
+                                                  .toString(),
+                                              
+                                                   
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
                                   ))
                               : ListTile(
                                   title: Text(filteredList[index][placeholder],
                                       style: TextStyle(
-                                          fontSize: 1.96 *
+                                          fontSize: 2.18*
                                               SizeConfig.textMultiplier)),
                                 ),
                         ),
