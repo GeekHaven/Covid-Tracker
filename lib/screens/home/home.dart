@@ -515,7 +515,6 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     } 
                     else {
                       SizeConfig().init(constraints, orientation, true);
-                      
                     }
                   }),
             )),
