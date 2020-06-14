@@ -325,6 +325,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
       bottom: 0,
       left: isCollapsed ? 0 : 0.6 * screenWidth,
       right: isCollapsed ? 0 : -0.2 * screenWidth,
+      
       child: ScaleTransition(
         scale: _scaleAnimation,
         child: Material(
@@ -379,7 +380,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     _showchart
                                         ? Row(
                                             children: <Widget>[
-                                              Icon(Icons.av_timer),
+                                              SvgPicture.asset(
+                                                "assets/images/india.svg",
+                                                width: 4.73 *
+                                                    SizeConfig.widthMultiplier,
+                                              ),
                                               Text(
                                                 "  INDIA",
                                                 style: TextStyle(
