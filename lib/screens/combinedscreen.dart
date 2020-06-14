@@ -184,7 +184,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                               : ListTile(
                                   title: Text(filteredList[index][placeholder],
                                       style: TextStyle(
-                                          fontSize: 2.18*
+                                          fontSize: 2.7*
                                               SizeConfig.textMultiplier)),
                                 ),
                         ),
