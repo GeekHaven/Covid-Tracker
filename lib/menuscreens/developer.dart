@@ -3,11 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Developer extends StatefulWidget {
+
+  var constraints;
+  var orientation;
+  var isCollapsed;
+
+  Developer(this.constraints, this.orientation, this.isCollapsed);
   @override
   _DeveloperState createState() => _DeveloperState();
 }
 
 class _DeveloperState extends State<Developer> {
+
+  var constraints;
+  var orientation;
+  var isCollapsed;
+  @override
+  void initState() {
+    constraints = widget.constraints;
+    orientation = widget.orientation;
+    isCollapsed = widget.isCollapsed;
+    super.initState();
+  }
+  
+
   final List<List<String>> products = [
     [
       "assets/images/ravi.jpg",
@@ -58,122 +77,128 @@ class _DeveloperState extends State<Developer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      width: double.infinity,
-      child: Column(
-        children: <Widget>[
-          GestureDetector(
-            onHorizontalDragEnd: (DragEndDetails details) {
-              if (details.velocity.pixelsPerSecond.dx > 0) {
-                _prev();
-              } else if (details.velocity.pixelsPerSecond.dx < 0) {
-                _next();
-              }
-            },
-            child: Expanded(
-              child: Container(
-                height: 54.5 * SizeConfig.heightMultiplier,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(products[currentIndex][0]),
-                        fit: BoxFit.cover)),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Container(
-                          width: 21.27 * SizeConfig.widthMultiplier,
-                          margin: EdgeInsets.only(
-                              bottom: 5.45 * SizeConfig.heightMultiplier),
-                          child: Row(
-                            children: _buildIndicator(),
-                          ))
-                    ]),
-              ),
-            ),
-          ),
-          Expanded(
-            //child: Transform.translate(
-            //offset: Offset(0,-40),
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(3.27 * SizeConfig.heightMultiplier),
-              decoration: BoxDecoration(
-                color: Colors.grey[350],
-              ),
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(products[currentIndex][1],
-                        style: TextStyle(
-                          fontSize: 3.27 * SizeConfig.heightMultiplier,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontStyle: FontStyle.normal,
-                        )),
-                    SizedBox(
-                      height: 0.76 * SizeConfig.heightMultiplier,
-                    ),
-                    Text(products[currentIndex][5]),
-                    SizedBox(
-                      height: 1.8 * SizeConfig.heightMultiplier,
-                    ),
-                    FlatButton(
-                      padding:
-                          EdgeInsets.all(0.55 * SizeConfig.heightMultiplier),
-                      child: Row(
-                        children: <Widget>[
-                          Image.asset(
-                            "assets/images/linkedinicon2.jpg",
-                            width: 7.1 * SizeConfig.widthMultiplier,
-                            height: 3.5 * SizeConfig.heightMultiplier,
-                          ),
-                          Text(
-                            "  Linkedin",
-                            style: TextStyle(
-                                fontSize: 2.39 * SizeConfig.textMultiplier,
-                                fontWeight: FontWeight.w400),
-                          ),
-                        ],
-                      ),
-                      onPressed: () {
-                        launch(products[currentIndex][2]);
-                      },
-                    ),
-                    SizedBox(
-                      height: 1.2 * SizeConfig.heightMultiplier,
-                    ),
-                    FlatButton(
-                      padding:
-                          EdgeInsets.all(0.55 * SizeConfig.heightMultiplier),
-                      child: Row(
-                        children: <Widget>[
-                          Image.asset(
-                            "assets/images/twittericon.png",
-                            width: 7.1 * SizeConfig.widthMultiplier,
-                            height: 3.5 * SizeConfig.heightMultiplier,
-                          ),
-                          Text(
-                            "  Twitter",
-                            style: TextStyle(
-                                fontSize: 2.39 * SizeConfig.textMultiplier,
-                                fontWeight: FontWeight.w400),
-                          ),
-                        ],
-                      ),
-                      onPressed: () {
-                        launch(products[currentIndex][3]);
-                      },
-                    )
-                  ],
+      body: WillPopScope(
+        onWillPop: (){
+          SizeConfig().init(constraints, orientation, !isCollapsed);
+          Navigator.pop(context);
+        },
+        child: Container(
+        width: double.infinity,
+        child: Column(
+          children: <Widget>[
+            GestureDetector(
+              onHorizontalDragEnd: (DragEndDetails details) {
+                if (details.velocity.pixelsPerSecond.dx > 0) {
+                  _prev();
+                } else if (details.velocity.pixelsPerSecond.dx < 0) {
+                  _next();
+                }
+              },
+              child: Expanded(
+                child: Container(
+                  height: 54.5 * SizeConfig.heightMultiplier,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage(products[currentIndex][0]),
+                          fit: BoxFit.cover)),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Container(
+                            width: 21.27 * SizeConfig.widthMultiplier,
+                            margin: EdgeInsets.only(
+                                bottom: 5.45 * SizeConfig.heightMultiplier),
+                            child: Row(
+                              children: _buildIndicator(),
+                            ))
+                      ]),
                 ),
               ),
             ),
-          )
-        ],
-      ),
-    ));
+            Expanded(
+              //child: Transform.translate(
+              //offset: Offset(0,-40),
+              child: Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(3.27 * SizeConfig.heightMultiplier),
+                decoration: BoxDecoration(
+                  color: Colors.grey[350],
+                ),
+                child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(products[currentIndex][1],
+                          style: TextStyle(
+                            fontSize: 3.27 * SizeConfig.heightMultiplier,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontStyle: FontStyle.normal,
+                          )),
+                      SizedBox(
+                        height: 0.76 * SizeConfig.heightMultiplier,
+                      ),
+                      Text(products[currentIndex][5]),
+                      SizedBox(
+                        height: 1.8 * SizeConfig.heightMultiplier,
+                      ),
+                      FlatButton(
+                        padding:
+                            EdgeInsets.all(0.55 * SizeConfig.heightMultiplier),
+                        child: Row(
+                          children: <Widget>[
+                            Image.asset(
+                              "assets/images/linkedinicon2.jpg",
+                              width: 7.1 * SizeConfig.widthMultiplier,
+                              height: 3.5 * SizeConfig.heightMultiplier,
+                            ),
+                            Text(
+                              "  Linkedin",
+                              style: TextStyle(
+                                  fontSize: 2.39 * SizeConfig.textMultiplier,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                        onPressed: () {
+                          launch(products[currentIndex][2]);
+                        },
+                      ),
+                      SizedBox(
+                        height: 1.2 * SizeConfig.heightMultiplier,
+                      ),
+                      FlatButton(
+                        padding:
+                            EdgeInsets.all(0.55 * SizeConfig.heightMultiplier),
+                        child: Row(
+                          children: <Widget>[
+                            Image.asset(
+                              "assets/images/twittericon.png",
+                              width: 7.1 * SizeConfig.widthMultiplier,
+                              height: 3.5 * SizeConfig.heightMultiplier,
+                            ),
+                            Text(
+                              "  Twitter",
+                              style: TextStyle(
+                                  fontSize: 2.39 * SizeConfig.textMultiplier,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                        onPressed: () {
+                          launch(products[currentIndex][3]);
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+    ),
+      ));
   }
 
   Widget _indicator(bool isActive) {

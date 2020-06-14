@@ -92,14 +92,14 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
       return OrientationBuilder(builder: (context, orientation) {
         return Scaffold(
             body: Stack(children: <Widget>[
-          menu(context),
+          menu(context, orientation, constraints),
           dashboard(context, orientation, constraints),
         ]));
       });
     });
   }
 
-  Widget menu(context) {
+  Widget menu(context, orientation, constraints) {
     return SlideTransition(
       position: _slideAnimation,
       child: ScaleTransition(
@@ -183,6 +183,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     ],
                                   ),
                                   onPressed: () {
+                                    SizeConfig().init(constraints, orientation, isCollapsed);
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
@@ -218,16 +219,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     ],
                                   ),
                                   onPressed: () {
+                                    SizeConfig().init(constraints, orientation, isCollapsed);
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return DeepDivePage(
-                                            data: myData,
-                                            districtData: myDistrictData,
-                                            dailyData: myDailyData,
-                                            countrydata: myCountryData,
-                                            globalData: myGlobalData,
-                                          );
+                                          return DeepDivePage(constraints, orientation, false);
                                         },
                                       ),
                                     );
@@ -253,10 +249,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     ],
                                   ),
                                   onPressed: () {
+                                    SizeConfig().init(constraints, orientation, isCollapsed);
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return Faqpage();
+                                          return Faqpage(constraints, orientation, false);
                                         },
                                       ),
                                     );
@@ -304,10 +301,11 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                     ],
                                   ),
                                   onPressed: () {
+                                    SizeConfig().init(constraints, orientation, isCollapsed);
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return Developer();
+                                          return Developer(constraints, orientation, false);
                                         },
                                       ),
                                     );
@@ -489,7 +487,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                   setState(() {
                     _selectedPageIndex = index;
                   });
-
+                  SizeConfig().init(constraints, orientation, isCollapsed);
                   if (index == 0) {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) {
