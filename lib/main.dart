@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kBackgroundColor,
-        primarySwatch: Colors.blue,
+        primarySwatch: kPrimaryColor,
         textTheme: Theme.of(context).textTheme.apply(displayColor: kTextColor),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),

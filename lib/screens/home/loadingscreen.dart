@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../home/home.dart';
 
-
 class LoadingScreen extends StatefulWidget {
   @override
   _LoadingScreenState createState() => _LoadingScreenState();
@@ -81,13 +80,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
                         Text(
                           "Go ",
                           style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold,
+                              fontSize: 21, fontWeight: FontWeight.bold,
                               color: Colors.green[700]),
                         ),
                         Text(
                           "Corona",
                           style: TextStyle(
-                              fontSize: 17,
+                              fontSize: 21,
                               fontWeight: FontWeight.bold,
                               color: Colors.white),
                         ),
