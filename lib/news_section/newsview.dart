@@ -4,6 +4,7 @@ import './news_widget.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import './newsdata.dart';
 import 'package:covidtracker/config.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class NewsView extends StatefulWidget {
   var code;
@@ -92,21 +93,45 @@ class _NewsViewState extends State<NewsView> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             _showchart
-                                ? Text(
-                                    "  INDIA",
-                                    style: TextStyle(
-                                        fontSize:
-                                            2.61 * SizeConfig.heightMultiplier,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                : Text(
-                                    '  GLOBAL',
-                                    style: TextStyle(
-                                        fontSize:
-                                            2.61 * SizeConfig.heightMultiplier,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                            SizedBox(width: 25 * SizeConfig.widthMultiplier),
+                                        ? Container(
+                                         //padding: EdgeInsets.symmetric(horizontal: 30),
+                                          child: Row(
+                                            
+                                              children: <Widget>[
+                                                SvgPicture.asset(
+                                                  "assets/images/india.svg",
+                                                  width: 4.73 *
+                                                      SizeConfig.widthMultiplier,
+                                                ),
+                                                Text(
+                                                  "  INDIA",
+                                                  style: TextStyle(
+                                                      fontSize: 2.62 *
+                                                          SizeConfig
+                                                              .textMultiplier,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ],
+                                            ),
+                                        )
+                                        : Row(
+                                            children: <Widget>[
+                                              Icon(Icons.public),
+                                              Text(
+                                                '  GLOBAL',
+                                                style: TextStyle(
+                                                    fontSize: 2.62 *
+                                                        SizeConfig
+                                                            .textMultiplier,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                    SizedBox(
+                                      width: 25 * SizeConfig.widthMultiplier,
+                                    ),
                             Switch.adaptive(
                                 activeColor: kPrimaryColor,
                                 inactiveTrackColor: Colors.green[200],
