@@ -54,7 +54,7 @@ class Awarenesscard extends StatelessWidget {
                 textColor: Colors.green[700],
                 padding: EdgeInsets.only(
                     top: 2.1 * SizeConfig.heightMultiplier,
-                    left: 5.1 * SizeConfig.widthMultiplier,),
+                    left: 4 * SizeConfig.widthMultiplier,),
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
@@ -66,11 +66,11 @@ class Awarenesscard extends StatelessWidget {
                     elevation: 5,
                     child: Container(
                       padding:
-                          EdgeInsets.all(0.45 * SizeConfig.heightMultiplier),
+                          EdgeInsets.all(0.65 * SizeConfig.heightMultiplier),
                       child: Row(
                         children: <Widget>[
                           Text(
-                            "  Learn More",
+                            "  Learn More ",
                             style: TextStyle(
                                 fontSize: 2 * SizeConfig.textMultiplier,
                                 fontWeight: FontWeight.bold),
