@@ -354,8 +354,8 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                           children: <Widget>[
                             InkWell(
                                 child: SizedBox(
-                                  width: 5*SizeConfig.widthMultiplier,
-                                  height: 3*SizeConfig.heightMultiplier,
+                                  width: 10*SizeConfig.widthMultiplier,
+                                  height: 6*SizeConfig.heightMultiplier,
                                   child: Icon(Icons.menu, color: kPrimaryColor)),
                                 onTap: () {
                                   setState(() {
