@@ -4,12 +4,15 @@ import 'package:flutter/rendering.dart';
 import './home_widgets/awarness.dart';
 import './home_widgets/infoCardset.dart';
 import './home_widgets/newsscreen.dart';
-import './home_widgets/bottom.dart';
 import 'package:covidtracker/menuscreens/deepdivescreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:covidtracker/menuscreens/developer.dart';
 import 'package:covidtracker/menuscreens/faq.dart';
 import 'package:covidtracker/constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:covidtracker/screens/home/world_screen/Allcountries.dart';
+import 'package:covidtracker/screens/home/indiascreen/allstates.dart';
+
     
 class MenuDashboardPage extends StatefulWidget {
   final data;
@@ -17,13 +20,15 @@ class MenuDashboardPage extends StatefulWidget {
   final dailyData;
   final countrydata;
   final globalData;
+  int btmcode;
 
   MenuDashboardPage(
       {this.data,
       this.districtData,
       this.dailyData,
       this.countrydata,
-      this.globalData});
+      this.globalData,
+      this.btmcode});
   @override
   _MenuDashboardPageState createState() => _MenuDashboardPageState();
 }
@@ -35,6 +40,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
   var myDailyData;
   var myCountryData;
   var myGlobalData;
+  int _selectedPageIndex ;
   bool status = false;
   int count = 0;
 
@@ -45,6 +51,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
       myDailyData = dailyData;
       myCountryData = countrydata;
       myGlobalData = globalData;
+      _selectedPageIndex =widget.btmcode;
     });
   }
 
@@ -433,12 +440,52 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                 ),
               ),
             ),
-            bottomNavigationBar: BottomBar(
+            bottomNavigationBar: BottomNavigationBar(
+      backgroundColor: Colors.green[700],
+      unselectedFontSize: 1.4 * SizeConfig.textMultiplier,
+      selectedFontSize: 1.8 * SizeConfig.textMultiplier,
+      selectedItemColor: Colors.white,
+      currentIndex: widget.btmcode,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: Text("Home"),
+        ),
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            "assets/images/india.svg",
+            width: 4.73 * SizeConfig.widthMultiplier,
+          ),
+          title: Text(
+            "India",
+            style: TextStyle(fontSize: 2.3 * SizeConfig.textMultiplier),
+          ),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.public),
+          title: Text("Global"),
+        )
+      ],
+      onTap: (index) {
+        setState(() {
+          _selectedPageIndex = index;
+        });
+
+        if (index == 1) {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return Allstates(
                 myData: myData,
                 myDistrictData: myDistrictData,
-                myDailydata: myDailyData,
-                myCountryData: myCountryData),
-          ),
+                myDailydata: myDailyData);
+          }));
+        }
+
+        if (index == 2)
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return Allcountries(myCountryData);
+          }));
+      },
+    ),)
         ),
       ),
     );

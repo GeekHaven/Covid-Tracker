@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:covidtracker/screens/home/home.dart';
 import 'package:covidtracker/screens/home/indiascreen/statescreen.dart';
 import 'package:covidtracker/config.dart';
 import 'package:flutter/material.dart';
@@ -14,12 +15,15 @@ class CombinedScreen extends StatefulWidget {
   var myCountryData;
   var datalist;
   var text;
+  var globalData;
   CombinedScreen(
       {this.myData,
       this.myDistrictData,
       this.myDailydata,
       this.datalist,
-      this.text});
+      this.text,
+      this.globalData,
+      this.myCountryData});
 
   @override
   _CombinedScreenState createState() => _CombinedScreenState();
@@ -38,6 +42,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
   var myDistrictData;
   var myDailydata;
   var myCountryData;
+  var myGlobalData;
 
   @override
   void initState() {
@@ -47,6 +52,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
       myDistrictData = widget.myDistrictData;
       myCountryData = widget.myCountryData;
       placeholder = widget.text;
+      myGlobalData=widget.globalData;
       list_wise = filteredList = widget.datalist;
     });
     super.initState();
@@ -63,6 +69,12 @@ class _CombinedScreenState extends State<CombinedScreen> {
 
   @override
   Widget build(BuildContext context) {
+     Route route = MaterialPageRoute(builder: (context) => MenuDashboardPage( data: myData,
+          districtData: myDistrictData,
+          dailyData: myDailydata,
+          countrydata: myCountryData,
+          globalData: myGlobalData,
+          btmcode:0));
     return Scaffold(
         appBar: AppBar(
           title: !isSearching
@@ -157,7 +169,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                                   ),
                                   title: Text(filteredList[index][placeholder],
                                       style: TextStyle(
-                                          fontSize: 2.18 *
+                                          fontSize: 2.35 *
                                               SizeConfig.textMultiplier)),
                                   trailing: SizedBox(
                                     width: 11.44 * SizeConfig.widthMultiplier,

@@ -56,7 +56,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
           districtData: districtData,
           dailyData: dailydata,
           countrydata: countrydata,
-          globalData: globalData);
+          globalData: globalData,
+          btmcode:0);
     }));
   }
 
