@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../world_screen/Allcountries.dart';
 import '../indiascreen/allstates.dart';
+import 'package:covidtracker/config.dart';
 
 class BottomBar extends StatefulWidget {
   var myData;
@@ -35,8 +36,8 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       backgroundColor: Colors.green[700],
-      unselectedFontSize: 15,
-      selectedFontSize: 20,
+      unselectedFontSize: 1.5 * SizeConfig.textMultiplier,
+      selectedFontSize: 2 * SizeConfig.textMultiplier,
       selectedItemColor: Colors.white,
       currentIndex: _selectedPageIndex,
       items: [
@@ -47,9 +48,12 @@ class _BottomBarState extends State<BottomBar> {
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
             "assets/images/india.svg",
-            width: 20,
+            width: 4.73 * SizeConfig.widthMultiplier,
           ),
-          title: Text("India"),
+          title: Text(
+            "India",
+            style: TextStyle(fontSize: 2.3 * SizeConfig.textMultiplier),
+          ),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.public),
