@@ -1,3 +1,4 @@
+import 'package:covidtracker/config.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -57,7 +58,7 @@ class _DeveloperState extends State<Developer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+        body: Container(
       width: double.infinity,
       child: Column(
         children: <Widget>[
@@ -71,7 +72,6 @@ class _DeveloperState extends State<Developer> {
             },
             child: Expanded(
               child: Container(
-                height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.6,
                 width: double.infinity,
                 decoration: BoxDecoration(
                     image: DecorationImage(
@@ -81,8 +81,9 @@ class _DeveloperState extends State<Developer> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       Container(
-                          width: 90,
-                          margin: EdgeInsets.only(bottom: 50),
+                          width: 21.27 * SizeConfig.widthMultiplier,
+                          margin: EdgeInsets.only(
+                              bottom: 5.45 * SizeConfig.heightMultiplier),
                           child: Row(
                             children: _buildIndicator(),
                           ))
@@ -95,42 +96,43 @@ class _DeveloperState extends State<Developer> {
             //offset: Offset(0,-40),
             child: Container(
               width: double.infinity,
-              padding: EdgeInsets.all(30),
+              padding: EdgeInsets.all(3.27 * SizeConfig.heightMultiplier),
               decoration: BoxDecoration(
                 color: Colors.grey[350],
-                //borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30))
               ),
               child: Container(
-                height:  ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.6,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(products[currentIndex][1],
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 3.27 * SizeConfig.heightMultiplier,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
                           fontStyle: FontStyle.normal,
                         )),
                     SizedBox(
-                      height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.008,
+                      height: 0.76 * SizeConfig.heightMultiplier,
                     ),
                     Text(products[currentIndex][5]),
                     SizedBox(
-                      height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.015,
+                      height: 1.6 * SizeConfig.heightMultiplier,
                     ),
                     FlatButton(
-                      padding: EdgeInsets.all(5),
+                      padding:
+                          EdgeInsets.all(0.55 * SizeConfig.heightMultiplier),
                       child: Row(
                         children: <Widget>[
                           Image.asset(
                             "assets/images/linkedinicon2.jpg",
-                            width: 30,
-                            height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.035,
+                            width: 7.1 * SizeConfig.widthMultiplier,
+                            height: 3.5 * SizeConfig.heightMultiplier,
                           ),
                           Text(
                             "  Linkedin",
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+                            style: TextStyle(
+                                fontSize: 2.39 * SizeConfig.textMultiplier,
+                                fontWeight: FontWeight.w400),
                           ),
                         ],
                       ),
@@ -139,20 +141,23 @@ class _DeveloperState extends State<Developer> {
                       },
                     ),
                     SizedBox(
-                      height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.012,
+                      height: 1.2 * SizeConfig.heightMultiplier,
                     ),
                     FlatButton(
-                      padding: EdgeInsets.all(5),
+                      padding:
+                          EdgeInsets.all(0.55 * SizeConfig.heightMultiplier),
                       child: Row(
                         children: <Widget>[
                           Image.asset(
                             "assets/images/twittericon.png",
-                            width: 30,
-                            height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.035,
+                            width: 3.27 * SizeConfig.widthMultiplier,
+                            height: 3.5 * SizeConfig.heightMultiplier,
                           ),
                           Text(
                             "  Twitter",
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+                            style: TextStyle(
+                                fontSize: 2.39 * SizeConfig.textMultiplier,
+                                fontWeight: FontWeight.w400),
                           ),
                         ],
                       ),
@@ -174,12 +179,12 @@ class _DeveloperState extends State<Developer> {
   Widget _indicator(bool isActive) {
     return Expanded(
         child: Container(
-            height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.005,
-            margin: EdgeInsets.only(right: 5),
+            height: 0.5 * SizeConfig.heightMultiplier,
+            margin: EdgeInsets.only(right: 1.18 * SizeConfig.widthMultiplier),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
+                borderRadius: BorderRadius.circular(5.45 * SizeConfig.heightMultiplier),
                 color: isActive ? Colors.white : Colors.grey)));
-    }
+  }
 
   List<Widget> _buildIndicator() {
     List<Widget> indicators = [];

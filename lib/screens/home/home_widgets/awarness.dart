@@ -54,6 +54,7 @@ class Awarenesscard extends StatelessWidget {
                   textColor: Colors.green[700],
                   padding: EdgeInsets.only(top: 10, left: 30),
                   onPressed: () {
+                    
                     Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return StartPage();
