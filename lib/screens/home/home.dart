@@ -453,7 +453,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                       ),
                       Expanded(
                         flex: 4,
-                        child: NewsScreen(false),
+                        child: NewsScreen(!isCollapsed),
                       ),
                     ],
                   ),
