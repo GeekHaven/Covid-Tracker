@@ -325,7 +325,10 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
           child: Scaffold(
             body: SafeArea(
               child: Container(
-                margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
+                margin: EdgeInsets.only(
+                    left: 2.36 * SizeConfig.widthMultiplier,
+                    right: 2.36 * SizeConfig.widthMultiplier,
+                    top: 1.1 * SizeConfig.heightMultiplier),
                 child: Column(
                   children: <Widget>[
                     Expanded(
@@ -364,24 +367,23 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                       ? Text(
                                           "  INDIA",
                                           style: TextStyle(
-                                              fontSize: 24,
+                                              fontSize: 2.62 *
+                                                  SizeConfig.textMultiplier,
                                               fontWeight: FontWeight.bold),
                                         )
                                       : Text(
                                           '  GLOBAL',
                                           style: TextStyle(
-                                              fontSize: 24,
+                                              fontSize: 2.62 *
+                                                  SizeConfig.textMultiplier,
                                               fontWeight: FontWeight.bold),
                                         ),
                                   SizedBox(
-                                      width: MediaQuery.of(context).size.width *
-                                          0.25),
+                                    width: 25 * SizeConfig.widthMultiplier,
+                                  ),
                                   Switch.adaptive(
                                       activeColor: kPrimaryColor,
-                                      inactiveTrackColor: Colors.green[200],
-                                      // inactiveThumbColor: Colors.green[200],
                                       value: _showchart,
-                                      //activeColor: Colors.green[700],
                                       onChanged: (val) {
                                         setState(() {
                                           _showchart = val;
@@ -407,17 +409,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                   worldData: myGlobalData,
                                   code: 4,
                                 )),
-                        )
-                        //
-                        ),
-                    //: Expanded(
-                    //   flex: 5,
-                    //   child: Center(
-                    //       child: Infoset(
-                    //     worldData: myGlobalData,
-                    //     code: 1,
-                    //   )),
-                    // ),
+                        )),
                     Expanded(
                       flex: 4,
                       child: Awarenesscard(),

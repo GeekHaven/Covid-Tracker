@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:covidtracker/config.dart';
 
 class Infocard extends StatelessWidget {
   final String title;
@@ -27,36 +28,28 @@ class Infocard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.5,
+      width: 50 * SizeConfig.widthMultiplier,
       child: GestureDetector(
         child: Container(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(left: 10, top: 5),
+                padding: EdgeInsets.only(
+                    left: 2.36 * SizeConfig.widthMultiplier,
+                    top: 0.55 * SizeConfig.heightMultiplier),
                 child: Column(
                   children: <Widget>[
-                    SvgPicture.asset(
-                      'assets/images/$iconcolor.svg',
-                      fit: BoxFit.contain,
-                      height: (MediaQuery.of(context).size.height -
-                              MediaQuery.of(context).padding.top) *
-                          0.04,
-                    ),
+                    SvgPicture.asset('assets/images/$iconcolor.svg',
+                        fit: BoxFit.contain,
+                        height: (4 * SizeConfig.heightMultiplier)),
                     SizedBox(
-                      height: (MediaQuery.of(context).size.height -
-                              MediaQuery.of(context).padding.top) *
-                          0.002,
+                      height: (2 * SizeConfig.heightMultiplier),
                     )
                   ],
                 ),
               ),
-              SizedBox(
-                width: (MediaQuery.of(context).size.width -
-                        MediaQuery.of(context).padding.top) *
-                    0.03,
-              ),
+              SizedBox(width: (3 * SizeConfig.widthMultiplier)),
               FittedBox(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -67,45 +60,44 @@ class Infocard extends StatelessWidget {
                         title,
                         style: TextStyle(
                             fontFamily: 'Lato',
-                            fontSize: 15,
+                            fontSize: 1.64 * SizeConfig.textMultiplier,
                             fontWeight: FontWeight.bold,
                             color: color),
                       ),
                     ),
-                    SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.007),
+                    SizedBox(height: 0.7 * SizeConfig.heightMultiplier),
                     FittedBox(
                       child: AutoSizeText(
                         effectedNum,
                         style: TextStyle(
                             fontFamily: 'Lato',
-                            fontSize: 18,
+                            fontSize: 1.96 * SizeConfig.textMultiplier,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
                     ),
                     SizedBox(
-                        height: (MediaQuery.of(context).size.height -
-                                MediaQuery.of(context).padding.top) *
-                            0.003),
+                      height: (0.3 * SizeConfig.heightMultiplier),
+                    ),
                     Row(
                       children: <Widget>[
-                        
-                        (color!=Colors.yellow)?AutoSizeText(
-                          "[+$increase]",
-                          style: TextStyle(
-                              fontFamily: 'Lato',
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: color),
-                        ):AutoSizeText(
-                          "",
-                          style: TextStyle(
-                              fontFamily: 'Lato',
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                              color: color),
-                        ),
+                        (color != Colors.yellow)
+                            ? AutoSizeText(
+                                "[+$increase]",
+                                style: TextStyle(
+                                    fontFamily: 'Lato',
+                                    fontSize: 1.1 * SizeConfig.textMultiplier,
+                                    fontWeight: FontWeight.bold,
+                                    color: color),
+                              )
+                            : AutoSizeText(
+                                "",
+                                style: TextStyle(
+                                    fontFamily: 'Lato',
+                                    fontSize: 1.1 * SizeConfig.textMultiplier,
+                                    fontWeight: FontWeight.bold,
+                                    color: color),
+                              ),
                       ],
                     ),
                   ],
@@ -115,7 +107,9 @@ class Infocard extends StatelessWidget {
           ),
         ),
         onTap: () {
-          title != 'Active Cases'? chartData(stringplace, color.withOpacity(0.7)) : activeChartData(color.withOpacity(0.7));
+          title != 'Active Cases'
+              ? chartData(stringplace, color.withOpacity(0.7))
+              : activeChartData(color.withOpacity(0.7));
         },
       ),
     );

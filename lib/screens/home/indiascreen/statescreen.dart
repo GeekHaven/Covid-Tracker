@@ -3,6 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import '../indiascreen/chart.dart';
 import '../indiascreen/showdistrictdata.dart';
 import '../home_widgets/infoCardset.dart';
+import 'package:covidtracker/config.dart';
 
 class StateScreen extends StatefulWidget {
   var data;
@@ -80,7 +81,6 @@ class _StateScreenState extends State<StateScreen> {
       colors.add(color);
       int i = 0;
       for (items in myDailyData['states_daily']) {
-        //print(i);
         if (myDailyData['states_daily'][i]['status'] == detail) {
           double first = i.toDouble();
           double second;
@@ -93,8 +93,6 @@ class _StateScreenState extends State<StateScreen> {
         }
         i++;
       }
-      //print(i);
-
       while (spots.length > 31) {
         spots.removeAt(0);
       }
@@ -134,7 +132,6 @@ class _StateScreenState extends State<StateScreen> {
       while (spots.length > 31) {
         spots.removeAt(0);
       }
-      //print(spots[0]);
     });
   }
 
@@ -152,26 +149,25 @@ class _StateScreenState extends State<StateScreen> {
         districtsList.add(
           GestureDetector(
             child: Container(
-              //width: 19,
-              margin: EdgeInsets.only(top: 20),
+              margin: EdgeInsets.only(top: 2.2 * SizeConfig.heightMultiplier),
               alignment: Alignment.center,
               color: index % 2 == 1 ? Colors.white : Colors.grey[100],
               child: Center(
                 child: Column(
                   children: <Widget>[
-                    SizedBox(height: 10),
+                    SizedBox(height: 1 * SizeConfig.heightMultiplier),
                     FittedBox(
                       child: Text(
                         filteredData[index]['district'].toString(),
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: 'Lato',
-                          fontSize: 18,
-                          letterSpacing: .5,
+                          fontSize: 1.96 * SizeConfig.textMultiplier,
+                          letterSpacing: 0.16 * SizeConfig.widthMultiplier,
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 1.1 * SizeConfig.heightMultiplier),
                   ],
                 ),
               ),
@@ -201,47 +197,50 @@ class _StateScreenState extends State<StateScreen> {
       ),
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.fromLTRB(10, 35, 10, 25),
+          margin: EdgeInsets.fromLTRB(
+              2.36 * SizeConfig.widthMultiplier,
+              3.81 * SizeConfig.heightMultiplier,
+              2.36 * SizeConfig.widthMultiplier,
+              2.72 * SizeConfig.heightMultiplier),
           child: ListView(children: <Widget>[
             Center(
                 child: Infoset(
-                    countryData: myData['statewise'][myIndex],
-                    code: 2,
-                    chartData: chartData,
-                    activeChartData: activeChartData,
-                    )),
-            SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.02),
+              countryData: myData['statewise'][myIndex],
+              code: 2,
+              chartData: chartData,
+              activeChartData: activeChartData,
+            )),
+            SizedBox(height: 2 * SizeConfig.heightMultiplier),
             Text(
               "Last updated on $asofDate ",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: 'Lato',
-                color: Colors.purple,
-                fontSize: 15,
+                color: Colors.black,
+                fontSize: 1.8 * SizeConfig.textMultiplier,
               ),
             ),
-            SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.02),
+            SizedBox(height: 2 * SizeConfig.heightMultiplier),
             Chart(mySpots: spots, chartColor: colors),
-            SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.02),
+            SizedBox(height: 2 * SizeConfig.heightMultiplier),
             Text(
               "*Last 31 days",
               textAlign: TextAlign.right,
               style: TextStyle(
                 fontFamily: 'Lato',
-                color: Colors.purple,
-                fontSize: 15,
+                color: Colors.black,
+                fontSize: 1.8 * SizeConfig.heightMultiplier,
               ),
             ),
-            SizedBox(height: ( MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top ) * 0.03),
+            SizedBox(height: 3 * SizeConfig.textMultiplier),
             ExpansionTile(
               title: Text(
                 'Districts',
                 style: TextStyle(
                   fontFamily: 'Lato',
-                  fontSize: 25,
+                  fontSize: 2.72 * SizeConfig.textMultiplier,
                   fontWeight: FontWeight.bold,
-                  //color: Colors.white70,
-                  letterSpacing: .5,
+                  letterSpacing: 0.16 * SizeConfig.heightMultiplier,
                 ),
               ),
               initiallyExpanded: false,
