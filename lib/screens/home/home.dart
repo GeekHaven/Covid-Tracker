@@ -510,7 +510,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                       }));
                     }
 
-                    if (!isCollapsed) {
+                    if (isCollapsed) {
 
                       if (index == 1) {
                         Navigator.of(context)
