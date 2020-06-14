@@ -165,7 +165,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                                       children: <Widget>[
                                         SvgPicture.asset(
                                             "assets/images/biotech.svg"),
-                                        Text(filteredList[index]["tests"]
+                                        Text(filteredList[index]["testsPerOneMillion"]
                                             .toString()),
                                       ],
                                     )),
@@ -181,7 +181,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                     child: FittedBox(
                     child: Column(
                       children: <Widget>[
-                        Image.asset("assets/images/no_results.png"),
+                        SvgPicture.asset("assets/images/error"),
                         SizedBox(
                             height: (MediaQuery.of(context).size.height -
                                     MediaQuery.of(context).padding.top) *

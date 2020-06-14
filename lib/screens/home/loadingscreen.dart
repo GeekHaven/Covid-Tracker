@@ -73,6 +73,31 @@ class _LoadingScreenState extends State<LoadingScreen> {
                 child: Column(
                   children: <Widget>[
                     SvgPicture.asset("assets/images/gocorona.svg",width: 200,),
+<<<<<<< HEAD
+=======
+                    SizedBox(height: 30,),
+                    Container(
+                    padding: EdgeInsets.all(8),
+                    child: Row(
+                      children: <Widget>[
+                        Text(
+                          "Go ",
+                          style: TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold,
+                              color: Colors.green[700]),
+                        ),
+                        Text(
+                          "Corona",
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                    
+>>>>>>> 39f252153319f6e8852188fbe6673361a889c9fe
                   ],
                 )
               )
