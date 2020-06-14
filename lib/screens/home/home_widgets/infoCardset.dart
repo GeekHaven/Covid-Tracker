@@ -107,7 +107,8 @@ class _InfosetState extends State<Infoset> {
         child: (code != 2)
             ? GridView(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisSpacing: 1.2 * SizeConfig.widthMultiplier,
+                    mainAxisSpacing: 1.8* SizeConfig.heightMultiplier,
+                    crossAxisSpacing: 7* SizeConfig.widthMultiplier,
                     crossAxisCount: 2,
                     childAspectRatio: 200/82),
                 children: <Widget>[
@@ -119,7 +120,7 @@ class _InfosetState extends State<Infoset> {
                     increase: infoCardData[1],
                   ),
                   Infocard(
-                    title: 'Deaths',
+                    title: 'Total Deaths',
                     effectedNum: infoCardData[4],
                     color: Colors.red,
                     iconcolor: "red",
