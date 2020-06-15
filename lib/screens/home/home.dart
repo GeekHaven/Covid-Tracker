@@ -145,7 +145,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     style: TextStyle(
                         fontSize: (MediaQuery.of(context).size.height -
                                 MediaQuery.of(context).padding.top) *
-                            0.0165,
+                            0.018,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
@@ -263,7 +263,7 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                                               MediaQuery.of(context)
                                                   .padding
                                                   .top) *
-                                          0.0025),
+                                          0.003),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.start,

@@ -212,7 +212,7 @@ class _CombinedScreenState extends State<CombinedScreen> {
                           "No Results Found ",
                           style: TextStyle(
                               color: kPrimaryColor,
-                              fontSize: 6 * SizeConfig.textMultiplier,
+                              fontSize: 15 * SizeConfig.textMultiplier,
                               fontWeight: FontWeight.bold),
                         ),
                       ],

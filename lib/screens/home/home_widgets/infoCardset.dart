@@ -107,8 +107,8 @@ class _InfosetState extends State<Infoset> {
         child: (code != 2)
             ? GridView(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisSpacing: 1.8* SizeConfig.heightMultiplier,
-                    crossAxisSpacing: 7* SizeConfig.widthMultiplier,
+                    mainAxisSpacing: 1 * SizeConfig.heightMultiplier,
+                    crossAxisSpacing: 1 * SizeConfig.widthMultiplier,
                     crossAxisCount: 2,
                     childAspectRatio: 200/82),
                 children: <Widget>[
@@ -120,11 +120,12 @@ class _InfosetState extends State<Infoset> {
                     increase: infoCardData[1],
                   ),
                   Infocard(
-                    title: 'Total Deaths',
-                    effectedNum: infoCardData[4],
-                    color: Colors.red,
-                    iconcolor: "red",
-                    increase: infoCardData[5],
+                    title: 'Active Cases',
+                    effectedNum: infoCardData[2],
+                    increase: '',
+                    color: Colors.yellow,
+                    iconcolor: "yellow",
+                    activeChartData: activeChartData,
                   ),
                   Infocard(
                     title: 'Recovered',
@@ -134,12 +135,11 @@ class _InfosetState extends State<Infoset> {
                     increase: infoCardData[7],
                   ),
                   Infocard(
-                    title: 'Active Cases',
-                    effectedNum: infoCardData[2],
-                    increase: '',
-                    color: Colors.yellow,
-                    iconcolor: "yellow",
-                    activeChartData: activeChartData,
+                    title: 'Total Deaths',
+                    effectedNum: infoCardData[4],
+                    color: Colors.red,
+                    iconcolor: "red",
+                    increase: infoCardData[5],
                   ),
                 ],
               )
@@ -169,15 +169,6 @@ class _InfosetState extends State<Infoset> {
                     activeChartData: activeChartData,
                   ),
                   Infocard(
-                    title: 'Deaths',
-                    effectedNum: infoCardData[4],
-                    color: Colors.red,
-                    iconcolor: "red",
-                    increase: infoCardData[5],
-                    chartData: chartData,
-                    stringplace: "Deceased",
-                  ),
-                  Infocard(
                     title: 'Recovered',
                     effectedNum: infoCardData[6],
                     color: Colors.green,
@@ -185,6 +176,15 @@ class _InfosetState extends State<Infoset> {
                     increase: infoCardData[7],
                     chartData: chartData,
                     stringplace: 'Recovered',
+                  ),
+                  Infocard(
+                    title: 'Deaths',
+                    effectedNum: infoCardData[4],
+                    color: Colors.red,
+                    iconcolor: "red",
+                    increase: infoCardData[5],
+                    chartData: chartData,
+                    stringplace: "Deceased",
                   ),
                 ],
               ));
