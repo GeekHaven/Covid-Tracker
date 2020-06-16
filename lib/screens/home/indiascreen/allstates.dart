@@ -1,3 +1,4 @@
+import 'package:covidtracker/stats/statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:covidtracker/screens/combinedscreen.dart';
 

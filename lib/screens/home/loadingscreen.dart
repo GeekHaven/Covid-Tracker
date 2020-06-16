@@ -31,8 +31,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
         fontSize: 1.75 * SizeConfig.textMultiplier,
       );
       return;
-    }
-    data = await apidata.getData();
+
+    } 
+data = await apidata.getData();
     districtData = await apidata.getDistrictData();
     dailydata = await apidata.getDailyData();
     countrydata = await apidata.getCountryData();
@@ -47,6 +48,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
         textColor: Colors.white,
         fontSize: 1.75 * SizeConfig.textMultiplier,
       );
+
+     
       return;
     }
 
@@ -65,7 +68,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
     super.initState();
     setData();
   }
-
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
