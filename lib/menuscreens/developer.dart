@@ -29,7 +29,7 @@ class _DeveloperState extends State<Developer> {
 
   final List<List<String>> products = [
     [
-      "assets/images/ravi.jpg",
+      "assets/images/raviteja.JPG",
       "Raviteja Kampati",
       "https://www.linkedin.com/in/raviteja-kampati-64b086172/",
       "https://twitter.com/KampatiRaviteja",
@@ -45,7 +45,7 @@ class _DeveloperState extends State<Developer> {
       " Flutter developer"
     ],
     [
-      "assets/images/sivasai.jpg",
+      "assets/images/sivafinal.jpg",
       "Siva Sai Ojam",
       "https://www.linkedin.com/in/siva-sai-reddy-ojam-66a261194/",
       "https://twitter.com/SivasaireddyO",

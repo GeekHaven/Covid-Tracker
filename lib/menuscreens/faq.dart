@@ -69,7 +69,7 @@ class _FaqpageState extends State<Faqpage> {
                             DataSource.questionAnswers[index]["question"],
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 1.96 * SizeConfig.textMultiplier),
+                                fontSize: 2.2 * SizeConfig.textMultiplier),
                           ),
                           children: <Widget>[
                             Padding(
@@ -81,7 +81,7 @@ class _FaqpageState extends State<Faqpage> {
                                     child: Text(
                                       DataSource.questionAnswers[index]
                                           ["answer"],
-                                      style: TextStyle(fontSize: 20),
+                                      style: TextStyle(fontSize: 2 * SizeConfig.textMultiplier),
                                     )))
                           ],
                         ),

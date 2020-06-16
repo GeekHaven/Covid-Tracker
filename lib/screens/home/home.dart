@@ -6,7 +6,7 @@ import './home_widgets/infoCardset.dart';
 import './home_widgets/newsscreen.dart';
 import 'package:covidtracker/menuscreens/deepdivescreen.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:covidtracker/menuscreens/developer.dart';
+import 'package:covidtracker/menuscreens/developersscreen.dart';
 import 'package:covidtracker/menuscreens/faq.dart';
 import 'package:covidtracker/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -157,219 +157,111 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                     0.16,
               ),
               Container(
-                child: Padding(
-                    padding: EdgeInsets.only(
-                        left: (MediaQuery.of(context).size.height -
-                                MediaQuery.of(context).padding.top) *
-                            0.03),
-                    child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              FlatButton(
-                                  disabledColor: Colors.white,
-                                  textColor: Colors.white,
-                                  padding: EdgeInsets.all(
-                                      (MediaQuery.of(context).size.height -
-                                              MediaQuery.of(context)
-                                                  .padding
-                                                  .top) *
-                                          0.003),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: <Widget>[
-                                      Icon(Icons.home, color: Colors.white),
-                                      Text("    "),
-                                      Text("Home",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: (MediaQuery.of(context)
-                                                          .size
-                                                          .height -
-                                                      MediaQuery.of(context)
-                                                          .padding
-                                                          .top) *
-                                                  0.0220,
-                                              fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    SizeConfig().init(
-                                        constraints, orientation, isCollapsed);
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return MenuDashboardPage(
-                                            data: myData,
-                                            districtData: myDistrictData,
-                                            dailyData: myDailyData,
-                                            countrydata: myCountryData,
-                                            globalData: myGlobalData,
-                                            btmcode: 0,
-                                          );
-                                        },
-                                      ),
-                                    );
-                                  }),
-                              FlatButton(
-                                  disabledColor: Colors.white,
-                                  textColor: Colors.white,
-                                  padding: EdgeInsets.all(
-                                      (MediaQuery.of(context).size.height -
-                                              MediaQuery.of(context)
-                                                  .padding
-                                                  .top) *
-                                          0.003),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: <Widget>[
-                                      Icon(Icons.info, color: Colors.white),
-                                      Text("    "),
-                                      Text("Deep Dive",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: (MediaQuery.of(context)
-                                                          .size
-                                                          .height -
-                                                      MediaQuery.of(context)
-                                                          .padding
-                                                          .top) *
-                                                  0.0220,
-                                              fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    SizeConfig().init(
-                                        constraints, orientation, isCollapsed);
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return DeepDivePage(constraints,
-                                              orientation, isCollapsed);
-                                        },
-                                      ),
-                                    );
-                                  }),
-                              FlatButton(
-                                  disabledColor: Colors.white,
-                                  textColor: Colors.white,
-                                  padding: EdgeInsets.all(
-                                      (MediaQuery.of(context).size.height -
-                                              MediaQuery.of(context)
-                                                  .padding
-                                                  .top) *
-                                          0.003),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: <Widget>[
-                                      Icon(Icons.question_answer,
-                                          color: Colors.white),
-                                      Text("    "),
-                                      Text("FAQs",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: (MediaQuery.of(context)
-                                                          .size
-                                                          .height -
-                                                      MediaQuery.of(context)
-                                                          .padding
-                                                          .top) *
-                                                  0.0220,
-                                              fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    SizeConfig().init(
-                                        constraints, orientation, isCollapsed);
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return Faqpage(
-                                              constraints, orientation, false);
-                                        },
-                                      ),
-                                    );
-                                  }),
-                              FlatButton(
-                                  disabledColor: Colors.white,
-                                  textColor: Colors.white,
-                                  padding: EdgeInsets.all(
-                                      (MediaQuery.of(context).size.height -
-                                              MediaQuery.of(context)
-                                                  .padding
-                                                  .top) *
-                                          0.003),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      Icon(Icons.payment, color: Colors.white),
-                                      Text("    "),
-                                      Text("Donate",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: (MediaQuery.of(context)
-                                                          .size
-                                                          .height -
-                                                      MediaQuery.of(context)
-                                                          .padding
-                                                          .top) *
-                                                  0.0220,
-                                              fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    launch("https://www.pmcares.gov.in/en/");
-                                  }),
-                              FlatButton(
-                                  // color: Colors.blueGrey[600],
-                                  disabledColor: Colors.white,
-                                  textColor: Colors.white,
-                                  padding: EdgeInsets.all(
-                                      (MediaQuery.of(context).size.height -
-                                              MediaQuery.of(context)
-                                                  .padding
-                                                  .top) *
-                                          0.003),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      Icon(Icons.group, color: Colors.white),
-                                      Text("    "),
-                                      Text("Developers",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: (MediaQuery.of(context)
-                                                          .size
-                                                          .height -
-                                                      MediaQuery.of(context)
-                                                          .padding
-                                                          .top) *
-                                                  0.0220,
-                                              fontWeight: FontWeight.bold)),
-                                    ],
-                                  ),
-                                  onPressed: () {
-                                    SizeConfig().init(
-                                        constraints, orientation, isCollapsed);
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return Developer(
-                                              constraints, orientation, false);
-                                        },
-                                      ),
-                                    );
-                                  }),
-                            ]))),
-              ),
+                  child: Column(
+                children: <Widget>[
+                  ListTile(
+                      leading: Icon(Icons.home, color: Colors.white),
+                      title: Text("Home",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: (MediaQuery.of(context).size.height -
+                                      MediaQuery.of(context).padding.top) *
+                                  0.0220,
+                              fontWeight: FontWeight.bold)),
+                      onTap: () {
+                        SizeConfig()
+                            .init(constraints, orientation, isCollapsed);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return MenuDashboardPage(
+                                data: myData,
+                                districtData: myDistrictData,
+                                dailyData: myDailyData,
+                                countrydata: myCountryData,
+                                globalData: myGlobalData,
+                                btmcode: 0,
+                              );
+                            },
+                          ),
+                        );
+                      }),
+                  ListTile(
+                      leading: Icon(Icons.info, color: Colors.white),
+                      title: Text("Deep Dive",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: (MediaQuery.of(context).size.height -
+                                      MediaQuery.of(context).padding.top) *
+                                  0.0220,
+                              fontWeight: FontWeight.bold)),
+                      onTap: () {
+                        SizeConfig()
+                            .init(constraints, orientation, isCollapsed);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return DeepDivePage(
+                                  constraints, orientation, isCollapsed);
+                            },
+                          ),
+                        );
+                      }),
+                  ListTile(
+                      leading: Icon(Icons.question_answer, color: Colors.white),
+                      title: Text("FAQ",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: (MediaQuery.of(context).size.height -
+                                      MediaQuery.of(context).padding.top) *
+                                  0.0220,
+                              fontWeight: FontWeight.bold)),
+                      onTap: () {
+                        SizeConfig()
+                            .init(constraints, orientation, isCollapsed);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Faqpage(constraints, orientation, false);
+                            },
+                          ),
+                        );
+                      }),
+                  ListTile(
+                      leading: Icon(Icons.payment, color: Colors.white),
+                      title: Text("Donate",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: (MediaQuery.of(context).size.height -
+                                      MediaQuery.of(context).padding.top) *
+                                  0.0220,
+                              fontWeight: FontWeight.bold)),
+                      onTap: () {
+                        launch("https://www.pmcares.gov.in/en/");
+                      }),
+                  ListTile(
+                      leading: Icon(Icons.group, color: Colors.white),
+                      title: Text("Developers",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: (MediaQuery.of(context).size.height -
+                                      MediaQuery.of(context).padding.top) *
+                                  0.0220,
+                              fontWeight: FontWeight.bold)),
+                      onTap: () {
+                        SizeConfig()
+                            .init(constraints, orientation, isCollapsed);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return DeveloperScreen(constraints, orientation, false);
+                            },
+                          ),
+                        );
+                      }),
+                ],
+              )
+                  ),
             ],
           ),
         ),
@@ -384,7 +276,6 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
       bottom: 0,
       left: isCollapsed ? 0 : 0.6 * screenWidth,
       right: isCollapsed ? 0 : -0.2 * screenWidth,
-      
       child: ScaleTransition(
         scale: _scaleAnimation,
         child: Material(
@@ -405,9 +296,10 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                           children: <Widget>[
                             InkWell(
                                 child: SizedBox(
-                                  width: 10*SizeConfig.widthMultiplier,
-                                  height: 6*SizeConfig.heightMultiplier,
-                                  child: Icon(Icons.menu, color: kPrimaryColor)),
+                                    width: 10 * SizeConfig.widthMultiplier,
+                                    height: 6 * SizeConfig.heightMultiplier,
+                                    child:
+                                        Icon(Icons.menu, color: kPrimaryColor)),
                                 onTap: () {
                                   setState(() {
                                     SizeConfig().init(
@@ -550,8 +442,10 @@ class _MenuDashboardPageState extends State<MenuDashboardPage>
                       _selectedPageIndex = index;
                     });
                     SizeConfig().init(constraints, orientation, isCollapsed);
-
                     if (isCollapsed) {
+                      if(index  == 0){
+                      SizeConfig().init(constraints, orientation, false);
+                    }
                       if (index == 1) {
                         SizeConfig().init(constraints, orientation, false);
                         Navigator.of(context)

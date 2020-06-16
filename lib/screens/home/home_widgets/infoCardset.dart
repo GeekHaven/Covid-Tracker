@@ -107,8 +107,8 @@ class _InfosetState extends State<Infoset> {
         child: (code != 2)
             ? GridView(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisSpacing: 1 * SizeConfig.heightMultiplier,
-                    crossAxisSpacing: 1 * SizeConfig.widthMultiplier,
+                    mainAxisSpacing: 1* SizeConfig.heightMultiplier,
+                    crossAxisSpacing: 1* SizeConfig.widthMultiplier,
                     crossAxisCount: 2,
                     childAspectRatio: 200/82),
                 children: <Widget>[

@@ -238,9 +238,10 @@ class _StateScreenState extends State<StateScreen> {
                 'Districts',
                 style: TextStyle(
                   fontFamily: 'Lato',
-                  fontSize: 2.72 * SizeConfig.textMultiplier,
+                  fontSize: 4 * SizeConfig.textMultiplier,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 0.16 * SizeConfig.heightMultiplier,
+                  
                 ),
               ),
               initiallyExpanded: false,
