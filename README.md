@@ -1,9 +1,5 @@
 # Covid Tracker
 
-A new Flutter project.
-
-## Getting Started
-
 A mobile application that tracks the worldwide statistics of COVID - 19 pandemic and related news.
 With the alarming increase in Covid cases daily it is important to keep ourselves updated with the latest and authentic information. So, we are super excited to announce a one-stop-shop, the 'Covid Tracker' to create awareness and help to break the chain. This app keeps the latest global health information at your fingertips and also updates daily with the latest news, feature stories, fact sheets, disease outbreak updates, and public health emergency information.
 Features :
